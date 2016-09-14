@@ -1,4 +1,5 @@
 /**
+ * This class will handle generating random wheels, with 5 random points on that wheel.
  * 
  */
 
@@ -17,23 +18,23 @@ public class RandomiseWheels {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		RandomiseWheels randomisedWheel = new RandomiseWheels();
-		randomisedWheel.generateWheel();
+		//used for testing this class alone
+		//RandomiseWheels randomisedWheel = new RandomiseWheels();
+		//randomisedWheel.generateWheel();
 	}
 	
 	public String[] generateWheel(){
 		for(int i = 0; i < wheel.length; i++){
-			wheel[i] = generateSingle();
-		}
-			
+			wheel[i] = generateSinglePoint();
+		}			
 		return wheel;
 	}
 	/**
-	 * This method generates a single point on a 5 wheel
-	 * @return
+	 * This method generates a single point on a wheel
+	 * 0-6(inclusive 0, exclusive 6)
+	 * @return a string of the case point type (Ace,King,etc).
 	 */
-	public String generateSingle(){
+	public String generateSinglePoint(){
 		String Character="";
 		switch(random.nextInt(6))
 		{
