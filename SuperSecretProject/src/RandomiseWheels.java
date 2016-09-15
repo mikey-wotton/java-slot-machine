@@ -1,5 +1,6 @@
 /**
  * This class will handle generating random wheels, with 5 random points on that wheel.
+ * NOTE: probably gonna end up swapping the random strings to enum at some point in the future
  * 
  */
 
@@ -22,6 +23,12 @@ public class RandomiseWheels {
 		//RandomiseWheels randomisedWheel = new RandomiseWheels();
 		//randomisedWheel.generateWheel();
 	}
+	
+	/**
+	 * this method creates a wheel with 5 points
+	 * and returns it to be checked inside another class
+	 * @return	array of strings
+	 */
 	
 	public String[] generateWheel(){
 		for(int i = 0; i < wheel.length; i++){
