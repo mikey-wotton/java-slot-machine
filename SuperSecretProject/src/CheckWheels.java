@@ -31,23 +31,26 @@ public class CheckWheels {
 		String pointThree = wheel[3].toString();
 		String pointFour = wheel[4].toString();
 		
+		//Matches five points
 		if(pointZero == pointOne && pointOne == pointTwo && pointTwo == pointThree && pointThree == pointFour){
 			System.out.println("Five matches! Biggest win!");			
 		}
-		else if((pointZero == pointOne && pointOne == pointTwo && pointTwo == pointThree) ||
-				(pointOne == pointTwo && pointTwo == pointThree && pointThree == pointFour)){
+		//Matches four points
+		else if((pointZero.equals(pointOne) && pointOne.equals(pointTwo) && pointTwo.equals(pointThree)) ||	(pointOne.equals(pointTwo) && pointTwo.equals(pointThree) && pointThree.equals(pointFour))){
 			System.out.println("Four matches! Big win!");
 		}
-		else if((pointZero == pointOne && pointOne == pointTwo) || 
-				(pointOne == pointTwo && pointTwo == pointThree) ||
-				(pointTwo == pointThree && pointThree == pointFour)){
+		//Matches three points
+		else if((pointZero.equals(pointOne) && pointOne.equals(pointTwo)) || (pointOne.equals(pointTwo) && pointTwo.equals(pointThree)) || (pointTwo.equals(pointThree) && pointThree.equals(pointFour))){
 			System.out.println("Three matches! small win!");
 		}
-		else if((pointZero == pointOne ) 
-				
-				
-				)
-			
+		//Matches any two points
+		else if((pointZero.equals(pointOne) || pointOne.equals(pointTwo) ||	pointTwo.equals(pointThree) || pointThree.equals(pointFour) )) {
+			System.out.println("Two matches! smallest win!");
+		}
+		//No matches
+		else{
+			System.out.println("No Win! Unlucky!");
+		}	
 		
 	}
 	
