@@ -43,7 +43,7 @@ public class RandomiseWheels {
 	 */
 	public String generateSinglePoint(){
 		String Character="";
-		switch(random.nextInt(6))
+		switch(random.nextInt(5))
 		{
 		case 0:
 			Character = "A";

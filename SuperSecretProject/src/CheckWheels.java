@@ -25,7 +25,29 @@ public class CheckWheels {
 	}
 	
 	public void checkWheel(String[] wheel){
+		String pointZero = wheel[0].toString();
+		String pointOne = wheel[1].toString();
+		String pointTwo = wheel[2].toString();
+		String pointThree = wheel[3].toString();
+		String pointFour = wheel[4].toString();
 		
+		if(pointZero == pointOne && pointOne == pointTwo && pointTwo == pointThree && pointThree == pointFour){
+			System.out.println("Five matches! Biggest win!");			
+		}
+		else if((pointZero == pointOne && pointOne == pointTwo && pointTwo == pointThree) ||
+				(pointOne == pointTwo && pointTwo == pointThree && pointThree == pointFour)){
+			System.out.println("Four matches! Big win!");
+		}
+		else if((pointZero == pointOne && pointOne == pointTwo) || 
+				(pointOne == pointTwo && pointTwo == pointThree) ||
+				(pointTwo == pointThree && pointThree == pointFour)){
+			System.out.println("Three matches! small win!");
+		}
+		else if((pointZero == pointOne ) 
+				
+				
+				)
+			
 		
 	}
 	
