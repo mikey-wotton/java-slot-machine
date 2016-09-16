@@ -20,23 +20,19 @@
  *
  */
 public class Main {
-
+	RandomiseWheels randomWheel = new RandomiseWheels();
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		String[] wheel = RandomiseWheels.generateWheel();
+		CheckWheels.checkWheel(wheel);
 		
 	}
 
 	/**
 	 * This should spin the wheels on the machine, generating a wheel of different slots
 	 */
-	public void spin(){
 		
-		
-	}
-	
-	
-	
 }

@@ -20,15 +20,16 @@ public class CheckWheels {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method
 
 	}
 	
-	public void checkWheel(String[] wheel){		
+	public static void checkWheel(String[] wheel){		
 		int k = 0;
 		int numOfMatches = 0;
 		//Matches five points
 		for(int i = 0; i <= wheel.length-1; i++){
+			//cahnge shit
 			if(wheel[k].equals(wheel[k+1])){
 				numOfMatches++;
 			}

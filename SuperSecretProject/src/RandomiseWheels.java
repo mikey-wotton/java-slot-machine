@@ -10,18 +10,14 @@
  */
 import java.util.Random;
 
-public class RandomiseWheels {
-
+public class RandomiseWheels {	
 	
-	Random random = new Random();
-	String[] wheel = new String[5];
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		//used for testing this class alone
 		//RandomiseWheels randomisedWheel = new RandomiseWheels();
-		//randomisedWheel.generateWheel();
 	}
 	
 	/**
@@ -30,7 +26,8 @@ public class RandomiseWheels {
 	 * @return	array of strings
 	 */
 	
-	public String[] generateWheel(){
+	public static String[] generateWheel(){
+		String[] wheel = new String[5];
 		for(int i = 0; i < wheel.length; i++){
 			wheel[i] = generateSinglePoint();
 		}			
@@ -41,7 +38,8 @@ public class RandomiseWheels {
 	 * 0-6(inclusive 0, exclusive 6)
 	 * @return a string of the case point type (Ace,King,etc).
 	 */
-	public String generateSinglePoint(){
+	public static String generateSinglePoint(){
+		Random random = new Random();
 		String Character="";
 		switch(random.nextInt(5))
 		{
@@ -66,9 +64,6 @@ public class RandomiseWheels {
 		}		
 		return Character;
 	}
-	
-	
-	
 	
 }
 
