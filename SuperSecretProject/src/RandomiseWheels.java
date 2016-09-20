@@ -11,7 +11,7 @@
 import java.util.Random;
 
 public class RandomiseWheels {	
-	
+
 	/**
 	 * @param args
 	 */
@@ -21,50 +21,88 @@ public class RandomiseWheels {
 	}
 	
 	/**
-	 * this method creates a wheel with 5 points
-	 * and returns it to be checked inside another class
-	 * @return	array of strings
+	 * This method should choose 5 consecutive symbols from a "wheel"
+	 * which are then displayed to the user and checked for wins against other wheels
+	 * 
+	 */
+	public static int[] pickFiveWinners(){
+	    Random rnd = new Random();
+	    int[] array = generateWheel();
+		int index = rnd.nextInt(array.length+1);
+		int[] pickedFive = new int[5];
+		for(int i = 0; i < pickedFive.length; i++ ){
+			if(index == 100){
+				index = 0;				
+			}
+			pickedFive[i] = array[index];
+			index++;
+		}
+		
+		return pickedFive;		
+	}	
+	
+	/**
+	 * This method should generate a single wheel with 100 variables
+	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * it then shuffles those variables with shuffleArray
+	 * @return	shuffle array of strings
 	 */
 	
-	public static String[] generateWheel(){
-		String[] wheel = new String[5];
+	
+	public static int[] generateWheel(){
+		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			wheel[i] = generateSinglePoint();
-		}			
+			if (isBetween(i, 0, 39)) {
+					wheel[i] = 0;
+				}
+			else if (isBetween(i, 40, 69 )) {
+					wheel[i] = 1;
+				}
+			else if (isBetween(i, 70, 89)) {
+					wheel[i] = 2;
+					}
+			else if (isBetween(i, 90, 96)) {
+					wheel[i] = 3;
+					}
+			else if (isBetween(i, 97, 99)) {
+					wheel[i] = 4;
+					}				
+		}	
+		shuffleArray(wheel);
 		return wheel;
 	}
-	/**
-	 * This method generates a single point on a wheel
-	 * 0-6(inclusive 0, exclusive 6)
-	 * @return a string of the case point type (Ace,King,etc).
+		
+	/** Fisher Yates shuffle
+	 * This method shuffles the generated array 100 times, to provide some randomness to the wheel
+	 * i.e you don't see T in a row 25 times, or at least its incredibly unlikely
+	 * 
+	 * @param array the array to be shuffled
 	 */
-	public static String generateSinglePoint(){
-		Random random = new Random();
-		String Character="";
-		switch(random.nextInt(5))
-		{
-		case 0:
-			Character = "A";
-			break;
-		case 1:
-			Character = "K";
-			break;
-		case 2:
-			Character = "Q";
-			break;
-		case 3:
-			Character = "J";
-			break;
-		case 4:
-			Character = "T";
-			break;
-		case 5:
-			Character = "N";
-			break;
-		}		
-		return Character;
-	}
+	public static void shuffleArray(int[] array){
+	    Random rnd = new Random();
+
+	    for (int i = array.length - 1; i > 0; i--)
+	    {
+	      int index = rnd.nextInt(i + 1);
+	      // Simple swap
+	      int a = array[index];
+	      array[index] = array[i];
+	      array[i] = a;
+	    }
+	  }
 	
+	
+	/**
+	 * method used to test if number is between 2 inclusive numbers
+	 * @param x - the number to be tested
+	 * @param lower = the lower bound, inclusive
+	 * @param upper = the upper bound, inclusive
+	 */
+	public static boolean isBetween(int x, int lower, int upper) {
+		  return lower <= x && x <= upper;
+		}
+
+		
 }
 
 

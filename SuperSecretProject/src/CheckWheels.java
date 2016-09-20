@@ -24,38 +24,52 @@ public class CheckWheels {
 
 	}
 	
-	public static void checkWheel(String[] wheel){		
-		int k = 0;
-		int numOfMatches = 0;
-		//Matches five points
-		for(int i = 0; i <= wheel.length-1; i++){
-			//cahnge shit
-			if(wheel[k].equals(wheel[k+1])){
-				numOfMatches++;
-			}
-			k++;
+	public static double checkWheel(int[][] wheels){		
+		double NumberOfMatches = numberOfMatchesOnLine(wheels[0][0],wheels[1][0],wheels[2][0],wheels[3][0],wheels[4][0]);	
+		double Modifier = getModifier(wheels[0][0]);
+		if(NumberOfMatches == -1){
+			return -1;
 		}
-		
-		switch(numOfMatches){
-		case 0:
-			System.out.println("No matches! unlucky..");
-			break;
-		case 1:
-			System.out.println("A match! small win");
-			break;
-		case 2: 
-			System.out.println("Two matches! big win");
-			break;
-		case 3: 
-			System.out.println("Three of a king! bigger win!");	
-			break;
-		case 4:
-			System.out.println("Four of a kind! Even bigger win!");
-			break;
-		
-		}		
-		
+		return Modifier * NumberOfMatches;
 	}
 	
-
+	public static int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
+		if(i == j){
+			if(j == k){
+				if(k == l){
+					if(l == m){
+						return 4;
+					}
+					return 3;
+				}
+				return 2;
+			}			
+			return 1;
+		}
+		else{
+			return -1;
+		}
+	}
+	
+	public static double getModifier(int num){
+		double modifier = 0;
+		switch(num){
+		case 0 :
+			modifier = 1.0;
+			break;
+		case 1 :
+			modifier = 2.0;
+			break;
+		case 2 :
+			modifier = 3.0;
+			break;
+		case 3 :
+			modifier = 4.0;
+			break;
+		case 4 :
+			modifier = 5.0;
+			break;		
+		}		
+		return modifier;
+	}
 }

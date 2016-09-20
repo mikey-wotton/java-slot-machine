@@ -26,13 +26,22 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] wheel = RandomiseWheels.generateWheel();
-		CheckWheels.checkWheel(wheel);
-		
-	}
+		int spin = 0;
+		double k = 0;
+		double totalWinOrLoss = 0;
+		int[][] arrayOfWheels = new int[5][5];
+		while(k < 50000){
+		arrayOfWheels[0] = RandomiseWheels.pickFiveWinners();
+		arrayOfWheels[1] = RandomiseWheels.pickFiveWinners();
+		arrayOfWheels[2] = RandomiseWheels.pickFiveWinners();
+		arrayOfWheels[3] = RandomiseWheels.pickFiveWinners();
+		arrayOfWheels[4] = RandomiseWheels.pickFiveWinners();
+			totalWinOrLoss +=CheckWheels.checkWheel(arrayOfWheels);
+			System.out.println("Spins:" + spin + " - WinOrLoss: " + (50000 % (50000 - totalWinOrLoss)));
+			k++;
+			spin++;
+		}
 
-	/**
-	 * This should spin the wheels on the machine, generating a wheel of different slots
-	 */
+	}
 		
 }
