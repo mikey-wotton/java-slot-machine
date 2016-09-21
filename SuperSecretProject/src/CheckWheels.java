@@ -15,7 +15,34 @@
  *
  */
 public class CheckWheels {
+	
+	public static int TwoTenMatches = 0;
+	public static int ThreeTenMatches = 0;
+	public static int FourTenMatches = 0;
+	public static int FiveTenMatches = 0;
 
+	
+	public static int TwoJackMatches = 0;
+	public static int ThreeJackMatches = 0;
+	public static int FourJackMatches = 0;
+	public static int FiveJackMatches = 0;	
+	
+	
+	public static int TwoQueenMatches = 0;
+	public static int ThreeQueenMatches = 0;
+	public static int FourQueenMatches = 0;
+	public static int FiveQueenMatches = 0;
+
+	public static int TwoKingMatches = 0;
+	public static int ThreeKingMatches = 0;
+	public static int FourKingMatches = 0;
+	public static int FiveKingMatches = 0;
+
+	public static int TwoAceMatches = 0;
+	public static int ThreeAceMatches = 0;
+	public static int FourAceMatches = 0;	
+	public static int FiveAceMatches = 0;
+	
 	/**
 	 * @param args
 	 */
@@ -25,12 +52,79 @@ public class CheckWheels {
 	}
 	
 	public static double checkWheel(int[][] wheels){		
-		double NumberOfMatches = numberOfMatchesOnLine(wheels[0][0],wheels[1][0],wheels[2][0],wheels[3][0],wheels[4][0]);	
-		double Modifier = getModifier(wheels[0][0]);
+		int NumberOfMatches = numberOfMatchesOnLine(wheels[0][0],wheels[1][0],wheels[2][0],wheels[3][0],wheels[4][0]);			
+		int Modifier = getModifier(wheels[0][0]);
 		if(NumberOfMatches == -1){
 			return -1;
 		}
-		return Modifier * NumberOfMatches;
+		//checks for symbol matching quantities
+		switch(Modifier){
+		case 1 : 
+			switch(NumberOfMatches){
+				case 1: TwoTenMatches++;
+				break;
+				case 2: ThreeTenMatches++;
+				break;
+				case 3: FourTenMatches++;
+				break;
+				case 4: FiveTenMatches++;
+				break;
+			}
+			break;		
+		
+		case 2 : 
+			switch(NumberOfMatches){
+				case 1: TwoJackMatches++;
+				break;
+				case 2: ThreeJackMatches++;
+				break;
+				case 3: FourJackMatches++;
+				break;
+				case 4: FiveJackMatches++;
+				break;
+			}
+			break;
+		
+		case 3 : 
+			switch(NumberOfMatches){
+				case 1: TwoQueenMatches++;
+				break;
+				case 2: ThreeQueenMatches++;
+				break;
+				case 3: FourQueenMatches++;
+				break;
+				case 4: FiveQueenMatches++;
+				break;
+			}	
+			break;
+		
+		case 4 :	
+			switch(NumberOfMatches){
+				case 1: TwoKingMatches++;
+				break;
+				case 2: ThreeKingMatches++;
+				break;
+				case 3: FourKingMatches++;
+				break;
+				case 4: FiveKingMatches++;
+				break;
+			}
+			break;
+		
+		case 5 : 	
+			switch(NumberOfMatches){
+				case 1: TwoAceMatches++;
+				break;
+				case 2: ThreeAceMatches++;
+				break;
+				case 3: FourAceMatches++;
+				break;
+				case 4: FiveAceMatches++;
+				break;
+		}
+		break;
+		}
+		return NumberOfMatches * Modifier;
 	}
 	
 	public static int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
@@ -51,25 +145,106 @@ public class CheckWheels {
 		}
 	}
 	
-	public static double getModifier(int num){
-		double modifier = 0;
+	public static int getModifier(int num){
+		int modifier = 0;
 		switch(num){
 		case 0 :
-			modifier = 1.0;
+			modifier = 1;
 			break;
 		case 1 :
-			modifier = 2.0;
+			modifier = 2;
 			break;
 		case 2 :
-			modifier = 3.0;
+			modifier = 3;
 			break;
 		case 3 :
-			modifier = 4.0;
+			modifier = 4;
 			break;
 		case 4 :
-			modifier = 5.0;
+			modifier = 5;
 			break;		
 		}		
 		return modifier;
 	}
+
+	public static int getTwoTenMatches() {
+		return TwoTenMatches;
+	}
+
+	public static int getThreeTenMatches() {
+		return ThreeTenMatches;
+	}
+
+	public static int getFourTenMatches() {
+		return FourTenMatches;
+	}
+
+	public static int getFiveTenMatches() {
+		return FiveTenMatches;
+	}
+
+	public static int getTwoJackMatches() {
+		return TwoJackMatches;
+	}
+
+	public static int getThreeJackMatches() {
+		return ThreeJackMatches;
+	}
+
+	public static int getFourJackMatches() {
+		return FourJackMatches;
+	}
+
+	public static int getFiveJackMatches() {
+		return FiveJackMatches;
+	}
+
+	public static int getTwoQueenMatches() {
+		return TwoQueenMatches;
+	}
+
+	public static int getThreeQueenMatches() {
+		return ThreeQueenMatches;
+	}
+
+	public static int getFourQueenMatches() {
+		return FourQueenMatches;
+	}
+
+	public static int getFiveQueenMatches() {
+		return FiveQueenMatches;
+	}
+
+	public static int getTwoKingMatches() {
+		return TwoKingMatches;
+	}
+
+	public static int getThreeKingMatches() {
+		return ThreeKingMatches;
+	}
+
+	public static int getFourKingMatches() {
+		return FourKingMatches;
+	}
+
+	public static int getFiveKingMatches() {
+		return FiveKingMatches;
+	}
+
+	public static int getTwoAceMatches() {
+		return TwoAceMatches;
+	}
+
+	public static int getThreeAceMatches() {
+		return ThreeAceMatches;
+	}
+
+	public static int getFourAceMatches() {
+		return FourAceMatches;
+	}
+
+	public static int getFiveAceMatches() {
+		return FiveAceMatches;
+	}
+	
 }
