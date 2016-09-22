@@ -42,55 +42,61 @@ public class RandomiseWheels {
 	
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 30 Tens, 30 Jacks, 20 Queens, 7 Kings, 13 Aces
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */		
 	public static int[] generateFirstWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 29)) {
-					wheel[i] = 0;
+			 if (isBetween(i, 0, 34)) {
+				wheel[i] = 0;
+			}
+		else if (isBetween(i, 35, 64 )){
+				wheel[i] = 1;
+			}
+		else if (isBetween(i, 65, 79)) {
+				wheel[i] = 2;
 				}
-			else if (isBetween(i, 30, 59 )) {
-					wheel[i] = 1;
+		else if (isBetween(i, 80, 89)) {
+				wheel[i] = 3;
 				}
-			else if (isBetween(i, 60, 79)) {
-					wheel[i] = 2;
-					}
-			else if (isBetween(i, 80, 86)) {
-					wheel[i] = 3;
-					}
-			else if (isBetween(i, 87, 99)) {
-					wheel[i] = 4;
-					}				
+		else if (isBetween(i, 90, 94)) {
+				wheel[i] = 4;
+				}	
+		else if (isBetween(i, 95, 99)) {
+				wheel[i] = 5;
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
 	}
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
 	public static int[] generateSecondWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 39)) {
+			 if (isBetween(i, 0, 34)) {
 					wheel[i] = 0;
 				}
-			else if (isBetween(i, 40, 69 )) {
+			else if (isBetween(i, 35, 64 )){
 					wheel[i] = 1;
 				}
-			else if (isBetween(i, 70, 89)) {
+			else if (isBetween(i, 65, 79)) {
 					wheel[i] = 2;
 					}
-			else if (isBetween(i, 90, 96)) {
+			else if (isBetween(i, 80, 89)) {
 					wheel[i] = 3;
 					}
-			else if (isBetween(i, 97, 99)) {
+			else if (isBetween(i, 90, 94)) {
 					wheel[i] = 4;
+					}	
+			else if (isBetween(i, 95, 99)) {
+					wheel[i] = 5;
 					}				
 		}	
 		shuffleArray(wheel);
@@ -98,84 +104,93 @@ public class RandomiseWheels {
 	}
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
 	public static int[] generateThirdWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 39)) {
-					wheel[i] = 0;
+			if (isBetween(i, 0, 34)) {
+				wheel[i] = 0;
+			}
+		else if (isBetween(i, 35, 64 )){
+				wheel[i] = 1;
+			}
+		else if (isBetween(i, 65, 79)) {
+				wheel[i] = 2;
 				}
-			else if (isBetween(i, 40, 69 )) {
-					wheel[i] = 1;
+		else if (isBetween(i, 80, 89)) {
+				wheel[i] = 3;
 				}
-			else if (isBetween(i, 70, 89)) {
-					wheel[i] = 2;
-					}
-			else if (isBetween(i, 90, 96)) {
-					wheel[i] = 3;
-					}
-			else if (isBetween(i, 97, 99)) {
-					wheel[i] = 4;
-					}				
+		else if (isBetween(i, 90, 94)) {
+				wheel[i] = 4;
+				}	
+		else if (isBetween(i, 95, 99)) {
+				wheel[i] = 5;
+				}		
 		}	
 		shuffleArray(wheel);
 		return wheel;
 	}
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
 	public static int[] generateFourthWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 39)) {
-					wheel[i] = 0;
+			if (isBetween(i, 0, 34)) {
+				wheel[i] = 0;
+			}
+		else if (isBetween(i, 35, 64 )){
+				wheel[i] = 1;
+			}
+		else if (isBetween(i, 65, 79)) {
+				wheel[i] = 2;
 				}
-			else if (isBetween(i, 40, 69 )) {
-					wheel[i] = 1;
+		else if (isBetween(i, 80, 89)) {
+				wheel[i] = 3;
 				}
-			else if (isBetween(i, 70, 89)) {
-					wheel[i] = 2;
-					}
-			else if (isBetween(i, 90, 96)) {
-					wheel[i] = 3;
-					}
-			else if (isBetween(i, 97, 99)) {
-					wheel[i] = 4;
-					}				
+		else if (isBetween(i, 90, 94)) {
+				wheel[i] = 4;
+				}	
+		else if (isBetween(i, 95, 99)) {
+				wheel[i] = 5;
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
 	}
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
 	public static int[] generateFifthWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 39)) {
-					wheel[i] = 0;
+			if (isBetween(i, 0, 34)) {
+				wheel[i] = 0;
+			}
+		else if (isBetween(i, 35, 64 )){
+				wheel[i] = 1;
+			}
+		else if (isBetween(i, 65, 79)) {
+				wheel[i] = 2;
 				}
-			else if (isBetween(i, 40, 69 )) {
-					wheel[i] = 1;
+		else if (isBetween(i, 80, 89)) {
+				wheel[i] = 3;
 				}
-			else if (isBetween(i, 70, 89)) {
-					wheel[i] = 2;
-					}
-			else if (isBetween(i, 90, 96)) {
-					wheel[i] = 3;
-					}
-			else if (isBetween(i, 97, 99)) {
-					wheel[i] = 4;
-					}				
+		else if (isBetween(i, 90, 94)) {
+				wheel[i] = 4;
+				}	
+		else if (isBetween(i, 95, 99)) {
+				wheel[i] = 5;
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
