@@ -51,10 +51,14 @@ public class CheckWheels {
 
 	}
 	
+	public static void checkHorizontalLine(){
+		
+	}
+	
 	public static double checkWheel(int[][] wheels){		
 		int NumberOfMatches = numberOfMatchesOnLine(wheels[0][0],wheels[1][0],wheels[2][0],wheels[3][0],wheels[4][0]);			
 		int Modifier = getModifier(wheels[0][0]);
-		if(NumberOfMatches == -1){
+		if(NumberOfMatches == 0){
 			return -1;
 		}
 		//checks for symbol matching quantities
@@ -98,7 +102,7 @@ public class CheckWheels {
 			}	
 			break;
 		
-		case 4 :	
+		case 8 :	
 			switch(NumberOfMatches){
 				case 1: TwoKingMatches++;
 				break;
@@ -111,7 +115,7 @@ public class CheckWheels {
 			}
 			break;
 		
-		case 5 : 	
+		case 20 : 	
 			switch(NumberOfMatches){
 				case 1: TwoAceMatches++;
 				break;
@@ -141,7 +145,7 @@ public class CheckWheels {
 			return 1;
 		}
 		else{
-			return -1;
+			return 0;
 		}
 	}
 	
@@ -158,10 +162,10 @@ public class CheckWheels {
 			modifier = 3;
 			break;
 		case 3 :
-			modifier = 4;
+			modifier = 8;
 			break;
 		case 4 :
-			modifier = 5;
+			modifier = 20;
 			break;		
 		}		
 		return modifier;

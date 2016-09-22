@@ -38,15 +38,15 @@ public class Main {
 		arrayOfWheels[3] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateFourthWheel());
 		arrayOfWheels[4] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateFifthWheel());
 			totalWinOrLoss +=CheckWheels.checkWheel(arrayOfWheels);
-			System.out.println("Spins:" + spin + " - WinOrLoss: " + (1000000 / (1000000 - totalWinOrLoss)));
+			System.out.println("Spins:" + spin + " - WinOrLoss: " + (1000000 / (1000000 - totalWinOrLoss) )*100+"%");
 			k++;
 			spin++;
 		}
-		System.out.println("Ten Matches: "+CheckWheels.TwoTenMatches+" : "+CheckWheels.ThreeTenMatches+" : "+CheckWheels.FourTenMatches+" : " +CheckWheels.FiveTenMatches);
-		System.out.println("Jack Matches: "+CheckWheels.TwoJackMatches+" : "+CheckWheels.ThreeJackMatches+" : "+CheckWheels.FourJackMatches+" : " +CheckWheels.FiveJackMatches);
-		System.out.println("Queen Matches: "+CheckWheels.TwoQueenMatches+" : "+CheckWheels.ThreeQueenMatches+" : "+CheckWheels.FourQueenMatches+" : " +CheckWheels.FiveQueenMatches);
-		System.out.println("King Matches: "+CheckWheels.TwoKingMatches+" : "+CheckWheels.ThreeKingMatches+" : "+CheckWheels.FourKingMatches+" : " +CheckWheels.FiveKingMatches);
-		System.out.println("Ace Matches: "+CheckWheels.TwoAceMatches+" : "+CheckWheels.ThreeAceMatches+" : "+CheckWheels.FourAceMatches+" : " +CheckWheels.FiveAceMatches);
+		System.out.println("Ten Matches:   "+CheckWheels.TwoTenMatches+"    : "+CheckWheels.ThreeTenMatches+"   : "+CheckWheels.FourTenMatches+"   : " +CheckWheels.FiveTenMatches);
+		System.out.println("Jack Matches:  "+CheckWheels.TwoJackMatches+"   : "+CheckWheels.ThreeJackMatches+"  : "+CheckWheels.FourJackMatches+"  : " +CheckWheels.FiveJackMatches);
+		System.out.println("Queen Matches: "+CheckWheels.TwoQueenMatches+"  : "+CheckWheels.ThreeQueenMatches+" : "+CheckWheels.FourQueenMatches+" : " +CheckWheels.FiveQueenMatches);
+		System.out.println("King Matches:  "+CheckWheels.TwoKingMatches+"   : "+CheckWheels.ThreeKingMatches+"  : "+CheckWheels.FourKingMatches+"  : " +CheckWheels.FiveKingMatches);
+		System.out.println("Ace Matches:   "+CheckWheels.TwoAceMatches+"    : "+CheckWheels.ThreeAceMatches+"   : "+CheckWheels.FourAceMatches+"   : " +CheckWheels.FiveAceMatches);
 
 	}
 		

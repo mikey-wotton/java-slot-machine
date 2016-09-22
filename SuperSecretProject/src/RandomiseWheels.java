@@ -42,26 +42,26 @@ public class RandomiseWheels {
 	
 	/**
 	 * This method should generate a single wheel with 100 variables
-	 * 40 Tens, 30 Jacks, 20 Queens, 7 Kings, 3 Aces
+	 * 30 Tens, 30 Jacks, 20 Queens, 7 Kings, 13 Aces
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */		
 	public static int[] generateFirstWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 39)) {
+			if (isBetween(i, 0, 29)) {
 					wheel[i] = 0;
 				}
-			else if (isBetween(i, 40, 69 )) {
+			else if (isBetween(i, 30, 59 )) {
 					wheel[i] = 1;
 				}
-			else if (isBetween(i, 70, 89)) {
+			else if (isBetween(i, 60, 79)) {
 					wheel[i] = 2;
 					}
-			else if (isBetween(i, 90, 96)) {
+			else if (isBetween(i, 80, 86)) {
 					wheel[i] = 3;
 					}
-			else if (isBetween(i, 97, 99)) {
+			else if (isBetween(i, 87, 99)) {
 					wheel[i] = 4;
 					}				
 		}	
