@@ -15,6 +15,11 @@
  *
  */
 public class CheckWheels {
+	public static double TenModifier = 0.2;
+	public static double JackModifier = 2;
+	public static double QueenModifier = 6;
+	public static double KingModifier = 25;
+	public static double AceModifier = 200;	
 	
 	public static int TwoTenMatches = 0;
 	public static int ThreeTenMatches = 0;
@@ -51,84 +56,99 @@ public class CheckWheels {
 
 	}
 	
-	public static void checkHorizontalLine(){
+	public static void incrementFields(int NumberOfMatches, double Modifier){
+		if (Modifier == TenModifier){switch(NumberOfMatches){
+			case 1: TwoTenMatches++;
+			break;
+			case 2: ThreeTenMatches++;
+			break;
+			case 3: FourTenMatches++;
+			break;
+			case 4: FiveTenMatches++;
+			break;
+		}} else if (Modifier == JackModifier){switch(NumberOfMatches){
+			case 1: TwoJackMatches++;
+			break;
+			case 2: ThreeJackMatches++;
+			break;
+			case 3: FourJackMatches++;
+			break;
+			case 4: FiveJackMatches++;
+			break;
+		}} else if (Modifier == QueenModifier){switch(NumberOfMatches){
+			case 1: TwoQueenMatches++;
+			break;
+			case 2: ThreeQueenMatches++;
+			break;
+			case 3: FourQueenMatches++;
+			break;
+			case 4: FiveQueenMatches++;
+			break;
+		}} else if (Modifier == KingModifier){switch(NumberOfMatches){
+			case 1: TwoKingMatches++;
+			break;
+			case 2: ThreeKingMatches++;
+			break;
+			case 3: FourKingMatches++;
+			break;
+			case 4: FiveKingMatches++;
+			break;
+		}} else if (Modifier == AceModifier){switch(NumberOfMatches){
+			case 1: TwoAceMatches++;
+			break;
+			case 2: ThreeAceMatches++;
+			break;
+			case 3: FourAceMatches++;
+			break;
+			case 4: FiveAceMatches++;
+			break;
+}}
 		
 	}
 	
-	public static double checkWheel(int[][] wheels){		
-		int NumberOfMatches = numberOfMatchesOnLine(wheels[0][0],wheels[1][0],wheels[2][0],wheels[3][0],wheels[4][0]);			
-		int Modifier = getModifier(wheels[0][0]);
-		if(NumberOfMatches == 0){
-			return -1;
-		}
+	public static double checkWheels(int[][] wheels, int NumberOfPayLines){	
+		double value = 0;
+		int NumberOfMatches = 0;
+		double Modifier = 0;
+		switch(NumberOfPayLines){
+		case 1: 
+			value = -1;
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
+			Modifier = getModifier(wheels[0][1]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			break;
+		case 2:
+			value = -2;
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
+			Modifier = getModifier(wheels[0][1]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
+			Modifier = getModifier(wheels[0][2]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			break;
+		case 3:
+			value = -3;
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
+			Modifier = getModifier(wheels[0][1]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
+			Modifier = getModifier(wheels[0][2]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	
+			Modifier = getModifier(wheels[0][3]);
+			incrementFields(NumberOfMatches, Modifier);
+			value = value + (NumberOfMatches * Modifier);
+			break;
+		}		
+		
 		//checks for symbol matching quantities
-		switch(Modifier){
-		case 1 : 
-			switch(NumberOfMatches){
-				case 1: TwoTenMatches++;
-				break;
-				case 2: ThreeTenMatches++;
-				break;
-				case 3: FourTenMatches++;
-				break;
-				case 4: FiveTenMatches++;
-				break;
-			}
-			break;		
 		
-		case 2 : 
-			switch(NumberOfMatches){
-				case 1: TwoJackMatches++;
-				break;
-				case 2: ThreeJackMatches++;
-				break;
-				case 3: FourJackMatches++;
-				break;
-				case 4: FiveJackMatches++;
-				break;
-			}
-			break;
-		
-		case 3 : 
-			switch(NumberOfMatches){
-				case 1: TwoQueenMatches++;
-				break;
-				case 2: ThreeQueenMatches++;
-				break;
-				case 3: FourQueenMatches++;
-				break;
-				case 4: FiveQueenMatches++;
-				break;
-			}	
-			break;
-		
-		case 8 :	
-			switch(NumberOfMatches){
-				case 1: TwoKingMatches++;
-				break;
-				case 2: ThreeKingMatches++;
-				break;
-				case 3: FourKingMatches++;
-				break;
-				case 4: FiveKingMatches++;
-				break;
-			}
-			break;
-		
-		case 20 : 	
-			switch(NumberOfMatches){
-				case 1: TwoAceMatches++;
-				break;
-				case 2: ThreeAceMatches++;
-				break;
-				case 3: FourAceMatches++;
-				break;
-				case 4: FiveAceMatches++;
-				break;
-		}
-		break;
-		}
-		return NumberOfMatches * Modifier;
+		return value;
 	}
 	
 	public static int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
@@ -148,24 +168,24 @@ public class CheckWheels {
 			return 0;
 		}
 	}
-	
-	public static int getModifier(int num){
-		int modifier = 0;
+
+	public static double getModifier(int num){
+		double modifier = 0;
 		switch(num){
 		case 0 :
-			modifier = 1;
+			modifier = TenModifier;
 			break;
 		case 1 :
-			modifier = 2;
+			modifier = JackModifier;
 			break;
 		case 2 :
-			modifier = 3;
+			modifier = QueenModifier;
 			break;
 		case 3 :
-			modifier = 8;
+			modifier = KingModifier;
 			break;
 		case 4 :
-			modifier = 20;
+			modifier = AceModifier;
 			break;		
 		}		
 		return modifier;
@@ -249,6 +269,25 @@ public class CheckWheels {
 
 	public static int getFiveAceMatches() {
 		return FiveAceMatches;
+	}
+	public static double getTenModifier() {
+		return TenModifier;
+	}
+
+	public static double getJackModifier() {
+		return JackModifier;
+	}
+
+	public static double getQueenModifier() {
+		return QueenModifier;
+	}
+
+	public static double getKingModifier() {
+		return KingModifier;
+	}
+
+	public static double getAceModifier() {
+		return AceModifier;
 	}
 	
 }
