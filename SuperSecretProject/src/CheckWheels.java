@@ -15,48 +15,48 @@
  *
  */
 public class CheckWheels {
-	public static double TenModifier = 1.0;
-	public static double JackModifier = 2.0;
-	public static double QueenModifier = 4.0;
-	public static double KingModifier = 20.0;
-	public static double AceModifier = 50.0;	
+	public  double TenModifier = 1.0;
+	public  double JackModifier = 2.0;
+	public  double QueenModifier = 4.0;
+	public  double KingModifier = 20.0;
+	public  double AceModifier = 50.0;	
 	
-	public static int TwoTenMatches = 0;
-	public static int ThreeTenMatches = 0;
-	public static int FourTenMatches = 0;
-	public static int FiveTenMatches = 0;
+	public  int TwoTenMatches = 0;
+	public  int ThreeTenMatches = 0;
+	public  int FourTenMatches = 0;
+	public  int FiveTenMatches = 0;
 
 	
-	public static int TwoJackMatches = 0;
-	public static int ThreeJackMatches = 0;
-	public static int FourJackMatches = 0;
-	public static int FiveJackMatches = 0;	
+	public  int TwoJackMatches = 0;
+	public  int ThreeJackMatches = 0;
+	public  int FourJackMatches = 0;
+	public  int FiveJackMatches = 0;	
 	
 	
-	public static int TwoQueenMatches = 0;
-	public static int ThreeQueenMatches = 0;
-	public static int FourQueenMatches = 0;
-	public static int FiveQueenMatches = 0;
+	public  int TwoQueenMatches = 0;
+	public  int ThreeQueenMatches = 0;
+	public  int FourQueenMatches = 0;
+	public  int FiveQueenMatches = 0;
 
-	public static int TwoKingMatches = 0;
-	public static int ThreeKingMatches = 0;
-	public static int FourKingMatches = 0;
-	public static int FiveKingMatches = 0;
+	public  int TwoKingMatches = 0;
+	public  int ThreeKingMatches = 0;
+	public  int FourKingMatches = 0;
+	public  int FiveKingMatches = 0;
 
-	public static int TwoAceMatches = 0;
-	public static int ThreeAceMatches = 0;
-	public static int FourAceMatches = 0;	
-	public static int FiveAceMatches = 0;
+	public  int TwoAceMatches = 0;
+	public  int ThreeAceMatches = 0;
+	public  int FourAceMatches = 0;	
+	public  int FiveAceMatches = 0;
 	
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public  void main(String[] args) {
 		// TODO Auto-generated method
 
 	}
 	
-	public static void incrementFields(int NumberOfMatches, double Modifier){
+	public  void incrementFields(int NumberOfMatches, double Modifier){
 		if (Modifier == TenModifier){switch(NumberOfMatches){
 			case 1: TwoTenMatches++;
 			break;
@@ -106,7 +106,7 @@ public class CheckWheels {
 		
 	}
 	
-	public static double checkWheels(int[][] wheels, int NumberOfPayLines){	
+	public  double checkWheels(int[][] wheels, int NumberOfPayLines){	
 		double value = 0;
 		int NumberOfMatches = 0;
 		double Modifier = 0;
@@ -374,7 +374,7 @@ public class CheckWheels {
 		return value;
 	}
 	
-	public static int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
+	public  int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
 		if(i == j){
 			if(j == k){
 				if(k == l){
@@ -392,7 +392,7 @@ public class CheckWheels {
 		}
 	}
 
-	public static double getModifier(int num){
+	public  double getModifier(int num){
 		double modifier = 0;
 		switch(num){
 		case 0 :
@@ -414,102 +414,102 @@ public class CheckWheels {
 		return modifier;
 	}
 
-	public static int getTwoTenMatches() {
+	public  int getTwoTenMatches() {
 		return TwoTenMatches;
 	}
 
-	public static int getThreeTenMatches() {
+	public  int getThreeTenMatches() {
 		return ThreeTenMatches;
 	}
 
-	public static int getFourTenMatches() {
+	public  int getFourTenMatches() {
 		return FourTenMatches;
 	}
 
-	public static int getFiveTenMatches() {
+	public  int getFiveTenMatches() {
 		return FiveTenMatches;
 	}
 
-	public static int getTwoJackMatches() {
+	public  int getTwoJackMatches() {
 		return TwoJackMatches;
 	}
 
-	public static int getThreeJackMatches() {
+	public  int getThreeJackMatches() {
 		return ThreeJackMatches;
 	}
 
-	public static int getFourJackMatches() {
+	public  int getFourJackMatches() {
 		return FourJackMatches;
 	}
 
-	public static int getFiveJackMatches() {
+	public  int getFiveJackMatches() {
 		return FiveJackMatches;
 	}
 
-	public static int getTwoQueenMatches() {
+	public  int getTwoQueenMatches() {
 		return TwoQueenMatches;
 	}
 
-	public static int getThreeQueenMatches() {
+	public  int getThreeQueenMatches() {
 		return ThreeQueenMatches;
 	}
 
-	public static int getFourQueenMatches() {
+	public  int getFourQueenMatches() {
 		return FourQueenMatches;
 	}
 
-	public static int getFiveQueenMatches() {
+	public  int getFiveQueenMatches() {
 		return FiveQueenMatches;
 	}
 
-	public static int getTwoKingMatches() {
+	public  int getTwoKingMatches() {
 		return TwoKingMatches;
 	}
 
-	public static int getThreeKingMatches() {
+	public  int getThreeKingMatches() {
 		return ThreeKingMatches;
 	}
 
-	public static int getFourKingMatches() {
+	public  int getFourKingMatches() {
 		return FourKingMatches;
 	}
 
-	public static int getFiveKingMatches() {
+	public  int getFiveKingMatches() {
 		return FiveKingMatches;
 	}
 
-	public static int getTwoAceMatches() {
+	public  int getTwoAceMatches() {
 		return TwoAceMatches;
 	}
 
-	public static int getThreeAceMatches() {
+	public  int getThreeAceMatches() {
 		return ThreeAceMatches;
 	}
 
-	public static int getFourAceMatches() {
+	public  int getFourAceMatches() {
 		return FourAceMatches;
 	}
 
-	public static int getFiveAceMatches() {
+	public  int getFiveAceMatches() {
 		return FiveAceMatches;
 	}
-	public static double getTenModifier() {
+	public  double getTenModifier() {
 		return TenModifier;
 	}
 
-	public static double getJackModifier() {
+	public  double getJackModifier() {
 		return JackModifier;
 	}
 
-	public static double getQueenModifier() {
+	public  double getQueenModifier() {
 		return QueenModifier;
 	}
 
-	public static double getKingModifier() {
+	public  double getKingModifier() {
 		return KingModifier;
 	}
 
-	public static double getAceModifier() {
+	public  double getAceModifier() {
 		return AceModifier;
 	}
 	

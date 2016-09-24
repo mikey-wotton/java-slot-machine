@@ -25,7 +25,7 @@ public class RandomiseWheels {
 	 * which are then displayed to the user and checked for wins against other wheels
 	 * 
 	 */
-	public static int[] pickFiveWinners(int[] array){
+	public int[] pickFiveWinners(int[] array){
 	    Random rnd = new Random();
 		int index = rnd.nextInt(array.length+1);
 		int[] pickedFive = new int[5];
@@ -46,7 +46,7 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */		
-	public static int[] generateFirstWheel(){
+	public int[] generateFirstWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
 			 if (isBetween(i, 0, 34)) {
@@ -77,7 +77,7 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public static int[] generateSecondWheel(){
+	public int[] generateSecondWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
 			 if (isBetween(i, 0, 34)) {
@@ -108,7 +108,7 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public static int[] generateThirdWheel(){
+	public int[] generateThirdWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
 			if (isBetween(i, 0, 34)) {
@@ -139,7 +139,7 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public static int[] generateFourthWheel(){
+	public int[] generateFourthWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
 			if (isBetween(i, 0, 34)) {
@@ -170,7 +170,7 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public static int[] generateFifthWheel(){
+	public int[] generateFifthWheel(){
 		int[] wheel = new int[100];
 		for(int i = 0; i < wheel.length; i++){
 			if (isBetween(i, 0, 34)) {
@@ -202,7 +202,7 @@ public class RandomiseWheels {
 	 * 
 	 * @param array the array to be shuffled
 	 */
-	public static void shuffleArray(int[] array){
+	public void shuffleArray(int[] array){
 	    Random rnd = new Random();
 
 	    for (int i = array.length - 1; i > 0; i--)
@@ -222,7 +222,7 @@ public class RandomiseWheels {
 	 * @param lower = the lower bound, inclusive
 	 * @param upper = the upper bound, inclusive
 	 */
-	public static boolean isBetween(int x, int lower, int upper) {
+	public boolean isBetween(int x, int lower, int upper) {
 		  return lower <= x && x <= upper;
 		}
 
