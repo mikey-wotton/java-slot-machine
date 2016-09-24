@@ -20,6 +20,7 @@
  *
  */
 public class Main {
+	static int num = 1;
 	RandomiseWheels randomWheel = new RandomiseWheels();
 	/**
 	 * @param args
@@ -32,17 +33,18 @@ public class Main {
 		double totalWinOrLoss = 0;
 		int[][] arrayOfWheels = new int[5][5];
 		while(k < 3000000){
+
 		arrayOfWheels[0] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateFirstWheel());
 		arrayOfWheels[1] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateSecondWheel());
 		arrayOfWheels[2] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateThirdWheel());
 		arrayOfWheels[3] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateFourthWheel());
 		arrayOfWheels[4] = RandomiseWheels.pickFiveWinners(RandomiseWheels.generateFifthWheel());
-			totalWinOrLoss +=CheckWheels.checkWheels(arrayOfWheels, 3);
-			System.out.println("Spins:" + spin + " - WinOrLoss: " + (3000000 / (3000000 - totalWinOrLoss) )*100+"%");
+			totalWinOrLoss +=CheckWheels.checkWheels(arrayOfWheels, num);
+			System.out.println("Spins:" + spin + " - WinOrLoss: " + ((num *3000000) / ((num *3000000) - totalWinOrLoss) )*100+"%");
 			k++;
 			spin++;
 		}
-		System.out.println("Win Lines: 3");
+		System.out.println("Win Lines: "+num);
 		System.out.println("Ten Matches (Modifier:"+CheckWheels.getTenModifier()+"):"+CheckWheels.TwoTenMatches+"    : "+CheckWheels.ThreeTenMatches+"   : "+CheckWheels.FourTenMatches+"   : " +CheckWheels.FiveTenMatches);
 		System.out.println("Jack Matches (Modifier:"+CheckWheels.getJackModifier()+"):"+CheckWheels.TwoJackMatches+"   : "+CheckWheels.ThreeJackMatches+"  : "+CheckWheels.FourJackMatches+"  : " +CheckWheels.FiveJackMatches);
 		System.out.println("Queen Matches (Modifier:"+CheckWheels.getQueenModifier()+"):"+CheckWheels.TwoQueenMatches+"  : "+CheckWheels.ThreeQueenMatches+" : "+CheckWheels.FourQueenMatches+" : " +CheckWheels.FiveQueenMatches);
