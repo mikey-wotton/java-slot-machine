@@ -25,10 +25,10 @@ public class RandomiseWheels {
 	 * which are then displayed to the user and checked for wins against other wheels
 	 * 
 	 */
-	public int[] pickFiveWinners(int[] array){
+	public Symbols[] pickFiveWinners(Symbols[] array){
 	    Random rnd = new Random();
 		int index = rnd.nextInt(array.length+1);
-		int[] pickedFive = new int[5];
+		Symbols[] pickedFive = new Symbols[5];
 		for(int i = 0; i < pickedFive.length; i++ ){
 			if(index == 100){
 				index = 0;				
@@ -46,26 +46,26 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */		
-	public int[] generateFirstWheel(){
-		int[] wheel = new int[100];
+	public Symbols[] generateFirstWheel(){
+		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
 			 if (isBetween(i, 0, 34)) {
-				wheel[i] = 0;
+				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
-				wheel[i] = 1;
+				wheel[i] = Symbols.JACK;
 			}
 		else if (isBetween(i, 65, 79)) {
-				wheel[i] = 2;
+				wheel[i] = Symbols.QUEEN;
 				}
 		else if (isBetween(i, 80, 89)) {
-				wheel[i] = 3;
+				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 94)) {
-				wheel[i] = 4;
+				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = 0;
+				wheel[i] = Symbols.TEN;
 				}	
 		}	
 		shuffleArray(wheel);
@@ -77,57 +77,26 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public int[] generateSecondWheel(){
-		int[] wheel = new int[100];
+	public Symbols[] generateSecondWheel(){
+		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
 			 if (isBetween(i, 0, 34)) {
-					wheel[i] = 0;
-				}
-			else if (isBetween(i, 35, 64 )){
-					wheel[i] = 1;
-				}
-			else if (isBetween(i, 65, 79)) {
-					wheel[i] = 2;
-					}
-			else if (isBetween(i, 80, 89)) {
-					wheel[i] = 3;
-					}
-			else if (isBetween(i, 90, 94)) {
-					wheel[i] = 4;
-					}	
-			else if (isBetween(i, 95, 99)) {
-					wheel[i] = 0;
-					}				
-		}	
-		shuffleArray(wheel);
-		return wheel;
-	}
-	/**
-	 * This method should generate a single wheel with 100 variables
-	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
-	 * it then shuffles those variables with shuffleArray
-	 * @return	shuffle array of strings
-	 */	
-	public int[] generateThirdWheel(){
-		int[] wheel = new int[100];
-		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 34)) {
-				wheel[i] = 0;
+				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
-				wheel[i] = 1;
+				wheel[i] = Symbols.JACK;
 			}
 		else if (isBetween(i, 65, 79)) {
-				wheel[i] = 2;
+				wheel[i] = Symbols.QUEEN;
 				}
 		else if (isBetween(i, 80, 89)) {
-				wheel[i] = 3;
+				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 94)) {
-				wheel[i] = 4;
+				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = 0;
+				wheel[i] = Symbols.TEN;
 				}		
 		}	
 		shuffleArray(wheel);
@@ -139,27 +108,27 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public int[] generateFourthWheel(){
-		int[] wheel = new int[100];
+	public Symbols[] generateThirdWheel(){
+		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 34)) {
-				wheel[i] = 0;
+			 if (isBetween(i, 0, 34)) {
+				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
-				wheel[i] = 1;
+				wheel[i] = Symbols.JACK;
 			}
 		else if (isBetween(i, 65, 79)) {
-				wheel[i] = 2;
+				wheel[i] = Symbols.QUEEN;
 				}
 		else if (isBetween(i, 80, 89)) {
-				wheel[i] = 3;
+				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 94)) {
-				wheel[i] = 4;
+				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = 0;
-				}	
+				wheel[i] = Symbols.TEN;
+				}
 		}	
 		shuffleArray(wheel);
 		return wheel;
@@ -170,27 +139,58 @@ public class RandomiseWheels {
 	 * it then shuffles those variables with shuffleArray
 	 * @return	shuffle array of strings
 	 */	
-	public int[] generateFifthWheel(){
-		int[] wheel = new int[100];
+	public Symbols[] generateFourthWheel(){
+		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			if (isBetween(i, 0, 34)) {
-				wheel[i] = 0;
+			 if (isBetween(i, 0, 34)) {
+				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
-				wheel[i] = 1;
+				wheel[i] = Symbols.JACK;
 			}
 		else if (isBetween(i, 65, 79)) {
-				wheel[i] = 2;
+				wheel[i] = Symbols.QUEEN;
 				}
 		else if (isBetween(i, 80, 89)) {
-				wheel[i] = 3;
+				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 94)) {
-				wheel[i] = 4;
+				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = 0;
+				wheel[i] = Symbols.TEN;
+				}
+		}	
+		shuffleArray(wheel);
+		return wheel;
+	}
+	/**
+	 * This method should generate a single wheel with 100 variables
+	 * 35 Tens, 30 Jacks, 15 Queens, 10 Kings, 5 Aces, 5 Wilds
+	 * it then shuffles those variables with shuffleArray
+	 * @return	shuffle array of strings
+	 */	
+	public Symbols[] generateFifthWheel(){
+		Symbols[] wheel = new Symbols[100];
+		for(int i = 0; i < wheel.length; i++){
+			 if (isBetween(i, 0, 34)) {
+				wheel[i] = Symbols.TEN;
+			}
+		else if (isBetween(i, 35, 64 )){
+				wheel[i] = Symbols.JACK;
+			}
+		else if (isBetween(i, 65, 79)) {
+				wheel[i] = Symbols.QUEEN;
+				}
+		else if (isBetween(i, 80, 89)) {
+				wheel[i] = Symbols.KING;
+				}
+		else if (isBetween(i, 90, 94)) {
+				wheel[i] = Symbols.ACE;
 				}	
+		else if (isBetween(i, 95, 99)) {
+				wheel[i] = Symbols.TEN;
+				}
 		}	
 		shuffleArray(wheel);
 		return wheel;
@@ -202,14 +202,14 @@ public class RandomiseWheels {
 	 * 
 	 * @param array the array to be shuffled
 	 */
-	public void shuffleArray(int[] array){
+	public void shuffleArray(Symbols[] array){
 	    Random rnd = new Random();
 
 	    for (int i = array.length - 1; i > 0; i--)
 	    {
 	      int index = rnd.nextInt(i + 1);
 	      // Simple swap
-	      int a = array[index];
+	      Symbols a = array[index];
 	      array[index] = array[i];
 	      array[i] = a;
 	    }

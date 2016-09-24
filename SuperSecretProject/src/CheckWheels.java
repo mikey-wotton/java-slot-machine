@@ -14,39 +14,38 @@
  * @author mikey
  *
  */
-public class CheckWheels {
-	public  double TenModifier = 1.0;
-	public  double JackModifier = 2.0;
-	public  double QueenModifier = 4.0;
-	public  double KingModifier = 20.0;
-	public  double AceModifier = 50.0;	
-	
-	public  int TwoTenMatches = 0;
-	public  int ThreeTenMatches = 0;
-	public  int FourTenMatches = 0;
-	public  int FiveTenMatches = 0;
+public class CheckWheels {	
+	public  int twoTenMatches = 0;
+	public  int threeTenMatches = 0;
+	public  int fourTenMatches = 0;
+	public  int fiveTenMatches = 0;
 
 	
-	public  int TwoJackMatches = 0;
-	public  int ThreeJackMatches = 0;
-	public  int FourJackMatches = 0;
-	public  int FiveJackMatches = 0;	
+	public  int twoJackMatches = 0;
+	public  int threeJackMatches = 0;
+	public  int fourJackMatches = 0;
+	public  int fiveJackMatches = 0;	
 	
 	
-	public  int TwoQueenMatches = 0;
-	public  int ThreeQueenMatches = 0;
-	public  int FourQueenMatches = 0;
-	public  int FiveQueenMatches = 0;
+	public  int twoQueenMatches = 0;
+	public  int threeQueenMatches = 0;
+	public  int fourQueenMatches = 0;
+	public  int fiveQueenMatches = 0;
 
-	public  int TwoKingMatches = 0;
-	public  int ThreeKingMatches = 0;
-	public  int FourKingMatches = 0;
-	public  int FiveKingMatches = 0;
+	public  int twoKingMatches = 0;
+	public  int threeKingMatches = 0;
+	public  int fourKingMatches = 0;
+	public  int fiveKingMatches = 0;
 
-	public  int TwoAceMatches = 0;
-	public  int ThreeAceMatches = 0;
-	public  int FourAceMatches = 0;	
-	public  int FiveAceMatches = 0;
+	public  int twoAceMatches = 0;
+	public  int threeAceMatches = 0;
+	public  int fourAceMatches = 0;	
+	public  int fiveAceMatches = 0;
+	
+	public  int twoWildMatches = 0;
+	public  int threeWildMatches = 0;
+	public  int fourWildMatches = 0;
+	public  int fiveWildMatches = 0;
 	
 	/**
 	 * @param args
@@ -55,316 +54,339 @@ public class CheckWheels {
 		// TODO Auto-generated method
 
 	}
+	/**
+	 * This method just keeps track of the number of matches for each symbol
+	 * including the type of match, e.g 2 symbol match or 5 symbol match
+	 * @param NumberOfMatches = the number of matches made
+	 * @param symbol = the symbol that has matched, JACK/TEN etc.
+	 */
 	
-	public  void incrementFields(int NumberOfMatches, double Modifier){
-		if (Modifier == TenModifier){switch(NumberOfMatches){
-			case 1: TwoTenMatches++;
+	public  void incrementFields(int NumberOfMatches, Symbols symbol){
+		switch(symbol){
+		case TEN : {		
+			switch(NumberOfMatches){
+			case 1: twoTenMatches++;
 			break;
-			case 2: ThreeTenMatches++;
+			case 2: threeTenMatches++;
 			break;
-			case 3: FourTenMatches++;
+			case 3: fourTenMatches++;
 			break;
-			case 4: FiveTenMatches++;
+			case 4: fiveTenMatches++;
 			break;
-		}} else if (Modifier == JackModifier){switch(NumberOfMatches){
-			case 1: TwoJackMatches++;
+			}
+		}
+		case JACK : {
+			switch(NumberOfMatches){
+			case 1: twoJackMatches++;
 			break;
-			case 2: ThreeJackMatches++;
+			case 2: threeJackMatches++;
 			break;
-			case 3: FourJackMatches++;
+			case 3: fourJackMatches++;
 			break;
-			case 4: FiveJackMatches++;
+			case 4: fiveJackMatches++;
 			break;
-		}} else if (Modifier == QueenModifier){switch(NumberOfMatches){
-			case 1: TwoQueenMatches++;
+			}
+		}
+		case QUEEN : {
+			switch(NumberOfMatches){
+			case 1: twoQueenMatches++;
 			break;
-			case 2: ThreeQueenMatches++;
+			case 2: threeQueenMatches++;
 			break;
-			case 3: FourQueenMatches++;
+			case 3: fourQueenMatches++;
 			break;
-			case 4: FiveQueenMatches++;
+			case 4: fiveQueenMatches++;
 			break;
-		}} else if (Modifier == KingModifier){switch(NumberOfMatches){
-			case 1: TwoKingMatches++;
+			}
+		}
+		case KING : { 
+			switch(NumberOfMatches){
+			case 1: twoKingMatches++;
 			break;
-			case 2: ThreeKingMatches++;
+			case 2: threeKingMatches++;
 			break;
-			case 3: FourKingMatches++;
+			case 3: fourKingMatches++;
 			break;
-			case 4: FiveKingMatches++;
+			case 4: fiveKingMatches++;
 			break;
-		}} else if (Modifier == AceModifier){switch(NumberOfMatches){
-			case 1: TwoAceMatches++;
+			} 
+		}
+		case ACE : {
+			switch(NumberOfMatches){
+			case 1: twoAceMatches++;
 			break;
-			case 2: ThreeAceMatches++;
+			case 2: threeAceMatches++;
 			break;
-			case 3: FourAceMatches++;
+			case 3: fourAceMatches++;
 			break;
-			case 4: FiveAceMatches++;
+			case 4: fiveAceMatches++;
 			break;
-}}
-		
+			}
+		}
+		case WILD:{
+			switch(NumberOfMatches){
+			case 1: twoWildMatches++;
+			break;
+			case 2: threeWildMatches++;
+			break;
+			case 3: fourWildMatches++;
+			break;
+			case 4: fiveWildMatches++;
+			break;
+			}
+		}	
+	  }
 	}
 	
-	public  double checkWheels(int[][] wheels, int NumberOfPayLines){	
+	public  double checkWheels(Symbols[][] wheels, int NumberOfPayLines){	
 		double value = 0;
 		int NumberOfMatches = 0;
-		double Modifier = 0;
 		switch(NumberOfPayLines){
 		case 1: 
 			value = -1;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
 			break;
 		case 2:
 			value = -2;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
 			break;
 		case 3:
 			value = -3;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
 			break;
 		case 4:
 			value = -4;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
 			break;
 		case 5:
 			value = -5;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]);	
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
 			break;
 		case 6:
 			value = -6;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																//    /\
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); // 	 /  \
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// /\/\
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
 			break;
 		case 7:
 			value = -7;
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			//middle up one middle up one middle
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
 			break;
 		case 8:
 			value = -8;
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			//middle up one middle up one middle
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());	
 			break;
 		case 9:
 			value = -9;
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			//middle up one middle up one middle
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																	//					___
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());	
+																																//					___
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][2]);	// 2nd row counter trough  /   \
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			break;
 		case 10:
 			value = -10;
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());	
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			Modifier = getModifier(wheels[0][3]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][3]);
+			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			
 			//middle up one middle up one middle
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);																	//						___
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());	
+																																//					___
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][2]);	// 2nd row counter trough  /   \
-			Modifier = getModifier(wheels[0][2]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][2]);
+			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			
 			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][3]);	// 1st row sideways lightning bolt
-			Modifier = getModifier(wheels[0][1]);
-			incrementFields(NumberOfMatches, Modifier);
-			value = value + (NumberOfMatches * Modifier);
+			incrementFields(NumberOfMatches, wheels[0][1]);
+			value = value + (NumberOfMatches * wheels[0][1].modifier());
 			break;
 			
 		}		
@@ -374,7 +396,7 @@ public class CheckWheels {
 		return value;
 	}
 	
-	public  int numberOfMatchesOnLine(int i,int j, int k, int l, int m){
+	public  int numberOfMatchesOnLine(Symbols i,Symbols j, Symbols k, Symbols l, Symbols m){
 		if(i == j){
 			if(j == k){
 				if(k == l){
@@ -392,125 +414,83 @@ public class CheckWheels {
 		}
 	}
 
-	public  double getModifier(int num){
-		double modifier = 0;
-		switch(num){
-		case 0 :
-			modifier = TenModifier;
-			break;
-		case 1 :
-			modifier = JackModifier;
-			break;
-		case 2 :
-			modifier = QueenModifier;
-			break;
-		case 3 :
-			modifier = KingModifier;
-			break;
-		case 4 :
-			modifier = AceModifier;
-			break;		
-		}		
-		return modifier;
-	}
-
 	public  int getTwoTenMatches() {
-		return TwoTenMatches;
+		return twoTenMatches;
 	}
 
 	public  int getThreeTenMatches() {
-		return ThreeTenMatches;
+		return threeTenMatches;
 	}
 
 	public  int getFourTenMatches() {
-		return FourTenMatches;
+		return fourTenMatches;
 	}
 
 	public  int getFiveTenMatches() {
-		return FiveTenMatches;
+		return fiveTenMatches;
 	}
 
 	public  int getTwoJackMatches() {
-		return TwoJackMatches;
+		return twoJackMatches;
 	}
 
 	public  int getThreeJackMatches() {
-		return ThreeJackMatches;
+		return threeJackMatches;
 	}
 
 	public  int getFourJackMatches() {
-		return FourJackMatches;
+		return fourJackMatches;
 	}
 
 	public  int getFiveJackMatches() {
-		return FiveJackMatches;
+		return fiveJackMatches;
 	}
 
 	public  int getTwoQueenMatches() {
-		return TwoQueenMatches;
+		return twoQueenMatches;
 	}
 
 	public  int getThreeQueenMatches() {
-		return ThreeQueenMatches;
+		return threeQueenMatches;
 	}
 
 	public  int getFourQueenMatches() {
-		return FourQueenMatches;
+		return fourQueenMatches;
 	}
 
 	public  int getFiveQueenMatches() {
-		return FiveQueenMatches;
+		return fiveQueenMatches;
 	}
 
 	public  int getTwoKingMatches() {
-		return TwoKingMatches;
+		return twoKingMatches;
 	}
 
 	public  int getThreeKingMatches() {
-		return ThreeKingMatches;
+		return threeKingMatches;
 	}
 
 	public  int getFourKingMatches() {
-		return FourKingMatches;
+		return fourKingMatches;
 	}
 
 	public  int getFiveKingMatches() {
-		return FiveKingMatches;
+		return fiveKingMatches;
 	}
 
 	public  int getTwoAceMatches() {
-		return TwoAceMatches;
+		return twoAceMatches;
 	}
 
 	public  int getThreeAceMatches() {
-		return ThreeAceMatches;
+		return threeAceMatches;
 	}
 
 	public  int getFourAceMatches() {
-		return FourAceMatches;
+		return fourAceMatches;
 	}
 
 	public  int getFiveAceMatches() {
-		return FiveAceMatches;
+		return fiveAceMatches;
 	}
-	public  double getTenModifier() {
-		return TenModifier;
-	}
-
-	public  double getJackModifier() {
-		return JackModifier;
-	}
-
-	public  double getQueenModifier() {
-		return QueenModifier;
-	}
-
-	public  double getKingModifier() {
-		return KingModifier;
-	}
-
-	public  double getAceModifier() {
-		return AceModifier;
-	}
-	
 }
