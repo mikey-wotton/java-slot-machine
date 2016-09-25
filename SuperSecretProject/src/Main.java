@@ -23,7 +23,6 @@ public class Main {
 	RandomiseWheels randomiseWheels;
 	CheckWheels checkWheels;
 	static int num = 10;
-	RandomiseWheels randomWheel = new RandomiseWheels();
 	/**
 	 * @param args
 	 */
@@ -48,6 +47,7 @@ public class Main {
 			k++;
 			spin++;
 		}
+		//Used for reporting the wins at the end of run
 		System.out.println("Win Lines: "+num);
 		System.out.println("Ten Matches (Modifier:"+Symbols.TEN.modifier()+"):"+checkWheels.getTwoTenMatches()+"    : "+checkWheels.getThreeTenMatches()+"   : "+checkWheels.getFourTenMatches()+"   : " +checkWheels.getFiveTenMatches());
 		System.out.println("Jack Matches (Modifier:"+Symbols.JACK.modifier()+"):"+checkWheels.getTwoJackMatches()+"   : "+checkWheels.getThreeJackMatches()+"  : "+checkWheels.getFourJackMatches()+"  : " +checkWheels.getFiveJackMatches());

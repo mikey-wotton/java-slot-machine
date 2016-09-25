@@ -9,488 +9,747 @@
  * 
  */
 
-
 /**
  * @author mikey
  *
  */
-public class CheckWheels {	
-	public  int twoTenMatches = 0;
-	public  int threeTenMatches = 0;
-	public  int fourTenMatches = 0;
-	public  int fiveTenMatches = 0;
+public class CheckWheels {
+	public int twoTenMatches = 0;
+	public int threeTenMatches = 0;
+	public int fourTenMatches = 0;
+	public int fiveTenMatches = 0;
 
-	
-	public  int twoJackMatches = 0;
-	public  int threeJackMatches = 0;
-	public  int fourJackMatches = 0;
-	public  int fiveJackMatches = 0;	
-	
-	
-	public  int twoQueenMatches = 0;
-	public  int threeQueenMatches = 0;
-	public  int fourQueenMatches = 0;
-	public  int fiveQueenMatches = 0;
+	public int twoJackMatches = 0;
+	public int threeJackMatches = 0;
+	public int fourJackMatches = 0;
+	public int fiveJackMatches = 0;
 
-	public  int twoKingMatches = 0;
-	public  int threeKingMatches = 0;
-	public  int fourKingMatches = 0;
-	public  int fiveKingMatches = 0;
+	public int twoQueenMatches = 0;
+	public int threeQueenMatches = 0;
+	public int fourQueenMatches = 0;
+	public int fiveQueenMatches = 0;
 
-	public  int twoAceMatches = 0;
-	public  int threeAceMatches = 0;
-	public  int fourAceMatches = 0;	
-	public  int fiveAceMatches = 0;
-	
-	public  int twoWildMatches = 0;
-	public  int threeWildMatches = 0;
-	public  int fourWildMatches = 0;
-	public  int fiveWildMatches = 0;
-	
+	public int twoKingMatches = 0;
+	public int threeKingMatches = 0;
+	public int fourKingMatches = 0;
+	public int fiveKingMatches = 0;
+
+	public int twoAceMatches = 0;
+	public int threeAceMatches = 0;
+	public int fourAceMatches = 0;
+	public int fiveAceMatches = 0;
+
+	public int twoWildMatches = 0;
+	public int threeWildMatches = 0;
+	public int fourWildMatches = 0;
+	public int fiveWildMatches = 0;
+
 	/**
 	 * @param args
 	 */
-	public  void main(String[] args) {
+	public void main(String[] args) {
 		// TODO Auto-generated method
 
 	}
+
 	/**
 	 * This method just keeps track of the number of matches for each symbol
 	 * including the type of match, e.g 2 symbol match or 5 symbol match
-	 * @param NumberOfMatches = the number of matches made
-	 * @param symbol = the symbol that has matched, JACK/TEN etc.
+	 * 
+	 * @param numberOfMatches
+	 *            = the number of matches made
+	 * @param symbol
+	 *            = the symbol that has matched, JACK/TEN etc.
 	 */
-	
-	public  void incrementFields(int NumberOfMatches, Symbols symbol){
-		switch(symbol){
-		case TEN : {		
-			switch(NumberOfMatches){
-			case 1: twoTenMatches++;
+
+	public void incrementFields(int numberOfMatches, Symbols symbol) {
+		switch (symbol) {
+		case TEN: {
+			switch (numberOfMatches) {
+			case 1:
+				twoTenMatches++;
+				break;
+			case 2:
+				threeTenMatches++;
+				break;
+			case 3:
+				fourTenMatches++;
+				break;
+			case 4:
+				fiveTenMatches++;
+				break;
+			}
 			break;
-			case 2: threeTenMatches++;
+		}
+		case JACK: {
+			switch (numberOfMatches) {
+			case 1:
+				twoJackMatches++;
+				break;
+			case 2:
+				threeJackMatches++;
+				break;
+			case 3:
+				fourJackMatches++;
+				break;
+			case 4:
+				fiveJackMatches++;
+				break;
+			}
 			break;
-			case 3: fourTenMatches++;
+		}
+		case QUEEN: {
+			switch (numberOfMatches) {
+			case 1:
+				twoQueenMatches++;
+				break;
+			case 2:
+				threeQueenMatches++;
+				break;
+			case 3:
+				fourQueenMatches++;
+				break;
+			case 4:
+				fiveQueenMatches++;
+				break;
+			}
 			break;
-			case 4: fiveTenMatches++;
+		}
+		case KING: {
+			switch (numberOfMatches) {
+			case 1:
+				twoKingMatches++;
+				break;
+			case 2:
+				threeKingMatches++;
+				break;
+			case 3:
+				fourKingMatches++;
+				break;
+			case 4:
+				fiveKingMatches++;
+				break;
+			}
+			break;
+		}
+		case ACE: {
+			switch (numberOfMatches) {
+			case 1:
+				twoAceMatches++;
+				break;
+			case 2:
+				threeAceMatches++;
+				break;
+			case 3:
+				fourAceMatches++;
+				break;
+			case 4:
+				fiveAceMatches++;
+				break;
+			}
+			break;
+		}
+		case WILD: {
+			switch (numberOfMatches) {
+			case 1:
+				twoWildMatches++;
+				break;
+			case 2:
+				threeWildMatches++;
+				break;
+			case 3:
+				fourWildMatches++;
+				break;
+			case 4:
+				fiveWildMatches++;
+				break;
+			}	
 			break;
 			}
 		}
-		case JACK : {
-			switch(NumberOfMatches){
-			case 1: twoJackMatches++;
-			break;
-			case 2: threeJackMatches++;
-			break;
-			case 3: fourJackMatches++;
-			break;
-			case 4: fiveJackMatches++;
-			break;
-			}
-		}
-		case QUEEN : {
-			switch(NumberOfMatches){
-			case 1: twoQueenMatches++;
-			break;
-			case 2: threeQueenMatches++;
-			break;
-			case 3: fourQueenMatches++;
-			break;
-			case 4: fiveQueenMatches++;
-			break;
-			}
-		}
-		case KING : { 
-			switch(NumberOfMatches){
-			case 1: twoKingMatches++;
-			break;
-			case 2: threeKingMatches++;
-			break;
-			case 3: fourKingMatches++;
-			break;
-			case 4: fiveKingMatches++;
-			break;
-			} 
-		}
-		case ACE : {
-			switch(NumberOfMatches){
-			case 1: twoAceMatches++;
-			break;
-			case 2: threeAceMatches++;
-			break;
-			case 3: fourAceMatches++;
-			break;
-			case 4: fiveAceMatches++;
-			break;
-			}
-		}
-		case WILD:{
-			switch(NumberOfMatches){
-			case 1: twoWildMatches++;
-			break;
-			case 2: threeWildMatches++;
-			break;
-			case 3: fourWildMatches++;
-			break;
-			case 4: fiveWildMatches++;
-			break;
-			}
-		}	
-	  }
 	}
-	
-	public  double checkWheels(Symbols[][] wheels, int NumberOfPayLines){	
+
+	public double checkWheels(Symbols[][] wheels, int numberOfPayLines) {
 		double value = 0;
-		int NumberOfMatches = 0;
-		switch(NumberOfPayLines){
-		case 1: 
+		int numberOfMatches = 0;
+		switch (numberOfPayLines) {
+		case 1:
 			value = -1;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
 			break;
 		case 2:
 			value = -2;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
 			break;
 		case 3:
 			value = -3;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
 			break;
 		case 4:
 			value = -4;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
 			break;
 		case 5:
 			value = -5;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
 			break;
 		case 6:
 			value = -6;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
 			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][2], wheels[3][3], wheels[4][2]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
 			break;
 		case 7:
 			value = -7;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
 			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][2], wheels[3][3], wheels[4][2]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][2], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
 			break;
 		case 8:
 			value = -8;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
 			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());	
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][2], wheels[3][3], wheels[4][2]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][2], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
 			break;
 		case 9:
 			value = -9;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
 			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());	
-																																//					___
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][2]);	// 2nd row counter trough  /   \
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][2], wheels[3][3], wheels[4][2]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][2], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][2]); 
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
 			break;
 		case 10:
 			value = -10;
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][1]);	//1st row horizontal
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][1]); 
+													
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][3]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][3], wheels[3][2], wheels[4][1]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],
+					wheels[2][1], wheels[3][2], wheels[4][3]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][3]);
+				value = value + (numberOfMatches * wheels[0][3].modifier());
+			}
+
 			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][2]);	//2nd row horizontal
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][3]);	//third row horizontal
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][3],wheels[3][2],wheels[4][1]);	//first row V shape
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());	
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][3],wheels[1][2],wheels[2][1],wheels[3][2],wheels[4][3]); //third row /\ shape
-			incrementFields(NumberOfMatches, wheels[0][3]);
-			value = value + (NumberOfMatches * wheels[0][3].modifier());
-			
-			//middle up one middle up one middle
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row up zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][2],wheels[3][3],wheels[4][2]);	// 2nd row down zigzag
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][3],wheels[2][3],wheels[3][3],wheels[4][2]);	// 2nd row trough \___/
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());	
-																																//					___
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][2],wheels[1][1],wheels[2][1],wheels[3][1],wheels[4][2]);	// 2nd row counter trough  /   \
-			incrementFields(NumberOfMatches, wheels[0][2]);
-			value = value + (NumberOfMatches * wheels[0][2].modifier());
-			
-			NumberOfMatches = numberOfMatchesOnLine(wheels[0][1],wheels[1][2],wheels[2][2],wheels[3][2],wheels[4][3]);	// 1st row sideways lightning bolt
-			incrementFields(NumberOfMatches, wheels[0][1]);
-			value = value + (NumberOfMatches * wheels[0][1].modifier());
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][2], wheels[3][3], wheels[4][2]);
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][2], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],
+					wheels[2][3], wheels[3][3], wheels[4][2]); 
+																
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+			// ___
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],
+					wheels[2][1], wheels[3][1], wheels[4][2]); 
+			if (numberOfMatches != 0) {
+				incrementFields(numberOfMatches, wheels[0][2]);
+				value = value + (numberOfMatches * wheels[0][2].modifier());
+			}
+
+			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],
+					wheels[2][2], wheels[3][2], wheels[4][3]); 
+			if (numberOfMatches != 0) {
+
+				incrementFields(numberOfMatches, wheels[0][1]);
+				value = value + (numberOfMatches * wheels[0][1].modifier());
+			}
 			break;
-			
-		}		
-		
-		//checks for symbol matching quantities
-		
+
+		}
+
+		// checks for symbol matching quantities
+
 		return value;
 	}
-	
-	public  int numberOfMatchesOnLine(Symbols i,Symbols j, Symbols k, Symbols l, Symbols m){
-		if(i == j){
-			if(j == k){
-				if(k == l){
-					if(l == m){
+
+	public int numberOfMatchesOnLine(Symbols i, Symbols j, Symbols k, Symbols l, Symbols m) {
+		if(i == Symbols.WILD){
+			if (j == k) {
+				if (k == l) {
+					if (l == m) {
 						return 4;
 					}
 					return 3;
 				}
 				return 2;
-			}			
+			}
 			return 1;
 		}
-		else{
+		else if ((i == j) || (j == Symbols.WILD)){
+			if (j == k) {
+				if (k == l) {
+					if (l == m) {
+						return 4;
+					}
+					return 3;
+				}
+				return 2;
+			}
+			return 1;
+		} else {
 			return 0;
 		}
 	}
 
-	public  int getTwoTenMatches() {
+	public int getTwoTenMatches() {
 		return twoTenMatches;
 	}
 
-	public  int getThreeTenMatches() {
+	public int getThreeTenMatches() {
 		return threeTenMatches;
 	}
 
-	public  int getFourTenMatches() {
+	public int getFourTenMatches() {
 		return fourTenMatches;
 	}
 
-	public  int getFiveTenMatches() {
+	public int getFiveTenMatches() {
 		return fiveTenMatches;
 	}
 
-	public  int getTwoJackMatches() {
+	public int getTwoJackMatches() {
 		return twoJackMatches;
 	}
 
-	public  int getThreeJackMatches() {
+	public int getThreeJackMatches() {
 		return threeJackMatches;
 	}
 
-	public  int getFourJackMatches() {
+	public int getFourJackMatches() {
 		return fourJackMatches;
 	}
 
-	public  int getFiveJackMatches() {
+	public int getFiveJackMatches() {
 		return fiveJackMatches;
 	}
 
-	public  int getTwoQueenMatches() {
+	public int getTwoQueenMatches() {
 		return twoQueenMatches;
 	}
 
-	public  int getThreeQueenMatches() {
+	public int getThreeQueenMatches() {
 		return threeQueenMatches;
 	}
 
-	public  int getFourQueenMatches() {
+	public int getFourQueenMatches() {
 		return fourQueenMatches;
 	}
 
-	public  int getFiveQueenMatches() {
+	public int getFiveQueenMatches() {
 		return fiveQueenMatches;
 	}
 
-	public  int getTwoKingMatches() {
+	public int getTwoKingMatches() {
 		return twoKingMatches;
 	}
 
-	public  int getThreeKingMatches() {
+	public int getThreeKingMatches() {
 		return threeKingMatches;
 	}
 
-	public  int getFourKingMatches() {
+	public int getFourKingMatches() {
 		return fourKingMatches;
 	}
 
-	public  int getFiveKingMatches() {
+	public int getFiveKingMatches() {
 		return fiveKingMatches;
 	}
 
-	public  int getTwoAceMatches() {
+	public int getTwoAceMatches() {
 		return twoAceMatches;
 	}
 
-	public  int getThreeAceMatches() {
+	public int getThreeAceMatches() {
 		return threeAceMatches;
 	}
 
-	public  int getFourAceMatches() {
+	public int getFourAceMatches() {
 		return fourAceMatches;
 	}
 
-	public  int getFiveAceMatches() {
+	public int getFiveAceMatches() {
 		return fiveAceMatches;
 	}
 }
