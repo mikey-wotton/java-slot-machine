@@ -30,13 +30,11 @@ public class Main {
 		// TODO Auto-generated method stub
 		RandomiseWheels randomiseWheels = new RandomiseWheels();
 		CheckWheels checkWheels = new CheckWheels();
-
 		int spin = 0;
 		double k = 0;
 		double totalWinOrLoss = 0;
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
 		while(k < 3000000){
-
 		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 		arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
@@ -54,7 +52,6 @@ public class Main {
 		System.out.println("Queen Matches (Modifier:"+Symbols.QUEEN.modifier()+"):"+checkWheels.getTwoQueenMatches()+"  : "+checkWheels.getThreeQueenMatches()+" : "+checkWheels.getFourQueenMatches()+" : " +checkWheels.getFiveQueenMatches());
 		System.out.println("King Matches (Modifier:"+Symbols.KING.modifier()+"):"+checkWheels.getTwoKingMatches()+"   : "+checkWheels.getThreeKingMatches()+"  : "+checkWheels.getFourKingMatches()+"  : " +checkWheels.getFiveKingMatches());
 		System.out.println("Ace Matches (Modifier:"+Symbols.ACE.modifier()+"):"+checkWheels.getTwoAceMatches()+"    : "+checkWheels.getThreeAceMatches()+"   : "+checkWheels.getFourAceMatches()+"   : " +checkWheels.getFiveAceMatches());
-		
 	}
 		
 }
