@@ -20,38 +20,44 @@
  *
  */
 public class Main {
-	RandomiseWheels randomiseWheels;
-	CheckWheels checkWheels;
+	AccountDetails userDetails = new AccountDetails("Timmy",500.0);
+	RandomiseWheels randomiseWheels = new RandomiseWheels();
+	CheckWheels checkWheels = new CheckWheels();
 	static int num = 10;
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		RandomiseWheels randomiseWheels = new RandomiseWheels();
-		CheckWheels checkWheels = new CheckWheels();
+		Main main = new Main();
+		main.testBillSpins();
+	}
+	
+	public void testBillSpins(){
 		int spin = 0;
 		double k = 0;
 		double totalWinOrLoss = 0;
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
-		while(k < 3000000){
+		while(k < 1000000000){
 		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 		arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 		arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 		arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
+			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num));
 			totalWinOrLoss +=checkWheels.checkWheels(arrayOfWheels, num);
-			System.out.println("Spins:" + spin + " - WinOrLoss: " + ((num * 3000000) / ((num * 3000000) - totalWinOrLoss) )*100+"%");
+			System.out.println("Spins:" + spin + " - WinOrLoss: " + ((num * 1000000000) / ((num * 1000000000) - totalWinOrLoss) )*100+"%");
 			k++;
 			spin++;
 		}
 		//Used for reporting the wins at the end of run
 		System.out.println("Win Lines: "+num);
+		System.out.println("User Balance: "+userDetails.getBalance());
 		System.out.println("Ten Matches (Modifier:"+Symbols.TEN.modifier()+"):"+checkWheels.getTwoTenMatches()+"    : "+checkWheels.getThreeTenMatches()+"   : "+checkWheels.getFourTenMatches()+"   : " +checkWheels.getFiveTenMatches());
 		System.out.println("Jack Matches (Modifier:"+Symbols.JACK.modifier()+"):"+checkWheels.getTwoJackMatches()+"   : "+checkWheels.getThreeJackMatches()+"  : "+checkWheels.getFourJackMatches()+"  : " +checkWheels.getFiveJackMatches());
 		System.out.println("Queen Matches (Modifier:"+Symbols.QUEEN.modifier()+"):"+checkWheels.getTwoQueenMatches()+"  : "+checkWheels.getThreeQueenMatches()+" : "+checkWheels.getFourQueenMatches()+" : " +checkWheels.getFiveQueenMatches());
 		System.out.println("King Matches (Modifier:"+Symbols.KING.modifier()+"):"+checkWheels.getTwoKingMatches()+"   : "+checkWheels.getThreeKingMatches()+"  : "+checkWheels.getFourKingMatches()+"  : " +checkWheels.getFiveKingMatches());
 		System.out.println("Ace Matches (Modifier:"+Symbols.ACE.modifier()+"):"+checkWheels.getTwoAceMatches()+"    : "+checkWheels.getThreeAceMatches()+"   : "+checkWheels.getFourAceMatches()+"   : " +checkWheels.getFiveAceMatches());
 	}
+	
 		
 }
