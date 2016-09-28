@@ -29,8 +29,18 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Main main = new Main();
-		main.testBillSpins();
+		main.spinOnce();
 	}
+	public void spinOnce(){
+		Symbols[][] arrayOfWheels = new Symbols[5][5];
+		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
+		arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
+		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
+		arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
+		arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
+			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num));
+			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
+		}
 	
 	public void testBillSpins(){
 		int spin = 0;

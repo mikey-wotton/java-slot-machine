@@ -1,12 +1,22 @@
 import java.awt.EventQueue;
-
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.Window.Type;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
+
 
 
 public class GUI {
 
-	private JFrame frame;
+	private JFrame frmMikeysNotSo;
 
 	/**
 	 * Launch the application.
@@ -16,7 +26,7 @@ public class GUI {
 			public void run() {
 				try {
 					GUI window = new GUI();
-					window.frame.setVisible(true);
+					window.frmMikeysNotSo.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,10 +45,24 @@ public class GUI {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMikeysNotSo = new JFrame();
+		frmMikeysNotSo.setTitle("Mikey's Not So Wild Slots");
+        frmMikeysNotSo.setMinimumSize(new Dimension(900, 600));
+		frmMikeysNotSo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMikeysNotSo.getContentPane().setLayout(null);
+		
+		JButton simPlay = new JButton("Simulated Play");
+		simPlay.setBounds(10, 450, 300, 100);
+		frmMikeysNotSo.getContentPane().add(simPlay);
+		
+		JButton realPlay = new JButton("Real Play");
+		realPlay.setBounds(570, 450, 300, 100);
+		frmMikeysNotSo.getContentPane().add(realPlay);
+		
+		JLabel lblAceimage = new JLabel("aceImage");
+		lblAceimage.setBounds(100, 100, 115, 100);
+		frmMikeysNotSo.getContentPane().add(lblAceimage);
+		frmMikeysNotSo.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{simPlay, realPlay, frmMikeysNotSo.getContentPane()}));
 		
 	}
 }
