@@ -1,16 +1,24 @@
 import java.awt.EventQueue;
 import java.awt.Dimension;
+import java.awt.Image;
 import javax.swing.JFrame;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
+
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import java.awt.Window.Type;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
 import java.awt.Component;
+import javax.swing.ImageIcon;
 
 
 
@@ -60,7 +68,8 @@ public class GUI {
 		frmMikeysNotSo.getContentPane().add(realPlay);
 		
 		JLabel lblAceimage = new JLabel("aceImage");
-		lblAceimage.setBounds(100, 100, 115, 100);
+		lblAceimage.setIcon(new ImageIcon("ace_medium.jpg"));
+		lblAceimage.setBounds(100, 100, 100, 135);
 		frmMikeysNotSo.getContentPane().add(lblAceimage);
 		frmMikeysNotSo.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{simPlay, realPlay, frmMikeysNotSo.getContentPane()}));
 		
