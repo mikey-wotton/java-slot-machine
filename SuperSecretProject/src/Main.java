@@ -20,7 +20,7 @@
  *
  */
 public class Main {
-	AccountDetails userDetails = new AccountDetails("Timmy",500.0);
+	AccountDetails userDetails;
 	RandomiseWheels randomiseWheels = new RandomiseWheels();
 	CheckWheels checkWheels = new CheckWheels();
 	static int num = 10;
@@ -29,6 +29,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		Main main = new Main();
+		AccountDetails userDetails = new AccountDetails("Timmy",500.0);
 		main.spinOnce();
 	}
 	public void spinOnce(){

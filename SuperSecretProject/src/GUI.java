@@ -6,25 +6,20 @@ import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JLabel;
-
 import java.awt.Color;
-
 import javax.swing.SwingConstants;
-
 import java.awt.Window.Type;
-
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import java.awt.Component;
 import javax.swing.ImageIcon;
 
 
 
 public class GUI {
-
+	private Main main;
 	private JFrame frmMikeysNotSo;
+	private JFrame frmsimPlayScreen;
 
 	/**
 	 * Launch the application.
@@ -54,24 +49,88 @@ public class GUI {
 	 */
 	private void initialize() {
 		frmMikeysNotSo = new JFrame();
+		frmMikeysNotSo.setBackground(Color.LIGHT_GRAY);
+		frmMikeysNotSo.getContentPane().setBackground(Color.WHITE);
 		frmMikeysNotSo.setTitle("Mikey's Not So Wild Slots");
         frmMikeysNotSo.setMinimumSize(new Dimension(900, 600));
-		frmMikeysNotSo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMikeysNotSo.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frmMikeysNotSo.getContentPane().setLayout(null);
 		
 		JButton simPlay = new JButton("Simulated Play");
 		simPlay.setBounds(10, 450, 300, 100);
+		simPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				createSimPlay();
+				frmMikeysNotSo.setVisible(false);
+			}
+		});
 		frmMikeysNotSo.getContentPane().add(simPlay);
 		
 		JButton realPlay = new JButton("Real Play");
-		realPlay.setBounds(570, 450, 300, 100);
+		realPlay.setBounds(574, 450, 300, 100);
+		realPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				System.out.println("Real Play");
+			}
+		});
 		frmMikeysNotSo.getContentPane().add(realPlay);
 		
+		//Adding images
 		JLabel lblAceimage = new JLabel("aceImage");
+		lblAceimage.setVerticalAlignment(SwingConstants.TOP);
 		lblAceimage.setIcon(new ImageIcon("ace_medium.jpg"));
-		lblAceimage.setBounds(100, 100, 100, 135);
+		lblAceimage.setBounds(190, 100, 100, 135);
 		frmMikeysNotSo.getContentPane().add(lblAceimage);
-		frmMikeysNotSo.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{simPlay, realPlay, frmMikeysNotSo.getContentPane()}));
 		
+		JLabel lblKingimage = new JLabel("kingImage");
+		lblKingimage.setVerticalAlignment(SwingConstants.TOP);
+		lblKingimage.setIcon(new ImageIcon("king_medium.jpg"));
+		lblKingimage.setBounds(290, 130, 100, 135);
+		frmMikeysNotSo.getContentPane().add(lblKingimage);
+		
+		JLabel lblQueenimage = new JLabel("queenImage");
+		lblQueenimage.setVerticalAlignment(SwingConstants.TOP);
+		lblQueenimage.setIcon(new ImageIcon("queen_medium.jpg"));
+		lblQueenimage.setBounds(390, 100, 100, 135);
+		frmMikeysNotSo.getContentPane().add(lblQueenimage);
+		
+		JLabel lblJackimage = new JLabel("jackImage");
+		lblJackimage.setVerticalAlignment(SwingConstants.TOP);
+		lblJackimage.setIcon(new ImageIcon("jack_medium.jpg"));
+		lblJackimage.setBounds(490, 130, 100, 135);
+		frmMikeysNotSo.getContentPane().add(lblJackimage);
+		
+		JLabel lblTenimage = new JLabel("tenImage");
+		lblTenimage.setVerticalAlignment(SwingConstants.TOP);
+		lblTenimage.setIcon(new ImageIcon("ten_medium.jpg"));
+		lblTenimage.setBounds(590, 100, 100, 135);
+		frmMikeysNotSo.getContentPane().add(lblTenimage);
+		
+		
+		frmMikeysNotSo.setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{simPlay, realPlay, frmMikeysNotSo.getContentPane()}));
+		frmMikeysNotSo.pack();
+		
+	}
+	public void createSimPlay(){
+		frmsimPlayScreen = new JFrame();
+		frmsimPlayScreen.setBackground(Color.LIGHT_GRAY);
+		frmsimPlayScreen.getContentPane().setBackground(Color.WHITE);
+		frmsimPlayScreen.setTitle("Mikey's Not So Wild Slots: Simulated Play");
+		frmsimPlayScreen.setMinimumSize(new Dimension(900, 600));
+		frmsimPlayScreen.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		frmsimPlayScreen.getContentPane().setLayout(null);
+		frmsimPlayScreen.setVisible(true);
+		
+		JButton simPlay = new JButton("Spin Once");
+		simPlay.setBounds(574, 450, 300, 100);
+		simPlay.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				main.spinOnce();
+				frmsimPlayScreen.pack();
+			}
+		});
+		frmsimPlayScreen.getContentPane().add(simPlay);
+		
+		frmsimPlayScreen.pack();
 	}
 }
