@@ -17,9 +17,8 @@ import javax.swing.ImageIcon;
 
 
 public class GUI {
-	private Main main;
+	public Main main;
 	private JFrame frmMikeysNotSo;
-	private JFrame frmsimPlayScreen;
 
 	/**
 	 * Launch the application.
@@ -112,25 +111,7 @@ public class GUI {
 		
 	}
 	public void createSimPlay(){
-		frmsimPlayScreen = new JFrame();
-		frmsimPlayScreen.setBackground(Color.LIGHT_GRAY);
-		frmsimPlayScreen.getContentPane().setBackground(Color.WHITE);
-		frmsimPlayScreen.setTitle("Mikey's Not So Wild Slots: Simulated Play");
-		frmsimPlayScreen.setMinimumSize(new Dimension(900, 600));
-		frmsimPlayScreen.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		frmsimPlayScreen.getContentPane().setLayout(null);
-		frmsimPlayScreen.setVisible(true);
-		
-		JButton simPlay = new JButton("Spin Once");
-		simPlay.setBounds(574, 450, 300, 100);
-		simPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				main.spinOnce();
-				frmsimPlayScreen.pack();
-			}
-		});
-		frmsimPlayScreen.getContentPane().add(simPlay);
-		
-		frmsimPlayScreen.pack();
+		GUI_SimPlay simPlay = new GUI_SimPlay();
+		simPlay.initialize(main);
 	}
 }

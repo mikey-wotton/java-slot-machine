@@ -27,10 +27,8 @@ public class Main {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
-		Main main = new Main();
-		AccountDetails userDetails = new AccountDetails("Timmy",500.0);
-		main.spinOnce();
+	public Main(String username, double balance){
+		AccountDetails userDetails = new AccountDetails(username,balance);
 	}
 	public void spinOnce(){
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
