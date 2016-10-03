@@ -23,17 +23,19 @@ public class Main {
 	AccountDetails userDetails;
 	RandomiseWheels randomiseWheels = new RandomiseWheels();
 	CheckWheels checkWheels = new CheckWheels();
+	Symbols[][] arrayOfWheels;
+
 	static int num = 10;
 	/**
 	 * @param args
 	 */
 	public Main(String username, double balance){
+		arrayOfWheels = new Symbols[5][5];
 		userDetails = new AccountDetails("",0);
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
 	}
 	public void spinOnce(){
-			Symbols[][] arrayOfWheels = new Symbols[5][5];
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 			arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());

@@ -39,4 +39,29 @@ public enum Symbols {
 		}
 		return modifier;
 	}
+	public String imageString(){
+		String imageLocation = "";
+		switch(this)
+		{		
+		case TEN:
+			imageLocation = "ten_small.jpg";
+			break;
+		case JACK:
+			imageLocation = "jack_small.jpg";
+			break;		
+		case QUEEN:
+			imageLocation ="queen_small.jpg";
+			break;
+		case KING:
+			imageLocation ="king_small.jpg";
+			break;
+		case ACE:
+			imageLocation = "ace_small.jpg";
+			break;
+		case WILD:
+			imageLocation = "ten_small.jpg";
+			break;
+		}
+		return imageLocation;
+	}
 }

@@ -14,4 +14,31 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>ace_small.jpg</name>
+			<type>1</type>
+			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/ace_small.jpg</location>
+		</link>
+		<link>
+			<name>jack_small.jpg</name>
+			<type>1</type>
+			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/jack_small.jpg</location>
+		</link>
+		<link>
+			<name>king_small.jpg</name>
+			<type>1</type>
+			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/king_small.jpg</location>
+		</link>
+		<link>
+			<name>queen_small.jpg</name>
+			<type>1</type>
+			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/queen_small.jpg</location>
+		</link>
+		<link>
+			<name>ten_small.jpg</name>
+			<type>1</type>
+			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/ten_small.jpg</location>
+		</link>
+	</linkedResources>
 </projectDescription>
