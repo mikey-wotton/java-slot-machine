@@ -208,6 +208,7 @@ public class GUI_SimPlay extends JFrame {
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showSpin(main, labels, balance, 1);
+				contentPane.revalidate();
 			}
 		});
 		contentPane.add(spinOnce);
@@ -232,6 +233,7 @@ public class GUI_SimPlay extends JFrame {
 			}
 		});
 		contentPane.add(autoSpin);	
+		contentPane.revalidate();
 	}
 	public void showSpin(Main main, JLabel[][] labels, JLabel balance, int spins){
 		while(spins > 0){
@@ -241,8 +243,11 @@ public class GUI_SimPlay extends JFrame {
 				labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
 				}
 			}
+			contentPane.repaint();
+			contentPane.validate();
 			balance.setText(String.valueOf(main.userDetails.getBalance()));
 			spins--;
 		}
 	}
+	
 }
