@@ -108,8 +108,6 @@ public class GUI {
 							JPanel simScreen = simPlay(main);
 							frame.add(simScreen);
 							simScreen.setVisible(true);
-							frame.repaint();
-							frame.revalidate();
 					}
 				});
 				mainScreen.add(simPlay);
