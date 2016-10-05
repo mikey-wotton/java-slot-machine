@@ -130,11 +130,11 @@ public class GUI {
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setLayout(null);
 
-		JLabel lblUserName = new JLabel(main.userDetails.getUsername());
+		JLabel lblUserName = new JLabel("Username: " +main.userDetails.getUsername());
 		lblUserName.setBounds(10, 10, 100, 20);
 		contentPane.add(lblUserName);
 
-		JLabel balance = new JLabel(String.valueOf(main.userDetails
+		JLabel balance = new JLabel("Balance: "+String.valueOf(main.userDetails
 				.getBalance()));
 		balance.setBounds(10, 41, 100, 20);
 		contentPane.add(balance);
@@ -329,7 +329,7 @@ public class GUI {
 				labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));			
 				}
 			}
-			balance.setText(String.valueOf(main.userDetails.getBalance()));
+			balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
 			spins--;
 		}
 	}
