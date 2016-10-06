@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>ace_small.jpg</name>
-			<type>1</type>
-			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/ace_small.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
