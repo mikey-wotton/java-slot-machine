@@ -312,6 +312,7 @@ public class GUI {
 
 		SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
 		JSpinner spinner = new JSpinner(model);
+		spinner.setEditor(new JSpinner.DefaultEditor(spinner));
 		spinner.setBounds(215, 536, 50, 20);
 		contentPane.add(spinner);
 		
@@ -363,27 +364,27 @@ public class GUI {
 		@Override
 		protected Void doInBackground() throws Exception {
 	        while (!isCancelled() && spins > 0) {
-	        	main.spinOnce();
+	        	double amount = main.spinOnce();
 				for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){
 					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
 					}
 				}
-				balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
-				if(main.spinOnce() > 100){
-					lblWinorloseamount.setText("Huge win of "+main.spinOnce()+"! Congratulations");
+				balance.setText(String.valueOf("Balance: £"+main.userDetails.getBalance()));
+				if(amount > 100){
+					lblWinorloseamount.setText("Huge win of £"+amount+"! Congratulations");
 				}
-				else if(main.spinOnce() > 50){
-					lblWinorloseamount.setText("Big win of "+main.spinOnce()+"! Well done!");
+				else if(amount > 50){
+					lblWinorloseamount.setText("Big win of £"+amount+"! Well done!");
 				}
-				else if(main.spinOnce() > 0){
-					lblWinorloseamount.setText("win of "+main.spinOnce()+"! Every penny helps!");
+				else if(amount > 0){
+					lblWinorloseamount.setText("Win of £"+amount+"! Every penny helps!");
 				}
-				else if(main.spinOnce() == 0){
+				else if(amount == 0){
 					lblWinorloseamount.setText("Broke even! Try again!");
 				}
 				else{
-					lblWinorloseamount.setText("You lost "+main.spinOnce()+"! Better luck next time!");
+					lblWinorloseamount.setText("You lost £"+amount*-1+" ! Try again!");
 				}
 
 				spins--;
