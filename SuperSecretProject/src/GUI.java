@@ -360,7 +360,8 @@ public class GUI {
 					}
 				}
 				balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
-				spinner.setValue(spins--);
+				spins--;
+				spinner.setValue(spins);
 				try {
 				    Thread.sleep(2000);                 //1000 milliseconds is one second.
 				} catch(InterruptedException ex) {
