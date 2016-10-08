@@ -28,6 +28,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
+import javax.swing.UIManager;
 
 
 
@@ -68,9 +69,10 @@ public class GUI {
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
-		frame.setBackground(Color.LIGHT_GRAY);
+		frame.setBackground(new Color(250, 78, 91));
 		
 		JPanel mainScreen = new JPanel();
+		mainScreen.setBackground(UIManager.getColor("OptionPane.errorDialog.titlePane.shadow"));
 		mainScreen.setLayout(null);
 		
 		//Adding images
@@ -133,7 +135,7 @@ public class GUI {
 		JPanel contentPane = new JPanel();
 		JLabel[][] labels = new JLabel[5][5];
 		contentPane.setMinimumSize(new Dimension(900, 600));
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(new Color(250, 78, 91));
 		contentPane.setLayout(null);
 
 		JLabel lblUserName = new JLabel("Username: " +main.userDetails.getUsername());
@@ -317,7 +319,7 @@ public class GUI {
 		contentPane.add(spinner);
 		
 		JButton spinOnce = new JButton("Spin Once");
-		spinOnce.setBounds(674, 471, 200, 80);
+		spinOnce.setBounds(674, 475, 200, 80);
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(worker != null){
