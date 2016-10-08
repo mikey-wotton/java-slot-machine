@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingWorker;
 
 import java.awt.event.ActionListener;
@@ -33,6 +34,7 @@ import javax.swing.border.EmptyBorder;
 public class GUI {
 	public Main main;
 	private JFrame frame;
+	private SwingWorker worker;
 
 	/**
 	 * Launch the application.
@@ -300,27 +302,32 @@ public class GUI {
 		contentPane.add(label_24);
 		labels[4][4] = label_24;
 
+		SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
+		JSpinner spinner = new JSpinner(model);
+		spinner.setBounds(215, 531, 50, 15);
+		contentPane.add(spinner);
 		
 		JButton spinOnce = new JButton("Spin Once");
 		spinOnce.setBounds(674, 471, 200, 80);
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SwingWorker<Void,String> worker = new Worker(labels, balance, 1);
+				if(worker != null){
+					worker.cancel(true);
+				}
+				worker = new Worker(labels, balance, spinner);
 				worker.execute();
 			}
 		});
-		contentPane.add(spinOnce);
-
-		JSpinner spinner = new JSpinner();
-		spinner.setBounds(215, 531, 50, 20);
-		contentPane.add(spinner);
+		contentPane.add(spinOnce);		
 		
 		JButton autoSpin = new JButton("Auto-Play");
 		autoSpin.setBounds(10, 475, 200, 80);
 		autoSpin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int spins = (Integer) spinner.getValue();
-				SwingWorker<Void,String> worker = new Worker(labels, balance, spins);
+				if(worker != null){
+					worker.cancel(true);
+				}
+				worker = new Worker(labels, balance, spinner);
 				worker.execute();
 			}
 		});
@@ -329,13 +336,19 @@ public class GUI {
 	}
 	
 	class Worker extends SwingWorker<Void, String>{
-		JLabel[][] labels;
+		JLabel[][] labels;		
 		int spins;
 		JLabel balance;
-		public Worker(JLabel[][] labels,JLabel balance, int spins){
+		JSpinner spinner;
+		public Worker(JLabel[][] labels,JLabel balance, JSpinner spinner){
 			this.labels = labels;
 			this.balance = balance;
-			this.spins = spins;
+			if((Integer) spinner.getValue() > 0){
+				this.spins = (Integer) spinner.getValue();
+			}else{
+				this.spins = 1;
+			}
+			this.spinner = spinner;
 		}
 		@Override
 		protected Void doInBackground() throws Exception {
@@ -347,7 +360,7 @@ public class GUI {
 					}
 				}
 				balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
-				spins--;
+				spinner.setValue(spins--);
 				try {
 				    Thread.sleep(2000);                 //1000 milliseconds is one second.
 				} catch(InterruptedException ex) {
