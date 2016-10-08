@@ -89,7 +89,7 @@ public class GUI {
 				JLabel lblQueenimage = new JLabel("queenImage");
 				lblQueenimage.setVerticalAlignment(SwingConstants.TOP);
 				lblQueenimage.setIcon(new ImageIcon("queen_front.jpg"));
-				lblQueenimage.setBounds(364, 50, 176, 230);
+				lblQueenimage.setBounds(352, 50, 176, 230);
 				mainScreen.add(lblQueenimage);
 				
 				JLabel lblJackimage = new JLabel("jackImage");
@@ -105,12 +105,12 @@ public class GUI {
 				mainScreen.add(lblTenimage);
 				
 				JButton simPlay = new JButton("Simulated Play");
-				simPlay.setBounds(10, 450, 300, 100);
+				simPlay.setBounds(10, 475, 200, 80);
 				simPlay.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e){
 							mainScreen.setVisible(false);
 							JPanel simScreen = simPlay();
-							frame.add(simScreen);
+							frame.getContentPane().add(simScreen);
 							simScreen.setVisible(true);
 							
 					}
@@ -118,14 +118,15 @@ public class GUI {
 				mainScreen.add(simPlay);
 				
 				JButton realPlay = new JButton("Real Play");
-				realPlay.setBounds(574, 450, 300, 100);
+				realPlay.setBounds(674, 475, 200, 80);
 				realPlay.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e){
 						System.out.println("Real Play");
 					}
 				});
 				mainScreen.add(realPlay);
-		frame.add(mainScreen);
+		frame.getContentPane().add(mainScreen);
+		
 		
 	}
 	public JPanel simPlay() {
@@ -139,100 +140,100 @@ public class GUI {
 		lblUserName.setBounds(10, 10, 100, 20);
 		contentPane.add(lblUserName);
 
-		JLabel balance = new JLabel("Balance: "+String.valueOf(main.userDetails
+		JLabel lblBalance = new JLabel("Balance: "+String.valueOf(main.userDetails
 				.getBalance()));
-		balance.setBounds(10, 41, 100, 20);
-		contentPane.add(balance);
+		lblBalance.setBounds(10, 41, 100, 20);
+		contentPane.add(lblBalance);
 
 		// All labels for the images of the wheels
 		JLabel label = new JLabel("0 - 0");
 		label.setIcon(new ImageIcon("facedown_small.jpg"));
-		label.setBounds(215, 14, 70, 90);
+		label.setBounds(215, 10, 70, 90);
 		contentPane.add(label);
 		labels[0][0] = label;	
 		
 		JLabel label_0 = new JLabel("0 - 1");
 		label_0.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_0.setBounds(215, 105, 70, 90);
+		label_0.setBounds(215, 101, 70, 90);
 		contentPane.add(label_0);
 		labels[0][1] = label_0;
 		
 		JLabel label_1 = new JLabel("0 - 2");
 		label_1.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_1.setBounds(215, 195, 70, 90);
+		label_1.setBounds(215, 192, 70, 90);
 		contentPane.add(label_1);
 		labels[0][2] = label_1;		
 
 		JLabel label_2 = new JLabel("0 - 3");
 		label_2.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_2.setBounds(215, 286, 70, 90);
+		label_2.setBounds(215, 283, 70, 90);
 		contentPane.add(label_2);
 		labels[0][3] = label_2;		
 
 		JLabel label_3 = new JLabel("0 - 4");
 		label_3.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_3.setBounds(215, 377, 70, 90);
+		label_3.setBounds(215, 374, 70, 90);
 		contentPane.add(label_3);
 		labels[0][4] = label_3;		
 
 
 		JLabel label_5 = new JLabel("1 - 0");
 		label_5.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_5.setBounds(310, 14, 70, 90);
+		label_5.setBounds(310, 10, 70, 90);
 		contentPane.add(label_5);		
 		labels[1][0] = label_5;
 		
 		JLabel label_6 = new JLabel("1 - 1");
 		label_6.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_6.setBounds(310, 105, 70, 90);
+		label_6.setBounds(310, 101, 70, 90);
 		contentPane.add(label_6);
 		labels[1][1] = label_6;
 		
 		JLabel label_7 = new JLabel("1 - 2");
 		label_7.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_7.setBounds(310, 195, 70, 90);
+		label_7.setBounds(310, 192, 70, 90);
 		contentPane.add(label_7);	
 		labels[1][2] = label_7;
 		
 		JLabel label_8 = new JLabel("1 - 3");
 		label_8.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_8.setBounds(310, 286, 70, 90);
+		label_8.setBounds(310, 283, 70, 90);
 		contentPane.add(label_8);
 		labels[1][3] = label_8;
 		
 		JLabel label_9 = new JLabel("1 - 4");
 		label_9.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_9.setBounds(310, 377, 70, 90);
+		label_9.setBounds(310, 374, 70, 90);
 		contentPane.add(label_9);
 		labels[1][4] = label_9;
 
 		JLabel label_10 = new JLabel("2 - 0");
 		label_10.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_10.setBounds(404, 14, 70, 90);
+		label_10.setBounds(404, 10, 70, 90);
 		contentPane.add(label_10);
 		labels[2][0] = label_10;
 
-		JLabel label_11 = new JLabel("2 - 2");
+		JLabel label_11 = new JLabel("2 - 1");
 		label_11.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_11.setBounds(404, 195, 70, 90);
+		label_11.setBounds(404, 101, 70, 90);
 		contentPane.add(label_11);
-		labels[2][1] = label_11;
-
-		JLabel label_12 = new JLabel("2 - 1");
+		labels[2][2] = label_11;
+		
+		JLabel label_12 = new JLabel("2 - 2");
 		label_12.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_12.setBounds(404, 105, 70, 90);
+		label_12.setBounds(404, 192, 70, 90);
 		contentPane.add(label_12);
-		labels[2][2] = label_12;
+		labels[2][1] = label_12;
 
 		JLabel label_13 = new JLabel("2 - 3");
 		label_13.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_13.setBounds(404, 286, 70, 90);
+		label_13.setBounds(404, 283, 70, 90);
 		contentPane.add(label_13);
 		labels[2][3] = label_13;
 
 		JLabel label_14 = new JLabel("2 -4");
 		label_14.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_14.setBounds(404, 377, 70, 90);
+		label_14.setBounds(404, 374, 70, 90);
 		contentPane.add(label_14);
 		labels[2][4] = label_14;
 
@@ -242,69 +243,76 @@ public class GUI {
 		
 		JLabel label_15 = new JLabel("3 - 0");
 		label_15.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_15.setBounds(498, 14, 70, 90);
+		label_15.setBounds(498, 10, 70, 90);
 		contentPane.add(label_15);
 		labels[3][0] = label_15;
 
 		JLabel label_16 = new JLabel("3 - 1");
 		label_16.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_16.setBounds(498, 105, 70, 90);
+		label_16.setBounds(498, 101, 70, 90);
 		contentPane.add(label_16);
 		labels[3][1] = label_16;
 
 		JLabel label_17 = new JLabel("3 - 2");
 		label_17.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_17.setBounds(498, 195, 70, 90);
+		label_17.setBounds(498, 192, 70, 90);
 		contentPane.add(label_17);		
 		labels[3][2] = label_17;
 
 		JLabel label_18 = new JLabel("3 - 3");
 		label_18.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_18.setBounds(498, 286, 70, 90);
+		label_18.setBounds(498, 283, 70, 90);
 		contentPane.add(label_18);		
 		labels[3][3] = label_18;
 
 		JLabel label_19 = new JLabel("3 - 4");
 		label_19.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_19.setBounds(498, 377, 70, 90);
+		label_19.setBounds(498, 374, 70, 90);
 		contentPane.add(label_19);		
 		labels[3][4] = label_19;
 
 
 		JLabel label_20 = new JLabel("4 - 0");
 		label_20.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_20.setBounds(592, 14, 70, 90);
+		label_20.setBounds(592, 10, 70, 90);
 		contentPane.add(label_20);
 		labels[4][0] = label_20;
 
 		JLabel label_21 = new JLabel("4 - 1");
 		label_21.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_21.setBounds(592, 105, 70, 90);
+		label_21.setBounds(592, 101, 70, 90);
 		contentPane.add(label_21);
 		labels[4][1] = label_21;
 
 		JLabel label_22 = new JLabel("4 - 2");
 		label_22.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_22.setBounds(592, 195, 70, 90);
+		label_22.setBounds(592, 192, 70, 90);
 		contentPane.add(label_22);
 		labels[4][2] = label_22;
 
 		JLabel label_23 = new JLabel("4 - 3");
 		label_23.setIcon(new ImageIcon("facedown_small.jpg"));
-		label_23.setBounds(592, 286, 70, 90);
+		label_23.setBounds(592, 283, 70, 90);
 		contentPane.add(label_23);
 		labels[4][3] = label_23;
 
 		JLabel label_24 = new JLabel("4 - 4");
 		label_24.setIcon(new ImageIcon("facedown_small.jpg"));
 		label_24.setBackground(new Color(0,0,150,30));
-		label_24.setBounds(592, 377, 70, 90);
+		label_24.setBounds(592, 374, 70, 90);
 		contentPane.add(label_24);
 		labels[4][4] = label_24;
+		
+		
+		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount");
+		lblWinOrLoseAmount.setText("Welcome, good luck!");
+		lblWinOrLoseAmount.setBounds(380, 500, 200, 51);
+		contentPane.add(lblWinOrLoseAmount);
+		
 
 		SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
 		JSpinner spinner = new JSpinner(model);
-		spinner.setBounds(215, 531, 50, 15);
+		spinner.setBounds(215, 536, 50, 20);
 		contentPane.add(spinner);
 		
 		JButton spinOnce = new JButton("Spin Once");
@@ -314,7 +322,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, balance, spinner);
+				worker = new Worker(labels,lblWinOrLoseAmount, lblBalance, spinner);
 				worker.execute();
 			}
 		});
@@ -327,7 +335,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, balance, spinner);
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance, spinner);
 				worker.execute();
 			}
 		});
@@ -340,9 +348,11 @@ public class GUI {
 		int spins;
 		JLabel balance;
 		JSpinner spinner;
-		public Worker(JLabel[][] labels,JLabel balance, JSpinner spinner){
+		JLabel lblWinorloseamount;
+		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner spinner){
 			this.labels = labels;
 			this.balance = balance;
+			this.lblWinorloseamount = lblWinorloseamount;
 			if((Integer) spinner.getValue() > 0){
 				this.spins = (Integer) spinner.getValue();
 			}else{
@@ -360,6 +370,22 @@ public class GUI {
 					}
 				}
 				balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
+				if(main.spinOnce() > 100){
+					lblWinorloseamount.setText("Huge win of "+main.spinOnce()+"! Congratulations");
+				}
+				else if(main.spinOnce() > 50){
+					lblWinorloseamount.setText("Big win of "+main.spinOnce()+"! Well done!");
+				}
+				else if(main.spinOnce() > 0){
+					lblWinorloseamount.setText("win of "+main.spinOnce()+"! Every penny helps!");
+				}
+				else if(main.spinOnce() == 0){
+					lblWinorloseamount.setText("Broke even! Try again!");
+				}
+				else{
+					lblWinorloseamount.setText("You lost "+main.spinOnce()+"! Better luck next time!");
+				}
+
 				spins--;
 				spinner.setValue(spins);
 				try {
