@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
+import javax.swing.SwingWorker;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -22,6 +23,7 @@ import java.awt.Window.Type;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import java.awt.Component;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
@@ -52,14 +54,14 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
-		Main main = new Main("John",500.00);
-		initialize(main);
+		main = new Main("John",500.00);
+		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Main main) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -105,9 +107,10 @@ public class GUI {
 				simPlay.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e){
 							mainScreen.setVisible(false);
-							JPanel simScreen = simPlay(main);
+							JPanel simScreen = simPlay();
 							frame.add(simScreen);
 							simScreen.setVisible(true);
+							
 					}
 				});
 				mainScreen.add(simPlay);
@@ -123,7 +126,7 @@ public class GUI {
 		frame.add(mainScreen);
 		
 	}
-	public JPanel simPlay(Main main) {
+	public JPanel simPlay() {
 		JPanel contentPane = new JPanel();
 		JLabel[][] labels = new JLabel[5][5];
 		contentPane.setMinimumSize(new Dimension(900, 600));
@@ -292,6 +295,7 @@ public class GUI {
 
 		JLabel label_24 = new JLabel("4 - 4");
 		label_24.setIcon(new ImageIcon("facedown_small.jpg"));
+		label_24.setBackground(new Color(0,0,150,30));
 		label_24.setBounds(592, 377, 70, 90);
 		contentPane.add(label_24);
 		labels[4][4] = label_24;
@@ -301,7 +305,8 @@ public class GUI {
 		spinOnce.setBounds(674, 471, 200, 80);
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				showSpin(main, labels, balance, 1);
+				SwingWorker<Void,String> worker = new Worker(labels, balance, 1);
+				worker.execute();
 			}
 		});
 		contentPane.add(spinOnce);
@@ -315,23 +320,42 @@ public class GUI {
 		autoSpin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int spins = (Integer) spinner.getValue();
-					showSpin(main, labels, balance, spins);
+				SwingWorker<Void,String> worker = new Worker(labels, balance, spins);
+				worker.execute();
 			}
 		});
 		contentPane.add(autoSpin);
 		return contentPane;
 	}
-	public void showSpin(Main main, JLabel[][] labels, JLabel balance, int spins){
-		while(spins > 0){
-			main.spinOnce();
-			for(int i = 0;i < main.arrayOfWheels.length; i++){
-				for(int j = 0;j < main.arrayOfWheels.length; j++){
-				labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));			
-				}
-			}
-			balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
-			spins--;
-		}
-	}
 	
+	class Worker extends SwingWorker<Void, String>{
+		JLabel[][] labels;
+		int spins;
+		JLabel balance;
+		public Worker(JLabel[][] labels,JLabel balance, int spins){
+			this.labels = labels;
+			this.balance = balance;
+			this.spins = spins;
+		}
+		@Override
+		protected Void doInBackground() throws Exception {
+	        while (!isCancelled() && spins > 0) {
+	        	main.spinOnce();
+				for(int i = 0;i < main.arrayOfWheels.length; i++){
+					for(int j = 0;j < main.arrayOfWheels.length; j++){
+					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
+					}
+				}
+				balance.setText(String.valueOf("Balance: "+main.userDetails.getBalance()));
+				spins--;
+				try {
+				    Thread.sleep(2000);                 //1000 milliseconds is one second.
+				} catch(InterruptedException ex) {
+				    Thread.currentThread().interrupt();
+				}
+	        }			
+			return null;
+		}
+		
+	}
 }

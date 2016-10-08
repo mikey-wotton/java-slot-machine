@@ -35,7 +35,7 @@ public class Main {
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
 	}
-	public void spinOnce(){
+	public double spinOnce(){
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 			arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
@@ -43,6 +43,7 @@ public class Main {
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
 			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num));
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
+			return checkWheels.checkWheels(arrayOfWheels, num);
 		}
 	
 	public void testBillSpins(){
