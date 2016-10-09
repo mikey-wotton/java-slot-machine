@@ -40,15 +40,14 @@ public class Main {
 		userDetails = new AccountDetails("",0);
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
-		spinOnce();
 	}
-	public void spinOnce(){
+	public void spinOnce(int numberOfLines){
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 			arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 			arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
-			winOrLoseAmount = checkWheels.checkWheels(arrayOfWheels, num);
+			winOrLoseAmount = checkWheels.checkWheels(arrayOfWheels, numberOfLines);
 			userDetails.updateBalance(winOrLoseAmount);
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
 		}

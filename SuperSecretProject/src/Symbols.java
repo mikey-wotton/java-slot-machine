@@ -28,10 +28,10 @@ public enum Symbols {
 			modifier = 4.0;
 			break;
 		case KING:
-			modifier = 20.0;
+			modifier = 8.0;
 			break;
 		case ACE:
-			modifier = 50.0;
+			modifier = 16.0;
 			break;
 		case WILD:
 			modifier = Symbols.ACE.modifier();

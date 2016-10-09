@@ -61,10 +61,10 @@ public class RandomiseWheels {
 		else if (isBetween(i, 80, 89)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 94)) {
+		else if (isBetween(i, 90, 96)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 95, 99)) {
+		else if (isBetween(i, 97, 99)) {
 				wheel[i] = Symbols.WILD;
 				}	
 		}	
@@ -120,13 +120,13 @@ public class RandomiseWheels {
 		else if (isBetween(i, 65, 79)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 80, 85)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 94)) {
+		else if (isBetween(i, 86, 91)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 95, 99)) {
+		else if (isBetween(i, 92, 99)) {
 				wheel[i] = Symbols.WILD;
 				}
 		}	
@@ -182,13 +182,13 @@ public class RandomiseWheels {
 		else if (isBetween(i, 65, 79)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 80, 84)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 94)) {
+		else if (isBetween(i, 85, 90)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 95, 99)) {
+		else if (isBetween(i, 91, 99)) {
 				wheel[i] = Symbols.WILD;
 				}
 		}	

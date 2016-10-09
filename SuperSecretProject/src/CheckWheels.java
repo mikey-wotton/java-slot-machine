@@ -616,7 +616,7 @@ public class CheckWheels {
 					}
 					return 2;
 				}
-				return 1;
+				return 0;
 			}
 		} else {
 			if ((i == j) || (j == Symbols.WILD)) {
@@ -629,7 +629,7 @@ public class CheckWheels {
 					}
 					return 2;
 				}
-				return 1;
+				return 0;
 			}
 		}
 		return 0;

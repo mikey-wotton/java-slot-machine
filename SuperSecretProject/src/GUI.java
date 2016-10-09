@@ -148,6 +148,16 @@ public class GUI {
 				.getBalance()));
 		lblBalance.setBounds(10, 41, 100, 20);
 		contentPane.add(lblBalance);
+		
+		JLabel lblwinLines = new JLabel("Number of Win Lines: ");
+		lblwinLines.setBounds(700, 10, 140, 20);
+		contentPane.add(lblwinLines);
+		
+		SpinnerNumberModel model = new SpinnerNumberModel(10, 1, 10, 1);
+		JSpinner winLinesSpinner = new JSpinner(model);
+		winLinesSpinner.setEditor(new JSpinner.DefaultEditor(winLinesSpinner));
+		winLinesSpinner.setBounds(828, 11, 50, 20);
+		contentPane.add(winLinesSpinner);
 
 		// All labels for the images of the wheels
 		JLabel label = new JLabel("0 - 0");
@@ -179,6 +189,7 @@ public class GUI {
 		label_3.setBounds(215, 374, 70, 90);
 		contentPane.add(label_3);
 		labels[0][4] = label_3;		
+		
 
 
 		JLabel label_5 = new JLabel("1 - 0");
@@ -210,6 +221,8 @@ public class GUI {
 		label_9.setBounds(310, 374, 70, 90);
 		contentPane.add(label_9);
 		labels[1][4] = label_9;
+		
+		
 
 		JLabel label_10 = new JLabel("2 - 0");
 		label_10.setIcon(new ImageIcon("facedown_small.jpg"));
@@ -221,13 +234,13 @@ public class GUI {
 		label_11.setIcon(new ImageIcon("facedown_small.jpg"));
 		label_11.setBounds(404, 101, 70, 90);
 		contentPane.add(label_11);
-		labels[2][2] = label_11;
+		labels[2][1] = label_11;
 		
 		JLabel label_12 = new JLabel("2 - 2");
 		label_12.setIcon(new ImageIcon("facedown_small.jpg"));
 		label_12.setBounds(404, 192, 70, 90);
 		contentPane.add(label_12);
-		labels[2][1] = label_12;
+		labels[2][2] = label_12;
 
 		JLabel label_13 = new JLabel("2 - 3");
 		label_13.setIcon(new ImageIcon("facedown_small.jpg"));
@@ -240,7 +253,6 @@ public class GUI {
 		label_14.setBounds(404, 374, 70, 90);
 		contentPane.add(label_14);
 		labels[2][4] = label_14;
-
 		
 		
 		
@@ -274,6 +286,7 @@ public class GUI {
 		label_19.setBounds(498, 374, 70, 90);
 		contentPane.add(label_19);		
 		labels[3][4] = label_19;
+		
 
 
 		JLabel label_20 = new JLabel("4 - 0");
@@ -308,14 +321,14 @@ public class GUI {
 		labels[4][4] = label_24;
 		
 		
+		
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount");
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
 		lblWinOrLoseAmount.setBounds(380, 500, 200, 51);
-		contentPane.add(lblWinOrLoseAmount);
-		
+		contentPane.add(lblWinOrLoseAmount);		
 
-		SpinnerNumberModel model = new SpinnerNumberModel(0,0,100,1);
-		JSpinner spinner = new JSpinner(model);
+		SpinnerNumberModel model1 = new SpinnerNumberModel(0,0,100,1);
+		JSpinner spinner = new JSpinner(model1);
 		spinner.setEditor(new JSpinner.DefaultEditor(spinner));
 		spinner.setBounds(215, 536, 50, 20);
 		contentPane.add(spinner);
@@ -327,7 +340,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels,lblWinOrLoseAmount, lblBalance, spinner);
+				worker = new Worker(labels,lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue());
 				worker.execute();
 			}
 		});
@@ -340,7 +353,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance, spinner);
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue());
 				worker.execute();
 			}
 		});
@@ -354,10 +367,12 @@ public class GUI {
 		JLabel balance;
 		JSpinner spinner;
 		JLabel lblWinorloseamount;
-		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner spinner){
+		int numOfWinLines;
+		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner spinner, int numOfWinLines){
 			this.labels = labels;
 			this.balance = balance;
 			this.lblWinorloseamount = lblWinorloseamount;
+			this.numOfWinLines = numOfWinLines;
 			if((Integer) spinner.getValue() > 0){
 				this.spins = (Integer) spinner.getValue();
 			}else{
@@ -368,7 +383,7 @@ public class GUI {
 		@Override
 		protected Void doInBackground() throws Exception {
 	        while (!isCancelled() && spins > 0) {
-	        	main.spinOnce();
+	        	main.spinOnce(numOfWinLines);
 	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){
 					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
