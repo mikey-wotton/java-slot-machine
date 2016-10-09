@@ -24,6 +24,7 @@ public class Main {
 	RandomiseWheels randomiseWheels = new RandomiseWheels();
 	CheckWheels checkWheels = new CheckWheels();
 	Symbols[][] arrayOfWheels;
+	double winOrLoseAmount;
 
 	static int num = 10;
 	/**
@@ -35,15 +36,15 @@ public class Main {
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
 	}
-	public double spinOnce(){
+	public void spinOnce(){
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 			arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 			arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
-			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num));
+			winOrLoseAmount = checkWheels.checkWheels(arrayOfWheels, num);
+			userDetails.updateBalance(winOrLoseAmount);
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
-			return checkWheels.checkWheels(arrayOfWheels, num);
 		}
 	
 	public void testBillSpins(){
@@ -73,5 +74,26 @@ public class Main {
 		System.out.println("Ace Matches (Modifier:"+Symbols.ACE.modifier()+"):"+checkWheels.getTwoAceMatches()+"    : "+checkWheels.getThreeAceMatches()+"   : "+checkWheels.getFourAceMatches()+"   : " +checkWheels.getFiveAceMatches());
 	}
 	
+	public String getWinOrLoseString(double amount){
+		if(amount > 100){
+			return "Huge win of £"+amount+"! Congratulations";
+		}
+		else if(amount > 50){
+			return "Big win of £"+amount+"! Well done!";
+		}
+		else if(amount > 0){
+			return "Win of £"+amount+"! Every penny helps!";
+		}
+		else if(amount == 0){
+			return "Broke even! Try again!";
+		}
+		else{
+			return "You lost £"+amount*-1+"! Try again!";
+		}
+	}
+	
+	public double getWinOrLoseAmount(){
+		return winOrLoseAmount;
+	}
 		
 }

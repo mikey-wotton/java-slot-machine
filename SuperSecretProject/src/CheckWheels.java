@@ -646,9 +646,9 @@ public class CheckWheels {
 
 	public int numberOfMatchesOnLine(Symbols i, Symbols j, Symbols k, Symbols l, Symbols m) {
 		if(i == Symbols.WILD){
-			if (j == k) {
-				if (k == l) {
-					if (l == m) {
+			if (j == k || j == Symbols.WILD) {
+				if (k == l || k == Symbols.WILD) {
+					if (l == m || l == Symbols.WILD) {
 						return 4;
 					}
 					return 3;
@@ -657,6 +657,9 @@ public class CheckWheels {
 			}
 			return 1;
 		}
+		
+		
+		
 		else if ((i == j) || (j == Symbols.WILD)){
 			if (j == k) {
 				if (k == l) {

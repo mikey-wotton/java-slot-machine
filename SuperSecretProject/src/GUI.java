@@ -129,6 +129,8 @@ public class GUI {
 				mainScreen.add(realPlay);
 		frame.getContentPane().add(mainScreen);
 		
+	
+		
 		
 	}
 	public JPanel simPlay() {
@@ -366,29 +368,14 @@ public class GUI {
 		@Override
 		protected Void doInBackground() throws Exception {
 	        while (!isCancelled() && spins > 0) {
-	        	double amount = main.spinOnce();
-				for(int i = 0;i < main.arrayOfWheels.length; i++){
+	        	main.spinOnce();
+	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){
 					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
 					}
 				}
 				balance.setText(String.valueOf("Balance: £"+main.userDetails.getBalance()));
-				if(amount > 100){
-					lblWinorloseamount.setText("Huge win of £"+amount+"! Congratulations");
-				}
-				else if(amount > 50){
-					lblWinorloseamount.setText("Big win of £"+amount+"! Well done!");
-				}
-				else if(amount > 0){
-					lblWinorloseamount.setText("Win of £"+amount+"! Every penny helps!");
-				}
-				else if(amount == 0){
-					lblWinorloseamount.setText("Broke even! Try again!");
-				}
-				else{
-					lblWinorloseamount.setText("You lost £"+amount*-1+" ! Try again!");
-				}
-
+				lblWinorloseamount.setText(main.getWinOrLoseString(main.getWinOrLoseAmount()));
 				spins--;
 				spinner.setValue(spins);
 				try {
