@@ -34,7 +34,7 @@ public enum Symbols {
 			modifier = 50.0;
 			break;
 		case WILD:
-			modifier = 50.0;
+			modifier = Symbols.ACE.modifier();
 			break;
 		}
 		return modifier;
@@ -59,7 +59,7 @@ public enum Symbols {
 			imageLocation = "ace_small.jpg";
 			break;
 		case WILD:
-			imageLocation = "ten_small.jpg";
+			imageLocation = "wild_small.jpg";
 			break;
 		}
 		return imageLocation;

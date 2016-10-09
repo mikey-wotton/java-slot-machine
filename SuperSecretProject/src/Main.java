@@ -30,11 +30,17 @@ public class Main {
 	/**
 	 * @param args
 	 */
+	static public void main(String[] args) {
+		Main main = new Main("john", 1000.0);
+		main.testBillSpins();
+
+	}
 	public Main(String username, double balance){
 		arrayOfWheels = new Symbols[5][5];
 		userDetails = new AccountDetails("",0);
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
+		spinOnce();
 	}
 	public void spinOnce(){
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());

@@ -65,7 +65,7 @@ public class RandomiseWheels {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = Symbols.TEN;
+				wheel[i] = Symbols.WILD;
 				}	
 		}	
 		shuffleArray(wheel);
@@ -96,7 +96,7 @@ public class RandomiseWheels {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = Symbols.TEN;
+				wheel[i] = Symbols.WILD;
 				}		
 		}	
 		shuffleArray(wheel);
@@ -127,7 +127,7 @@ public class RandomiseWheels {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = Symbols.TEN;
+				wheel[i] = Symbols.WILD;
 				}
 		}	
 		shuffleArray(wheel);
@@ -158,7 +158,7 @@ public class RandomiseWheels {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = Symbols.TEN;
+				wheel[i] = Symbols.WILD;
 				}
 		}	
 		shuffleArray(wheel);
@@ -189,7 +189,7 @@ public class RandomiseWheels {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
-				wheel[i] = Symbols.TEN;
+				wheel[i] = Symbols.WILD;
 				}
 		}	
 		shuffleArray(wheel);
