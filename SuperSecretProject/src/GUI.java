@@ -153,11 +153,22 @@ public class GUI {
 		lblwinLines.setBounds(700, 10, 140, 20);
 		contentPane.add(lblwinLines);
 		
+		JLabel lblstakeValue = new JLabel("Staker per line: ");
+		lblstakeValue.setBounds(700, 31, 140, 20);
+		contentPane.add(lblstakeValue);
+		
 		SpinnerNumberModel model = new SpinnerNumberModel(10, 1, 10, 1);
 		JSpinner winLinesSpinner = new JSpinner(model);
 		winLinesSpinner.setEditor(new JSpinner.DefaultEditor(winLinesSpinner));
 		winLinesSpinner.setBounds(828, 11, 50, 20);
 		contentPane.add(winLinesSpinner);
+		
+		SpinnerNumberModel modelStake = new SpinnerNumberModel(10, 1, 10, 0.5);
+		JSpinner winStakeSpinner = new JSpinner(modelStake);
+		winStakeSpinner.setEditor(new JSpinner.DefaultEditor(winStakeSpinner));
+		winStakeSpinner.setBounds(828, 31, 50, 20);
+		contentPane.add(winStakeSpinner);
+
 
 		// All labels for the images of the wheels
 		JLabel label = new JLabel("0 - 0");
@@ -340,7 +351,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels,lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue());
+				worker = new Worker(labels,lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue());
 				worker.execute();
 			}
 		});
@@ -353,7 +364,7 @@ public class GUI {
 				if(worker != null){
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue());
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance, spinner, (Integer) winLinesSpinner.getValue(),(double) winStakeSpinner.getValue());
 				worker.execute();
 			}
 		});
@@ -368,11 +379,13 @@ public class GUI {
 		JSpinner spinner;
 		JLabel lblWinorloseamount;
 		int numOfWinLines;
-		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner spinner, int numOfWinLines){
+		double lineStake;
+		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner spinner, int numOfWinLines, double lineStake){
 			this.labels = labels;
 			this.balance = balance;
 			this.lblWinorloseamount = lblWinorloseamount;
 			this.numOfWinLines = numOfWinLines;
+			this.lineStake = lineStake;
 			if((Integer) spinner.getValue() > 0){
 				this.spins = (Integer) spinner.getValue();
 			}else{
@@ -383,7 +396,7 @@ public class GUI {
 		@Override
 		protected Void doInBackground() throws Exception {
 	        while (!isCancelled() && spins > 0) {
-	        	main.spinOnce(numOfWinLines);
+	        	main.spinOnce(numOfWinLines, lineStake);
 	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){
 					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
