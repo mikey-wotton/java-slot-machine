@@ -405,7 +405,6 @@ public class GUI {
 		}
 		@Override
 		protected Void doInBackground() throws Exception {
-			Random rnd = new Random();
 	        while (!isCancelled() && spins > 0) {
 	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){					
