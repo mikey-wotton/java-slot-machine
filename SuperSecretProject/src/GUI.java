@@ -146,7 +146,7 @@ public class GUI {
 
 		JLabel lblBalance = new JLabel("Balance: "+String.valueOf(main.userDetails
 				.getBalance()));
-		lblBalance.setBounds(10, 41, 100, 20);
+		lblBalance.setBounds(10, 41, 200, 20);
 		contentPane.add(lblBalance);
 		
 		JLabel lblwinLines = new JLabel("Number of Win Lines: ");
