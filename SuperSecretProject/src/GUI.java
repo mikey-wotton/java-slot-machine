@@ -163,7 +163,7 @@ public class GUI {
 		winLinesSpinner.setBounds(828, 11, 50, 20);
 		contentPane.add(winLinesSpinner);
 		
-		SpinnerNumberModel modelStakeSpinner = new SpinnerNumberModel(1, 1, 10, 1);
+		SpinnerNumberModel modelStakeSpinner = new SpinnerNumberModel(1, 1, 10, 0.5);
 		JSpinner winStakeSpinner = new JSpinner(modelStakeSpinner);
 		winStakeSpinner.setEditor(new JSpinner.DefaultEditor(winStakeSpinner));
 		winStakeSpinner.setBounds(828, 31, 50, 20);
