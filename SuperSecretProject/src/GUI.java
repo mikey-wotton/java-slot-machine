@@ -25,6 +25,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import java.awt.Component;
 import java.util.List;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
@@ -373,6 +374,7 @@ public class GUI {
 	}
 	
 	class Worker extends SwingWorker<Void, String>{
+		String[] standardImageArray;
 		JLabel[][] labels;		
 		int spins;
 		JLabel balance;
@@ -391,15 +393,40 @@ public class GUI {
 			}else{
 				this.spins = 1;
 			}
-			this.spinner = spinner;
+			this.spinner = spinner;			
+			standardImageArray = new String[7];
+			standardImageArray[0] = "facedown_small.jpg";
+			standardImageArray[1] = "ten_small.jpg";
+			standardImageArray[2] = "jack_small.jpg";
+			standardImageArray[3] = "queen_small.jpg";
+			standardImageArray[4] = "king_small.jpg";
+			standardImageArray[5] = "ace_small.jpg";
+			standardImageArray[6] = "wild_small.jpg";			
 		}
 		@Override
 		protected Void doInBackground() throws Exception {
+			Random rnd = new Random();
 	        while (!isCancelled() && spins > 0) {
+	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
+					for(int j = 0;j < main.arrayOfWheels.length; j++){					
+					labels[i][j].setIcon(new ImageIcon("facedown_small.jpg"));
+					try {
+					    Thread.sleep(50);                 //1000 milliseconds is one second.
+					} catch(InterruptedException ex) {
+					    Thread.currentThread().interrupt();
+					}
+					}
+				}	        	
+	        	
 	        	main.spinOnce(numOfWinLines, lineStake);
 	        	for(int i = 0;i < main.arrayOfWheels.length; i++){
 					for(int j = 0;j < main.arrayOfWheels.length; j++){
 					labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
+					try {
+					    Thread.sleep(50);                 //1000 milliseconds is one second.
+					} catch(InterruptedException ex) {
+					    Thread.currentThread().interrupt();
+					}
 					}
 				}
 				balance.setText(String.valueOf("Balance: £"+main.userDetails.getBalance()));
@@ -412,6 +439,7 @@ public class GUI {
 				    Thread.currentThread().interrupt();
 				}
 	        }			
+	       
 			return null;
 		}
 		
