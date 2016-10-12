@@ -157,6 +157,11 @@ public class GUI {
 		contentPane.add(winStakeSpinner);
 
 		// All labels for the images of the wheels
+		JLabel winLine = new JLabel("winLine");
+		winLine.setIcon(new ImageIcon("line_1.png"));
+		winLine.setBounds(245,45,10,377);
+		contentPane.add(winLine);
+		
 		JLabel label = new JLabel("0 - 0");
 		label.setIcon(new ImageIcon("facedown_small.jpg"));
 		label.setBounds(215, 10, 70, 90);
@@ -390,7 +395,7 @@ public class GUI {
 						}
 					}
 				}
-
+				
 				main.spinOnce(numOfWinLines, lineStake);
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
