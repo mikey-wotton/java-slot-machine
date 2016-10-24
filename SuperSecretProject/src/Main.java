@@ -97,6 +97,10 @@ public class Main {
 		}
 	}
 	
+	public int[] getWinLineArray(){
+		return checkWheels.getWinLinesArray();
+	}
+	
 	public double getWinOrLoseAmount(){
 		return winOrLoseAmount;
 	}

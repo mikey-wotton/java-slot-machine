@@ -43,6 +43,8 @@ public class CheckWheels {
 	public int threeWildMatches = 0;
 	public int fourWildMatches = 0;
 	public int fiveWildMatches = 0;
+	
+	private int[] winLineArray;
 
 	/**
 	 * @param args
@@ -170,6 +172,7 @@ public class CheckWheels {
 	}
 
 	public double checkWheels(Symbols[][] wheels, int numberOfPayLines) {
+		winLineArray = new int[10];
 		double value = 0;
 		int numberOfMatches = 0;
 		double modifier = 0;
@@ -515,6 +518,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 				incrementFields(numberOfMatches, wheels[0][1]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[0] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][2],	wheels[2][2], wheels[3][2], wheels[4][2]);
@@ -522,6 +526,8 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][2], wheels[1][2],	wheels[2][2], wheels[3][2], wheels[4][2]);
 				incrementFields(numberOfMatches, wheels[0][2]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[1] = 1;
+
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][3],	wheels[2][3], wheels[3][3], wheels[4][3]);
@@ -529,6 +535,8 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][3], wheels[1][3],	wheels[2][3], wheels[3][3], wheels[4][3]);
 				incrementFields(numberOfMatches, wheels[0][3]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[2] = 1;
+
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2], wheels[2][3], wheels[3][2], wheels[4][1]);
@@ -536,6 +544,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][1], wheels[1][2], wheels[2][3], wheels[3][2], wheels[4][1]);
 				incrementFields(numberOfMatches, wheels[0][1]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[3] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][3], wheels[1][2],	wheels[2][1], wheels[3][2], wheels[4][3]);
@@ -543,6 +552,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][3], wheels[1][2], wheels[2][1], wheels[3][2], wheels[4][3]);
 				incrementFields(numberOfMatches, wheels[0][3]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[4] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1], wheels[2][2], wheels[3][3], wheels[4][2]);
@@ -550,6 +560,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][2], wheels[1][1], wheels[2][2], wheels[3][3], wheels[4][2]);
 				incrementFields(numberOfMatches, wheels[0][2]);
 				value = value + (numberOfMatches *modifier);
+				winLineArray[5] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3], wheels[2][2], wheels[3][3], wheels[4][2]);
@@ -557,6 +568,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][2], wheels[1][3], wheels[2][2], wheels[3][3], wheels[4][2]);
 				incrementFields(numberOfMatches, wheels[0][2]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[6] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][3],	wheels[2][3], wheels[3][3], wheels[4][2]);
@@ -564,6 +576,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][2], wheels[1][3],	wheels[2][3], wheels[3][3], wheels[4][2]);
 				incrementFields(numberOfMatches, wheels[0][2]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[7] = 1;
 			}
 			// ___
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][2], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][2]);			
@@ -571,6 +584,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][2], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][2]);
 				incrementFields(numberOfMatches, wheels[0][2]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[8] = 1;
 			}
 
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][2],	wheels[2][2], wheels[3][2], wheels[4][3]);
@@ -578,6 +592,7 @@ public class CheckWheels {
 				modifier = getModifier(wheels[0][1], wheels[1][2], wheels[2][2], wheels[3][2], wheels[4][3]);
 				incrementFields(numberOfMatches, wheels[0][1]);
 				value = value + (numberOfMatches * modifier);
+				winLineArray[9] = 1;
 			}
 			break;
 
@@ -586,6 +601,10 @@ public class CheckWheels {
 		// checks for symbol matching quantities
 
 		return value;
+	}
+	
+	public int[] getWinLinesArray(){
+		return winLineArray;
 	}
 
 	public int numberOfMatchesOnLine(Symbols i, Symbols j, Symbols k,

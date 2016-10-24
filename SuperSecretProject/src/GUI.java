@@ -182,12 +182,41 @@ public class GUI {
 				cardPanel.add(labels[i][j]);
 			}
 		}
+		
+		
+		//Panels used to show win lines with an OverlayLayout manager
+		JPanel winLinePanel = new JPanel();
+		winLinePanel.setLayout(null);
+		winLinePanel.setBounds(215, 10, 450, 460);
+		winLinePanel.setOpaque(false);
+		
 		JLabel winLine1 = new JLabel("Win line 1");
 		winLine1.setIcon(new ImageIcon("line_1.png"));
-		holdingPanel.add(winLine1);
+		winLine1.setBounds(0, 135, 475, 5);
+		winLine1.setVisible(false);
 
+		JLabel winLine2 = new JLabel("Win line 2");
+		winLine2.setIcon(new ImageIcon("line_1.png"));
+		winLine2.setBounds(0, 230, 475, 5);
+		winLine2.setVisible(false);
+
+		JLabel winLine3 = new JLabel("Win line 3");
+		winLine3.setIcon(new ImageIcon("line_1.png"));
+		winLine3.setBounds(0, 325, 475, 5);
+		winLine3.setVisible(false);
+		
+		winLinePanel.add(winLine1);
+		winLinePanel.add(winLine2);
+		winLinePanel.add(winLine3);
+		holdingPanel.add(winLinePanel);
 		holdingPanel.add(cardPanel);
 		
+		JLabel[] winlineArray = new JLabel[10];
+		winlineArray[0] = winLine1;
+		winlineArray[1] = winLine2;
+		winlineArray[2] = winLine3;
+
+
 		
 		
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount");
@@ -213,7 +242,7 @@ public class GUI {
 				if (worker != null) {
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue());
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winlineArray);
 				worker.execute();
 			}
 		});
@@ -226,7 +255,7 @@ public class GUI {
 				if (worker != null) {
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue());
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winlineArray);
 				worker.execute();
 			}
 		});
@@ -242,9 +271,10 @@ public class GUI {
 		JSpinner autoSpinner;
 		JLabel lblWinorloseamount;
 		int numOfWinLines;
+		JLabel[] winLineLabelArray;
 		double lineStake;
 
-		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner autoSpinner, int numOfWinLines, double lineStake) {
+		public Worker(JLabel[][] labels, JLabel lblWinorloseamount, JLabel balance, JSpinner autoSpinner, int numOfWinLines, double lineStake, JLabel[] winLineLabelArray) {
 			this.labels = labels;
 			this.balance = balance;
 			this.lblWinorloseamount = lblWinorloseamount;
@@ -256,6 +286,7 @@ public class GUI {
 				this.spins = 1;
 			}
 			this.autoSpinner = autoSpinner;
+			this.winLineLabelArray = winLineLabelArray;
 		}
 
 		@Override
@@ -263,8 +294,7 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j]
-								.setIcon(new ImageIcon("facedown_small.jpg"));
+						labels[i][j].setIcon(new ImageIcon("facedown_small.jpg"));
 						try {
 							Thread.sleep(20); // 1000 milliseconds is one
 												// second.
@@ -272,7 +302,7 @@ public class GUI {
 							Thread.currentThread().interrupt();
 						}
 					}
-				}
+				}				
 
 				main.spinOnce(numOfWinLines, lineStake);
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
@@ -287,8 +317,7 @@ public class GUI {
 						}
 					}
 				}
-				balance.setText(String.valueOf("Balance: £"
-						+ main.userDetails.getBalance()));
+				balance.setText(String.valueOf("Balance: £"+ main.userDetails.getBalance()));
 				lblWinorloseamount.setText(main.getWinOrLoseString(main
 						.getWinOrLoseAmount()));
 				spins--;
