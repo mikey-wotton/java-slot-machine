@@ -160,10 +160,15 @@ public class GUI {
 
 		//JPanel overLayPanel = new JPanel(new OverlayLayout())
 		
+		JPanel holdingPanel = new JPanel();
+		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
+		holdingPanel.setBackground(Color.WHITE);
+		holdingPanel.setBounds(215, 10, 450, 460);	
+
+		
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(null);
-		cardPanel.setBounds(215, 10, 450, 460);	
-		cardPanel.setBackground(new Color(250, 78, 91));
+		cardPanel.setOpaque(false);
 		
 		// All labels for the images of the wheels
 		for(int i = 0; i < 5; i++){
@@ -177,7 +182,14 @@ public class GUI {
 				cardPanel.add(labels[i][j]);
 			}
 		}
+		JLabel winLine1 = new JLabel("Win line 1");
+		winLine1.setIcon(new ImageIcon("line_1.png"));
+		holdingPanel.add(winLine1);
 
+		holdingPanel.add(cardPanel);
+		
+		
+		
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount");
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
 		lblWinOrLoseAmount.setBounds(380, 500, 200, 20);
@@ -219,7 +231,7 @@ public class GUI {
 			}
 		});
 		contentPane.add(autoSpin);
-		contentPane.add(cardPanel);
+		contentPane.add(holdingPanel);
 		return contentPane;
 	}
 
