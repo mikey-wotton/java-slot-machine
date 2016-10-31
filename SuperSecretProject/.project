@@ -20,15 +20,5 @@
 			<type>1</type>
 			<location>C:/Users/mikey.wotton/Desktop/line_1.png</location>
 		</link>
-		<link>
-			<name>wild_large.jpg</name>
-			<type>1</type>
-			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/wild_large.jpg</location>
-		</link>
-		<link>
-			<name>wild_small.jpg</name>
-			<type>1</type>
-			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/wild_small.jpg</location>
-		</link>
 	</linkedResources>
 </projectDescription>
