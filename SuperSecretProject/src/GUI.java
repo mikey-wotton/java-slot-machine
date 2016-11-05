@@ -191,17 +191,17 @@ public class GUI {
 		
 		
 		
-		JLabel winLine1 = new JLabel("Win line 1");
+		JLabel winLine1 = new JLabel();
 		winLine1.setIcon(new ImageIcon("line_1.png"));
 		winLine1.setBounds(34, 130, 475, 5);
 		winLine1.setVisible(false);
 
-		JLabel winLine2 = new JLabel("Win line 2");
+		JLabel winLine2 = new JLabel();
 		winLine2.setIcon(new ImageIcon("line_1.png"));
 		winLine2.setBounds(34, 225, 475, 5);
 		winLine2.setVisible(false);
 
-		JLabel winLine3 = new JLabel("Win line 3");
+		JLabel winLine3 = new JLabel();
 		winLine3.setIcon(new ImageIcon("line_1.png"));
 		winLine3.setBounds(34, 320, 475, 5);
 		winLine3.setVisible(false);
