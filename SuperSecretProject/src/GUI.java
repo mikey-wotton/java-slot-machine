@@ -208,19 +208,27 @@ public class GUI {
 		
 		JLabel winLine4 = new JLabel();
 		winLine4.setIcon(new ImageIcon("line_4.png"));
-		winLine4.setBounds(34, 133, 390, 200);
+		winLine4.setBounds(34, 133, 390, 0);
 		winLine4.setVisible(false);
 		
 		JLabel winLine5 = new JLabel();
 		winLine5.setIcon(new ImageIcon("line_5.png"));
-		winLine5.setBounds(32, 127, 390, 200);
+		winLine5.setBounds(32, 127, 390, 0);
 		winLine5.setVisible(false);
+		
+		JLabel winLine6 = new JLabel();
+		winLine6.setIcon(new ImageIcon("line_6.png"));
+		winLine6.setBounds(34, 228, 390, 200);
+		winLine6.setVisible(false);
+		
 		
 		winLinePanel.add(winLine1);
 		winLinePanel.add(winLine2);
 		winLinePanel.add(winLine3);
 		winLinePanel.add(winLine4);
 		winLinePanel.add(winLine5);
+		winLinePanel.add(winLine6);
+
 
 		
 		holdingPanel.add(winLinePanel);
@@ -232,6 +240,8 @@ public class GUI {
 		winlineArray[2] = winLine3;
 		winlineArray[3] = winLine4;
 		winlineArray[4] = winLine5;
+		winlineArray[5] = winLine6;
+
 
 
 
