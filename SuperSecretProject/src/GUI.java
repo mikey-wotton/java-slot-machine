@@ -193,28 +193,35 @@ public class GUI {
 		
 		JLabel winLine1 = new JLabel();
 		winLine1.setIcon(new ImageIcon("line_1.png"));
-		winLine1.setBounds(34, 130, 475, 5);
+		winLine1.setBounds(34, 133, 390, 0);
 		winLine1.setVisible(false);
 
 		JLabel winLine2 = new JLabel();
 		winLine2.setIcon(new ImageIcon("line_1.png"));
-		winLine2.setBounds(34, 225, 475, 5);
+		winLine2.setBounds(34, 228, 390, 0);
 		winLine2.setVisible(false);
 
 		JLabel winLine3 = new JLabel();
 		winLine3.setIcon(new ImageIcon("line_1.png"));
-		winLine3.setBounds(34, 320, 475, 5);
+		winLine3.setBounds(34, 323, 390, 0);
 		winLine3.setVisible(false);
 		
 		JLabel winLine4 = new JLabel();
 		winLine4.setIcon(new ImageIcon("line_4.png"));
-		winLine4.setBounds(34, 130, 390, 200);
+		winLine4.setBounds(34, 133, 390, 200);
 		winLine4.setVisible(false);
+		
+		JLabel winLine5 = new JLabel();
+		winLine5.setIcon(new ImageIcon("line_5.png"));
+		winLine5.setBounds(32, 127, 390, 200);
+		winLine5.setVisible(false);
 		
 		winLinePanel.add(winLine1);
 		winLinePanel.add(winLine2);
 		winLinePanel.add(winLine3);
 		winLinePanel.add(winLine4);
+		winLinePanel.add(winLine5);
+
 		
 		holdingPanel.add(winLinePanel);
 		holdingPanel.add(cardPanel);
@@ -224,6 +231,8 @@ public class GUI {
 		winlineArray[1] = winLine2;
 		winlineArray[2] = winLine3;
 		winlineArray[3] = winLine4;
+		winlineArray[4] = winLine5;
+
 
 
 		
