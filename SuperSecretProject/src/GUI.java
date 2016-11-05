@@ -15,7 +15,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import java.awt.Color;
-import java.util.Random;
 
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
@@ -164,7 +163,7 @@ public class GUI {
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
 		holdingPanel.setBackground(Color.WHITE);
 		holdingPanel.setBounds(215, 10, 450, 460);	
-
+//
 		
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(null);
@@ -190,19 +189,21 @@ public class GUI {
 		winLinePanel.setBounds(215, 10, 450, 460);
 		winLinePanel.setOpaque(false);
 		
+		
+		
 		JLabel winLine1 = new JLabel("Win line 1");
 		winLine1.setIcon(new ImageIcon("line_1.png"));
-		winLine1.setBounds(0, 135, 475, 5);
+		winLine1.setBounds(34, 130, 475, 5);
 		winLine1.setVisible(false);
 
 		JLabel winLine2 = new JLabel("Win line 2");
 		winLine2.setIcon(new ImageIcon("line_1.png"));
-		winLine2.setBounds(0, 230, 475, 5);
+		winLine2.setBounds(34, 225, 475, 5);
 		winLine2.setVisible(false);
 
 		JLabel winLine3 = new JLabel("Win line 3");
 		winLine3.setIcon(new ImageIcon("line_1.png"));
-		winLine3.setBounds(0, 325, 475, 5);
+		winLine3.setBounds(34, 320, 475, 5);
 		winLine3.setVisible(false);
 		
 		winLinePanel.add(winLine1);
@@ -296,8 +297,7 @@ public class GUI {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
 						labels[i][j].setIcon(new ImageIcon("facedown_small.jpg"));
 						try {
-							Thread.sleep(20); // 1000 milliseconds is one
-												// second.
+							Thread.sleep(20);
 						} catch (InterruptedException ex) {
 							Thread.currentThread().interrupt();
 						}
@@ -305,16 +305,20 @@ public class GUI {
 				}				
 
 				main.spinOnce(numOfWinLines, lineStake);
+				int [] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new ImageIcon(
-								main.arrayOfWheels[i][j].imageString()));
+						labels[i][j].setIcon(new ImageIcon(main.arrayOfWheels[i][j].imageString()));
 						try {
-							Thread.sleep(50); // 1000 milliseconds is one
-												// second.
+							Thread.sleep(50); 
 						} catch (InterruptedException ex) {
 							Thread.currentThread().interrupt();
 						}
+					}	
+				}
+				for(int k = 0; k < winLineLabelArray.length; k++){
+					if(winLineArray[k] == 1){
+						winLineLabelArray[k].setVisible(true);
 					}
 				}
 				balance.setText(String.valueOf("Balance: £"+ main.userDetails.getBalance()));
@@ -328,6 +332,11 @@ public class GUI {
 					Thread.sleep(2000); // 1000 milliseconds is one second.
 				} catch (InterruptedException ex) {
 					Thread.currentThread().interrupt();
+				}
+				for(int k = 0; k < winLineLabelArray.length; k++){
+					if(winLineArray[k] == 1){
+						winLineLabelArray[k].setVisible(false);
+					}
 				}
 			}
 
