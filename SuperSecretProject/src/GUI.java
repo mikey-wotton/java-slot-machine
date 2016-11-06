@@ -304,6 +304,7 @@ public class GUI {
 				if (worker != null) {
 					worker.cancel(true);
 				}
+				autoSpinner.setValue(1);
 				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winlineArray);
 				worker.execute();
 			}
