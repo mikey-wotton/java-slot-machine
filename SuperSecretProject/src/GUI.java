@@ -60,8 +60,7 @@ public class GUI {
 		frame.setBackground(new Color(250, 78, 91));
 
 		JPanel mainScreen = new JPanel();
-		mainScreen.setBackground(UIManager
-				.getColor("OptionPane.errorDialog.titlePane.shadow"));
+		mainScreen.setBackground(new Color(46, 139, 87));
 		mainScreen.setLayout(null);
 
 		// Adding images
@@ -124,7 +123,7 @@ public class GUI {
 		JPanel contentPane = new JPanel();
 		JLabel[][] labels = new JLabel[5][5];
 		contentPane.setMinimumSize(new Dimension(900, 600));
-		contentPane.setBackground(new Color(250, 78, 91));
+		contentPane.setBackground(new Color(46, 139, 87));
 		contentPane.setLayout(null);
 
 		JLabel lblUserName = new JLabel("Username: "
@@ -161,7 +160,7 @@ public class GUI {
 		
 		JPanel holdingPanel = new JPanel();
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
-		holdingPanel.setBackground(new Color(250, 78, 91));
+		holdingPanel.setBackground(new Color(46, 139, 87));
 		holdingPanel.setBounds(215, 10, 450, 460);	
 //
 		
