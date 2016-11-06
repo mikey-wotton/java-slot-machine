@@ -161,7 +161,7 @@ public class GUI {
 		
 		JPanel holdingPanel = new JPanel();
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
-		holdingPanel.setBackground(Color.WHITE);
+		holdingPanel.setBackground(new Color(250, 78, 91));
 		holdingPanel.setBounds(215, 10, 450, 460);	
 //
 		
@@ -193,38 +193,53 @@ public class GUI {
 		
 		JLabel winLine1 = new JLabel();
 		winLine1.setIcon(new ImageIcon("line_1.png"));
-		winLine1.setBounds(34, 133, 390, 0);
+		winLine1.setBounds(34, 133, 390, 5);
 		winLine1.setVisible(false);
 
 		JLabel winLine2 = new JLabel();
 		winLine2.setIcon(new ImageIcon("line_1.png"));
-		winLine2.setBounds(34, 228, 390, 0);
+		winLine2.setBounds(34, 228, 390, 5);
 		winLine2.setVisible(false);
 
 		JLabel winLine3 = new JLabel();
 		winLine3.setIcon(new ImageIcon("line_1.png"));
-		winLine3.setBounds(34, 323, 390, 0);
+		winLine3.setBounds(34, 323, 390, 5);
 		winLine3.setVisible(false);
 		
 		JLabel winLine4 = new JLabel();
 		winLine4.setIcon(new ImageIcon("line_4.png"));
-		winLine4.setBounds(34, 133, 390, 0);
+		winLine4.setBounds(34, 133, 390, 200);
 		winLine4.setVisible(false);
 		
 		JLabel winLine5 = new JLabel();
 		winLine5.setIcon(new ImageIcon("line_5.png"));
-		winLine5.setBounds(32, 127, 390, 0);
+		winLine5.setBounds(32, 127, 390, 200);
 		winLine5.setVisible(false);
 		
 		JLabel winLine6 = new JLabel();
 		winLine6.setIcon(new ImageIcon("line_6.png"));
-		winLine6.setBounds(34, 127, 390, 0);
+		winLine6.setBounds(34, 127, 390, 200);
 		winLine6.setVisible(false);
 		
 		JLabel winLine7 = new JLabel();
 		winLine7.setIcon(new ImageIcon("line_7.png"));
-		winLine7.setBounds(34, 127, 390, 0);
+		winLine7.setBounds(34, 127, 390, 200);
 		winLine7.setVisible(false);
+		
+		JLabel winLine8 = new JLabel();
+		winLine8.setIcon(new ImageIcon("line_8.png"));
+		winLine8.setBounds(34, 127, 390, 200);
+		winLine8.setVisible(false);
+		
+		JLabel winLine9 = new JLabel();
+		winLine9.setIcon(new ImageIcon("line_9.png"));
+		winLine9.setBounds(34, 127, 390, 200);
+		winLine9.setVisible(false);
+		
+		JLabel winLine10 = new JLabel();
+		winLine10.setIcon(new ImageIcon("line_10.png"));
+		winLine10.setBounds(34, 127, 390, 200);
+		winLine10.setVisible(false);
 		
 		winLinePanel.add(winLine1);
 		winLinePanel.add(winLine2);
@@ -233,6 +248,12 @@ public class GUI {
 		winLinePanel.add(winLine5);
 		winLinePanel.add(winLine6);
 		winLinePanel.add(winLine7);
+		winLinePanel.add(winLine8);	
+		winLinePanel.add(winLine9);
+		winLinePanel.add(winLine10);
+
+
+
 
 
 
@@ -248,6 +269,12 @@ public class GUI {
 		winlineArray[4] = winLine5;
 		winlineArray[5] = winLine6;
 		winlineArray[6] = winLine7;
+		winlineArray[7] = winLine8;
+		winlineArray[8] = winLine9;
+		winlineArray[9] = winLine10;
+
+
+
 
 
 
@@ -368,9 +395,7 @@ public class GUI {
 					Thread.currentThread().interrupt();
 				}
 				for(int k = 0; k < winLineLabelArray.length; k++){
-					if(winLineArray[k] == 1){
 						winLineLabelArray[k].setVisible(false);
-					}
 				}
 			}
 
