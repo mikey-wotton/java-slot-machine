@@ -49,7 +49,7 @@ public class RandomiseWheels {
 	public Symbols[] generateFirstWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 99)) {
 				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
@@ -80,7 +80,7 @@ public class RandomiseWheels {
 	public Symbols[] generateSecondWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 99)) {
 				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){
@@ -111,7 +111,7 @@ public class RandomiseWheels {
 	public Symbols[] generateThirdWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 99)) {
 				wheel[i] = Symbols.TEN;
 			}
 		else if (isBetween(i, 35, 64 )){

@@ -58,6 +58,7 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
 		frame.setBackground(new Color(250, 78, 91));
+		frame.setResizable(false);
 
 		JPanel mainScreen = new JPanel();
 		mainScreen.setBackground(new Color(46, 139, 87));
@@ -185,100 +186,22 @@ public class GUI {
 		//Panels used to show win lines with an OverlayLayout manager
 		JPanel winLinePanel = new JPanel();
 		winLinePanel.setLayout(null);
-		winLinePanel.setBounds(215, 10, 450, 460);
+		winLinePanel.setBounds(283, 264, 390, 200);
 		winLinePanel.setOpaque(false);
 		
+		JLabel[] winLineArray = new JLabel[10];
+		for(int i = 0; i < 10; i++){
+			winLineArray[i] = new JLabel();
+			winLineArray[i].setIcon(new ImageIcon("line_"+String.valueOf(i)+".png"));
+			winLineArray[i].setBounds(34, 127, 390, 200);
+			winLineArray[i].setVisible(false);	
+			winLinePanel.add(winLineArray[i]);
+		}
 		
-		
-		JLabel winLine1 = new JLabel();
-		winLine1.setIcon(new ImageIcon("line_1.png"));
-		winLine1.setBounds(34, 133, 390, 5);
-		winLine1.setVisible(false);
-
-		JLabel winLine2 = new JLabel();
-		winLine2.setIcon(new ImageIcon("line_1.png"));
-		winLine2.setBounds(34, 228, 390, 5);
-		winLine2.setVisible(false);
-
-		JLabel winLine3 = new JLabel();
-		winLine3.setIcon(new ImageIcon("line_1.png"));
-		winLine3.setBounds(34, 323, 390, 5);
-		winLine3.setVisible(false);
-		
-		JLabel winLine4 = new JLabel();
-		winLine4.setIcon(new ImageIcon("line_4.png"));
-		winLine4.setBounds(34, 133, 390, 200);
-		winLine4.setVisible(false);
-		
-		JLabel winLine5 = new JLabel();
-		winLine5.setIcon(new ImageIcon("line_5.png"));
-		winLine5.setBounds(32, 127, 390, 200);
-		winLine5.setVisible(false);
-		
-		JLabel winLine6 = new JLabel();
-		winLine6.setIcon(new ImageIcon("line_6.png"));
-		winLine6.setBounds(34, 127, 390, 200);
-		winLine6.setVisible(false);
-		
-		JLabel winLine7 = new JLabel();
-		winLine7.setIcon(new ImageIcon("line_7.png"));
-		winLine7.setBounds(34, 127, 390, 200);
-		winLine7.setVisible(false);
-		
-		JLabel winLine8 = new JLabel();
-		winLine8.setIcon(new ImageIcon("line_8.png"));
-		winLine8.setBounds(34, 127, 390, 200);
-		winLine8.setVisible(false);
-		
-		JLabel winLine9 = new JLabel();
-		winLine9.setIcon(new ImageIcon("line_9.png"));
-		winLine9.setBounds(34, 127, 390, 200);
-		winLine9.setVisible(false);
-		
-		JLabel winLine10 = new JLabel();
-		winLine10.setIcon(new ImageIcon("line_10.png"));
-		winLine10.setBounds(34, 127, 390, 200);
-		winLine10.setVisible(false);
-		
-		winLinePanel.add(winLine1);
-		winLinePanel.add(winLine2);
-		winLinePanel.add(winLine3);
-		winLinePanel.add(winLine4);
-		winLinePanel.add(winLine5);
-		winLinePanel.add(winLine6);
-		winLinePanel.add(winLine7);
-		winLinePanel.add(winLine8);	
-		winLinePanel.add(winLine9);
-		winLinePanel.add(winLine10);
-
-
-
-
-
-
 		
 		holdingPanel.add(winLinePanel);
 		holdingPanel.add(cardPanel);
-		
-		JLabel[] winlineArray = new JLabel[10];
-		winlineArray[0] = winLine1;
-		winlineArray[1] = winLine2;
-		winlineArray[2] = winLine3;
-		winlineArray[3] = winLine4;
-		winlineArray[4] = winLine5;
-		winlineArray[5] = winLine6;
-		winlineArray[6] = winLine7;
-		winlineArray[7] = winLine8;
-		winlineArray[8] = winLine9;
-		winlineArray[9] = winLine10;
-
-
-
-
-
-
-
-		
+			
 		
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount");
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
@@ -304,7 +227,7 @@ public class GUI {
 					worker.cancel(true);
 				}
 				autoSpinner.setValue(1);
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winlineArray);
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
 				worker.execute();
 			}
 		});
@@ -317,7 +240,7 @@ public class GUI {
 				if (worker != null) {
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winlineArray);
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
 				worker.execute();
 			}
 		});
