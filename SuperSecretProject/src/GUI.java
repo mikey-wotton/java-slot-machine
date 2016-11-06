@@ -1,5 +1,8 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -7,10 +10,16 @@ import javax.swing.JSpinner;
 import javax.swing.OverlayLayout;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingWorker;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+
 import javax.swing.JLabel;
+
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
 
@@ -51,46 +60,50 @@ public class GUI {
 		frame.setBounds(100, 100, 900, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
-		frame.setBackground(new Color(250, 78, 91));
-		frame.setResizable(false);
-
+		frame.setBackground(new Color(250, 78, 91));	
+		
+		
+		//sets and handles the minimum size of the frame, disallowing users resizing application to tiny a small window.
+		frame.setMinimumSize(new Dimension(900, 600));
+	    frame.addComponentListener(new ComponentAdapter() {
+	      public void componentResized(ComponentEvent evt) {
+	        Dimension size = frame.getSize();
+	        Dimension min = frame.getMinimumSize();
+	        if (size.getWidth() < min.getWidth()) {
+	          frame.setSize((int) min.getWidth(), (int) size.getHeight());
+	        }
+	        if (size.getHeight() < min.getHeight()) {
+	          frame.setSize((int) size.getWidth(), (int) min.getHeight());
+	        }
+	      }
+	    });
+	    //----------------------------------------
+	    
+	    
+	    	    
 		JPanel mainScreen = new JPanel();
-		mainScreen.setBackground(new Color(46, 139, 87));
-		mainScreen.setLayout(null);
-
-		// Adding images
-		JLabel lblAceimage = new JLabel("aceImage");
-		lblAceimage.setVerticalAlignment(SwingConstants.TOP);
-		lblAceimage.setIcon(new ImageIcon("ace_front.jpg"));
-		lblAceimage.setBounds(10, 50, 176, 230);
-		mainScreen.add(lblAceimage);
-
-		JLabel lblKingimage = new JLabel("kingImage");
-		lblKingimage.setVerticalAlignment(SwingConstants.TOP);
-		lblKingimage.setIcon(new ImageIcon("king_front.jpg"));
-		lblKingimage.setBounds(187, 100, 176, 230);
-		mainScreen.add(lblKingimage);
-
-		JLabel lblQueenimage = new JLabel("queenImage");
-		lblQueenimage.setVerticalAlignment(SwingConstants.TOP);
-		lblQueenimage.setIcon(new ImageIcon("queen_front.jpg"));
-		lblQueenimage.setBounds(352, 50, 176, 230);
-		mainScreen.add(lblQueenimage);
-
-		JLabel lblJackimage = new JLabel("jackImage");
-		lblJackimage.setVerticalAlignment(SwingConstants.TOP);
-		lblJackimage.setIcon(new ImageIcon("jack_front.jpg"));
-		lblJackimage.setBounds(540, 100, 176, 230);
-		mainScreen.add(lblJackimage);
-
-		JLabel lblTenimage = new JLabel("tenImage");
-		lblTenimage.setVerticalAlignment(SwingConstants.TOP);
-		lblTenimage.setIcon(new ImageIcon("ten_front.jpg"));
-		lblTenimage.setBounds(716, 50, 176, 230);
-		mainScreen.add(lblTenimage);
+		mainScreen.setBackground(new Color(250, 78, 91));
+		mainScreen.setLayout(new BorderLayout());
+		
+		JPanel centerPanel = new JPanel();
+		centerPanel.setBackground(new Color(0, 153, 102));
+		centerPanel.setLayout(new FlowLayout());
+		
+		JLabel[] array = new JLabel[5];
+		for(int i = 0; i < 5; i++){
+			array[i] = new JLabel();
+			//array[i].setVerticalAlignment(SwingConstants.TOP);
+			array[i].setIcon(new ImageIcon(String.valueOf(i)+"_front.jpg"));
+			centerPanel.add(array[i], BorderLayout.CENTER);
+		}
+		
+		JPanel buttonsPanel = new JPanel();	
+		buttonsPanel.setBackground(new Color(0, 153, 102));
+		buttonsPanel.setLayout(new BorderLayout());
+		
 
 		JButton simPlay = new JButton("Simulated Play");
-		simPlay.setBounds(10, 475, 200, 80);
+		simPlay.setPreferredSize(new Dimension(200, 80));
 		simPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainScreen.setVisible(false);
@@ -100,16 +113,18 @@ public class GUI {
 
 			}
 		});
-		mainScreen.add(simPlay);
+		buttonsPanel.add(simPlay, BorderLayout.LINE_START);
 
 		JButton realPlay = new JButton("Real Play");
-		realPlay.setBounds(674, 475, 200, 80);
+		realPlay.setPreferredSize(new Dimension(200, 80));
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Real Play");
 			}
 		});
-		mainScreen.add(realPlay);
+		buttonsPanel.add(realPlay, BorderLayout.LINE_END);
+		mainScreen.add(centerPanel, BorderLayout.CENTER);
+		mainScreen.add(buttonsPanel, BorderLayout.PAGE_END);
 		frame.getContentPane().add(mainScreen);
 
 	}
@@ -157,7 +172,6 @@ public class GUI {
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
 		holdingPanel.setBackground(new Color(46, 139, 87));
 		holdingPanel.setBounds(215, 10, 450, 460);	
-//
 		
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(null);
