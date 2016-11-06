@@ -1,6 +1,5 @@
 import java.awt.EventQueue;
 import java.awt.Dimension;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -8,17 +7,12 @@ import javax.swing.JSpinner;
 import javax.swing.OverlayLayout;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingWorker;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JLabel;
-
 import java.awt.Color;
-
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
-import javax.swing.UIManager;
 
 public class GUI {
 	public Main main;
