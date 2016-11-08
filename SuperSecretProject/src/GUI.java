@@ -58,14 +58,14 @@ public class GUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 900, 600);
+		frame.setBounds(100, 100, 900, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
 		frame.setBackground(new Color(250, 78, 91));	
 		
 		
 		//sets and handles the minimum size of the frame, disallowing users resizing application to tiny a small window.
-		frame.setMinimumSize(new Dimension(900, 600));
+		frame.setMinimumSize(new Dimension(900, 700));
 	    frame.addComponentListener(new ComponentAdapter() {
 	      public void componentResized(ComponentEvent evt) {
 	        Dimension size = frame.getSize();
@@ -90,10 +90,15 @@ public class GUI {
 		centerPanel.setBackground(new Color(0, 153, 102));
 		centerPanel.setLayout(new FlowLayout());
 		
+		JPanel bannerPanel = new JPanel();
+		bannerPanel.setLayout(new FlowLayout());
+		bannerPanel.setBackground(new Color(0, 153, 102));
+		
 		JLabel banner = new JLabel();
 		banner.setIcon(new ImageIcon("banner.png"));
 		banner.setOpaque(false);
-		mainScreen.add(banner, BorderLayout.PAGE_START);
+		bannerPanel.add(banner);
+		mainScreen.add(bannerPanel, BorderLayout.PAGE_START);
 		
 		JLabel[] array = new JLabel[5];
 		for(int i = 0; i < 5; i++){
