@@ -98,7 +98,7 @@ public class GUI {
 		JLabel[] array = new JLabel[5];
 		for(int i = 0; i < 5; i++){
 			array[i] = new JLabel();
-			//array[i].setVerticalAlignment(SwingConstants.TOP);
+			//array[i].setVerticalAlignment(SwingConstants.Center);
 			array[i].setIcon(new ImageIcon(String.valueOf(i)+"_front.jpg"));
 			centerPanel.add(array[i], BorderLayout.CENTER);
 		}
