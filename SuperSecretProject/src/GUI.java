@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -82,12 +83,17 @@ public class GUI {
 	    
 	    	    
 		JPanel mainScreen = new JPanel();
-		mainScreen.setBackground(new Color(250, 78, 91));
+		mainScreen.setBackground(new Color(0, 153, 102));
 		mainScreen.setLayout(new BorderLayout());
 		
 		JPanel centerPanel = new JPanel();
 		centerPanel.setBackground(new Color(0, 153, 102));
 		centerPanel.setLayout(new FlowLayout());
+		
+		JLabel banner = new JLabel();
+		banner.setIcon(new ImageIcon("banner.png"));
+		banner.setOpaque(false);
+		mainScreen.add(banner, BorderLayout.PAGE_START);
 		
 		JLabel[] array = new JLabel[5];
 		for(int i = 0; i < 5; i++){
