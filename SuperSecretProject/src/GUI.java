@@ -30,6 +30,7 @@ public class GUI {
 	public Main main;
 	private JFrame frame;
 	private SwingWorker<Void, String> worker;
+	private Color bgColour;
 
 	/**
 	 * Launch the application.
@@ -52,7 +53,8 @@ public class GUI {
 	 */
 	public GUI() {
 		main = new Main("Mr. Lister", 500.00);
-		initialize();
+		bgColour = new Color(0, 153, 102);
+		initialize();		
 	}
 
 	/**
@@ -63,7 +65,7 @@ public class GUI {
 		frame.setBounds(100, 100, 900, 700);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
-		frame.setBackground(new Color(250, 78, 91));
+		frame.setBackground(bgColour);
 
 		// sets and handles the minimum size of the frame, disallowing users
 		// resizing application to tiny a small window.
@@ -83,16 +85,16 @@ public class GUI {
 		// ----------------------------------------
 
 		JPanel mainScreen = new JPanel();
-		mainScreen.setBackground(new Color(0, 153, 102));
+		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new BorderLayout());
 
 		JPanel centerPanel = new JPanel();
-		centerPanel.setBackground(new Color(0, 153, 102));
+		centerPanel.setBackground(bgColour);
 		centerPanel.setLayout(new FlowLayout());
 
 		JPanel bannerPanel = new JPanel();
 		bannerPanel.setLayout(new FlowLayout());
-		bannerPanel.setBackground(new Color(0, 153, 102));
+		bannerPanel.setBackground(bgColour);
 
 		JLabel banner = new JLabel();
 		banner.setIcon(new ImageIcon("banner.png"));
@@ -109,7 +111,7 @@ public class GUI {
 		}
 
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(new Color(0, 153, 102));
+		buttonsPanel.setBackground(bgColour);
 		buttonsPanel.setLayout(new BorderLayout());
 
 		JButton simPlay = new JButton("Simulated Play");
@@ -143,21 +145,21 @@ public class GUI {
 		JPanel contentPane = new JPanel();
 		JLabel[][] labels = new JLabel[5][5];
 		contentPane.setMinimumSize(new Dimension(900, 700));
-		contentPane.setBackground(new Color(46, 139, 87));
+		contentPane.setBackground(bgColour);
 		contentPane.setLayout(new BorderLayout());
 
 		JPanel holdingPanel = new JPanel();
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
-		holdingPanel.setBackground(new Color(46, 139, 87));
+		holdingPanel.setBackground(bgColour);
 
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setBackground(new Color(46, 139, 87));
+		cardPanel.setBackground(bgColour);
 		//cardPanel.setOpaque(false);
 		
 		JPanel bannerPanel = new JPanel();
 		bannerPanel.setLayout(new FlowLayout());
-		bannerPanel.setBackground(new Color(0, 153, 102));
+		bannerPanel.setBackground(bgColour);
 
 		JLabel banner = new JLabel();
 		banner.setIcon(new ImageIcon("banner.png"));
@@ -203,6 +205,7 @@ public class GUI {
 		JPanel lineEnd_springLayout = new JPanel();
 		SpringLayout endSpringLayout = new SpringLayout();
 		lineEnd_springLayout.setLayout(endSpringLayout);
+		lineEnd_springLayout.setBackground(bgColour);
 		lineEnd_springLayout.setPreferredSize(new Dimension(180,300));
 		
 		JLabel lblwinLines = new JLabel("No. of Win Lines: ");	
@@ -233,6 +236,7 @@ public class GUI {
 		//LINE_START COMPONENTS
 		JPanel lineStart_springLayout = new JPanel();
 		SpringLayout startSpringLayout = new SpringLayout();
+		lineStart_springLayout.setBackground(bgColour);
 		lineStart_springLayout.setLayout(startSpringLayout);
 		lineStart_springLayout.setPreferredSize(new Dimension(180,300));
 
@@ -251,7 +255,7 @@ public class GUI {
 		//the Page_End of the boxLayout grid
 		JPanel bottomBorderLayoutPanel = new JPanel();
 		bottomBorderLayoutPanel.setLayout(new BorderLayout());
-		bottomBorderLayoutPanel.setBackground(new Color(200, 99, 30));
+		bottomBorderLayoutPanel.setBackground(bgColour);
 		
 		//bottom_CENTER components
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount",SwingConstants.CENTER);
@@ -261,6 +265,7 @@ public class GUI {
 		JPanel bottomBorder_LineStart = new JPanel();
 		SpringLayout bottom_LineStartSwing = new SpringLayout();
 		bottomBorder_LineStart.setLayout(bottom_LineStartSwing);
+		bottomBorder_LineStart.setBackground(bgColour);
 		bottomBorder_LineStart.setPreferredSize(new Dimension(180,100));
 		
 		JLabel lblNumberOfAutoSpins = new JLabel("autoPlaySpins");
@@ -304,6 +309,7 @@ public class GUI {
 		JPanel bottomBorder_LineEnd = new JPanel();
 		SpringLayout bottom_LineEndSwing = new SpringLayout();
 		bottomBorder_LineEnd.setLayout(bottom_LineEndSwing);
+		bottomBorder_LineEnd.setBackground(bgColour);
 		bottomBorder_LineEnd.setPreferredSize(new Dimension(180,100));
 		JButton spinOnce = new JButton("Spin Once");
 		spinOnce.setPreferredSize(new Dimension(145,55));
