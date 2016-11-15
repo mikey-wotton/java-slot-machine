@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.OverlayLayout;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.SpringLayout;
 import javax.swing.SwingWorker;
 
 import java.awt.event.ActionListener;
@@ -148,12 +149,22 @@ public class GUI {
 		JPanel holdingPanel = new JPanel();
 		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
 		holdingPanel.setBackground(new Color(46, 139, 87));
-		holdingPanel.setBounds(215, 10, 450, 460);
 
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setBackground(Color.WHITE);
+		cardPanel.setBackground(new Color(46, 139, 87));
 		//cardPanel.setOpaque(false);
+		
+		JPanel bannerPanel = new JPanel();
+		bannerPanel.setLayout(new FlowLayout());
+		bannerPanel.setBackground(new Color(0, 153, 102));
+
+		JLabel banner = new JLabel();
+		banner.setIcon(new ImageIcon("banner.png"));
+		banner.setOpaque(false);
+		bannerPanel.add(banner);
+		contentPane.add(bannerPanel, BorderLayout.PAGE_START);
+		
 
 		// Create Labels for the wheels
 		for (int i = 0; i < 5; i++) {
@@ -173,46 +184,155 @@ public class GUI {
 		// Panels used to show win lines with an OverlayLayout manager		
 		JPanel winLinePanel = new JPanel();
 		winLinePanel.setLayout(null);
-		winLinePanel.setBounds(283, 264, 390, 200);
 		winLinePanel.setOpaque(false);
 		JLabel[] winLineArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			winLineArray[i] = new JLabel();
-			winLineArray[i].setIcon(new ImageIcon("line_" + String.valueOf(i)
-					+ ".png"));
-			winLineArray[i].setBounds(34, 127, 390, 200);
+			winLineArray[i].setIcon(new StretchIcon("line_" + String.valueOf(i)+ ".png"));
 			winLineArray[i].setVisible(false);
 			winLinePanel.add(winLineArray[i]);
 		}
+		
+		holdingPanel.add(winLinePanel);
+		holdingPanel.add(cardPanel);
+
+		
+		
+		
+		//LINE_END COMPONENTS
+		JPanel lineEnd_springLayout = new JPanel();
+		SpringLayout endSpringLayout = new SpringLayout();
+		lineEnd_springLayout.setLayout(endSpringLayout);
+		lineEnd_springLayout.setPreferredSize(new Dimension(180,300));
+		
+		JLabel lblwinLines = new JLabel("No. of Win Lines: ");	
+		SpinnerNumberModel modelWinLinesSpinner = new SpinnerNumberModel(1, 1, 10, 1);
+		JSpinner winLinesSpinner = new JSpinner(modelWinLinesSpinner);
+		winLinesSpinner.setEditor(new JSpinner.DefaultEditor(winLinesSpinner));		
+		endSpringLayout.putConstraint(SpringLayout.WEST, lblwinLines, 10, SpringLayout.WEST, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.NORTH, lblwinLines, 10, SpringLayout.NORTH, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.NORTH, winLinesSpinner, 10, SpringLayout.NORTH, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.EAST, winLinesSpinner, 0, SpringLayout.EAST, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.WEST, winLinesSpinner, 5, SpringLayout.EAST, lblwinLines);
+		
+		JLabel lblstakeValue = new JLabel("Stake per line:  ");
+		SpinnerNumberModel modelStakeSpinner = new SpinnerNumberModel(1, 1, 10,	0.5);
+		JSpinner winStakeSpinner = new JSpinner(modelStakeSpinner);
+		winStakeSpinner.setEditor(new JSpinner.DefaultEditor(winStakeSpinner));		
+		endSpringLayout.putConstraint(SpringLayout.WEST, lblstakeValue, 20, SpringLayout.WEST, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.NORTH, lblstakeValue, 7, SpringLayout.SOUTH, lblwinLines);
+		endSpringLayout.putConstraint(SpringLayout.NORTH, winStakeSpinner, 5, SpringLayout.SOUTH, winLinesSpinner);
+		endSpringLayout.putConstraint(SpringLayout.EAST, winStakeSpinner, 0, SpringLayout.EAST, lineEnd_springLayout);
+		endSpringLayout.putConstraint(SpringLayout.WEST, winStakeSpinner, 5, SpringLayout.EAST, lblstakeValue);
+		
+		lineEnd_springLayout.add(winLinesSpinner);
+		lineEnd_springLayout.add(lblwinLines);
+		lineEnd_springLayout.add(winStakeSpinner);
+		lineEnd_springLayout.add(lblstakeValue);
+
+		//LINE_START COMPONENTS
+		JPanel lineStart_springLayout = new JPanel();
+		SpringLayout startSpringLayout = new SpringLayout();
+		lineStart_springLayout.setLayout(startSpringLayout);
+		lineStart_springLayout.setPreferredSize(new Dimension(180,300));
+
+		JLabel lblUserName = new JLabel("Username: "+ main.userDetails.getUsername());
+		startSpringLayout.putConstraint(SpringLayout.WEST, lblUserName, 10, SpringLayout.WEST, lineStart_springLayout);
+		startSpringLayout.putConstraint(SpringLayout.NORTH, lblUserName, 10, SpringLayout.NORTH, lineStart_springLayout);
+		
+		JLabel lblBalance = new JLabel("Balance: "+ String.valueOf(main.userDetails.getBalance()));
+		startSpringLayout.putConstraint(SpringLayout.WEST, lblBalance, 10, SpringLayout.WEST, lineStart_springLayout);
+		startSpringLayout.putConstraint(SpringLayout.NORTH, lblBalance, 5, SpringLayout.SOUTH, lblUserName);
+		
+		lineStart_springLayout.add(lblUserName);
+		lineStart_springLayout.add(lblBalance);
+
 		
 		//the Page_End of the boxLayout grid
 		JPanel bottomBorderLayoutPanel = new JPanel();
 		bottomBorderLayoutPanel.setLayout(new BorderLayout());
 		bottomBorderLayoutPanel.setBackground(new Color(200, 99, 30));
 		
+		//bottom_CENTER components
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount",SwingConstants.CENTER);
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
+			
+		//bottom_LINESTART components
+		JPanel bottomBorder_LineStart = new JPanel();
+		SpringLayout bottom_LineStartSwing = new SpringLayout();
+		bottomBorder_LineStart.setLayout(bottom_LineStartSwing);
+		bottomBorder_LineStart.setPreferredSize(new Dimension(180,100));
 		
+		JLabel lblNumberOfAutoSpins = new JLabel("autoPlaySpins");
+		lblNumberOfAutoSpins.setText("No. of Auto-spins: ");
+	
+		SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 100, 1);
+		JSpinner autoSpinner = new JSpinner(model1);
+		autoSpinner.setEditor(new JSpinner.DefaultEditor(autoSpinner));
+		autoSpinner.setPreferredSize(new Dimension(40,20));
 		
-		JLabel lblUserName = new JLabel("Username: "+ main.userDetails.getUsername()+ "     ");
-		lblUserName.setBounds(10, 10, 200, 20);
+		JButton autoSpin = new JButton("Auto-Play");
+		autoSpin.setPreferredSize(new Dimension(145,55));
+		autoSpin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (worker != null) {
+					worker.cancel(true);
+				}
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
+				worker.execute();
+			}
+		});
+		
+		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, lblNumberOfAutoSpins, 10, SpringLayout.WEST, bottomBorder_LineStart);
+		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, lblNumberOfAutoSpins, 10, SpringLayout.NORTH, bottomBorder_LineStart);
+		
+		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, autoSpinner, 0, SpringLayout.EAST, lblNumberOfAutoSpins);
+		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, autoSpinner, 10, SpringLayout.NORTH, bottomBorder_LineStart);
+		
+		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, autoSpin, 10, SpringLayout.WEST, bottomBorder_LineStart);
+		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, autoSpin, 10, SpringLayout.SOUTH, lblNumberOfAutoSpins);
 
 		
+		bottomBorder_LineStart.add(autoSpin);
+		bottomBorder_LineStart.add(lblNumberOfAutoSpins);
+		bottomBorder_LineStart.add(autoSpinner);
 		
 		
+
+		
+		//bottom_LINEEND components
+		JPanel bottomBorder_LineEnd = new JPanel();
+		SpringLayout bottom_LineEndSwing = new SpringLayout();
+		bottomBorder_LineEnd.setLayout(bottom_LineEndSwing);
+		bottomBorder_LineEnd.setPreferredSize(new Dimension(180,100));
+		JButton spinOnce = new JButton("Spin Once");
+		spinOnce.setPreferredSize(new Dimension(145,55));
+		spinOnce.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (worker != null) {
+					worker.cancel(true);
+				}
+				autoSpinner.setValue(1);
+				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
+				worker.execute();
+			}
+		});
+		bottom_LineEndSwing.putConstraint(SpringLayout.EAST, spinOnce, -10, SpringLayout.EAST, bottomBorder_LineEnd);
+		bottom_LineEndSwing.putConstraint(SpringLayout.SOUTH, spinOnce,  -10, SpringLayout.SOUTH, bottomBorder_LineEnd);
+		bottomBorder_LineEnd.add(spinOnce);
+		
+		
+		//bottomBorder adding components
+		bottomBorderLayoutPanel.add(bottomBorder_LineStart,BorderLayout.LINE_START);
 		bottomBorderLayoutPanel.add(lblWinOrLoseAmount, BorderLayout.CENTER);
+		bottomBorderLayoutPanel.add(bottomBorder_LineEnd,BorderLayout.LINE_END);
+
 		
-		
-		
-
-		holdingPanel.add(winLinePanel);
-		holdingPanel.add(cardPanel);
-
-		contentPane.add(bottomBorderLayoutPanel, BorderLayout.PAGE_END);
-
-		contentPane.add(lblUserName, BorderLayout.LINE_START);
-
+		//contentPane add components
+		contentPane.add(lineEnd_springLayout, BorderLayout.LINE_END);
+		contentPane.add(lineStart_springLayout, BorderLayout.LINE_START);
 		contentPane.add(holdingPanel, BorderLayout.CENTER);
+		contentPane.add(bottomBorderLayoutPanel, BorderLayout.PAGE_END);
 
 		return contentPane;
 	}
@@ -249,8 +369,9 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j]
-								.setIcon(new ImageIcon("facedown_small.jpg"));
+						System.out.println(labels[i][j].getBounds());
+						labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
+						
 						try {
 							Thread.sleep(20);
 						} catch (InterruptedException ex) {
@@ -263,8 +384,7 @@ public class GUI {
 				int[] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new ImageIcon(
-								main.arrayOfWheels[i][j].imageString()));
+						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].imageString()));
 						try {
 							Thread.sleep(50);
 						} catch (InterruptedException ex) {
@@ -277,10 +397,8 @@ public class GUI {
 						winLineLabelArray[k].setVisible(true);
 					}
 				}
-				balance.setText(String.valueOf("Balance: £"
-						+ main.userDetails.getBalance()));
-				lblWinorloseamount.setText(main.getWinOrLoseString(main
-						.getWinOrLoseAmount()));
+				balance.setText(String.valueOf("Balance: £"	+ main.userDetails.getBalance()));
+				lblWinorloseamount.setText(main.getWinOrLoseString(main.getWinOrLoseAmount()));
 				spins--;
 				if (spins != 0) {
 					autoSpinner.setValue(spins);
