@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -178,6 +179,7 @@ public class GUI {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
+				labels[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				labels[i][j].setOpaque(false);
 				cardPanel.add(labels[i][j]);
 			}
