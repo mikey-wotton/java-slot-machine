@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -155,7 +154,7 @@ public class GUI {
 
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setBackground(Color.WHITE);
+		cardPanel.setBackground(bgColour);
 		//cardPanel.setOpaque(false);
 		
 		JPanel bannerPanel = new JPanel();
@@ -179,7 +178,6 @@ public class GUI {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
-			    labels[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				labels[i][j].setOpaque(false);
 				cardPanel.add(labels[i][j]);
 			}
@@ -187,14 +185,13 @@ public class GUI {
 		
 		// Panels used to show win lines with an OverlayLayout manager		
 		JPanel winLinePanel = new JPanel();
-		winLinePanel.setLayout(new GridLayout(5,5));
-		
+		winLinePanel.setLayout(null);
 		winLinePanel.setOpaque(false);
 		JLabel[] winLineArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			winLineArray[i] = new JLabel();
 			winLineArray[i].setIcon(new StretchIcon("line_" + String.valueOf(i)+ ".png"));
-			winLineArray[i].setVisible(true);
+			winLineArray[i].setVisible(false);
 			winLinePanel.add(winLineArray[i]);
 		}
 		
@@ -403,7 +400,6 @@ public class GUI {
 				}
 				for (int k = 0; k < winLineLabelArray.length; k++) {
 					if (winLineArray[k] == 1) {
-						
 						winLineLabelArray[k].setVisible(true);
 					}
 				}
