@@ -1,8 +1,11 @@
 import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -187,15 +190,21 @@ public class GUI {
 		
 		// Panels used to show win lines with an OverlayLayout manager		
 		JPanel winLinePanel = new JPanel();
-		winLinePanel.setLayout(null);
+		winLinePanel.setLayout(new CardLayout());
+		//winLinePanel.setBackground(Color.RED);
 		winLinePanel.setOpaque(false);
 		JLabel[] winLineArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			winLineArray[i] = new JLabel();
+			// Work needs to be done here
+			winLineArray[i].setLocation(labels[1][0].getHeight(), labels[1][0].getWidth());
+			// So damn close
 			winLineArray[i].setIcon(new StretchIcon("line_" + String.valueOf(i)+ ".png"));
-			winLineArray[i].setVisible(false);
-			winLinePanel.add(winLineArray[i]);
+			winLineArray[i].setVisible(true);
 		}
+		
+		winLinePanel.add(winLineArray[0]);
+		
 		
 		holdingPanel.add(winLinePanel);
 		holdingPanel.add(cardPanel);
