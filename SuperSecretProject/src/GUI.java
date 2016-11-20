@@ -4,12 +4,15 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.LayoutManager;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
@@ -119,7 +122,7 @@ public class GUI {
 		buttonsPanel.setLayout(new BorderLayout());
 
 		JButton simPlay = new JButton("Simulated Play");
-		simPlay.setPreferredSize(new Dimension(200, 80));
+		simPlay.setPreferredSize(new Dimension(250, 80));
 		simPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainScreen.setVisible(false);
@@ -132,7 +135,7 @@ public class GUI {
 		buttonsPanel.add(simPlay, BorderLayout.LINE_START);
 
 		JButton realPlay = new JButton("Real Play");
-		realPlay.setPreferredSize(new Dimension(200, 80));
+		realPlay.setPreferredSize(new Dimension(250, 80));
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Real Play");
@@ -152,14 +155,15 @@ public class GUI {
 		contentPane.setBackground(bgColour);
 		contentPane.setLayout(new BorderLayout());
 
-		JPanel holdingPanel = new JPanel();
-		holdingPanel.setLayout(new OverlayLayout(holdingPanel));
-		holdingPanel.setBackground(bgColour);
+		
+		JPanel holdingPane = new JPanel();
+		CardLayout card = new CardLayout();
+		holdingPane.setLayout(card);
+		holdingPane.setOpaque(true);
 
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setBackground(bgColour);
-		//cardPanel.setOpaque(false);
+		cardPanel.setOpaque(false);
 		
 		JPanel bannerPanel = new JPanel();
 		bannerPanel.setLayout(new FlowLayout());
@@ -171,44 +175,29 @@ public class GUI {
 		bannerPanel.add(banner);
 		contentPane.add(bannerPanel, BorderLayout.PAGE_START);
 		
-
-		// Create Labels for the wheels
-		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
-				labels[j][i] = new JLabel();
-			}
-		}
 		// Set those labels to face down image and place them inside the gridlayout
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
-				labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
-				labels[i][j].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				labels[i][j].setOpaque(false);
-				cardPanel.add(labels[i][j]);
+				labels[j][i] = new JLabel();
+				labels[j][i].setIcon(new StretchIcon("facedown_small.jpg"));
+				labels[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				labels[j][i].setOpaque(false);
+				cardPanel.add(labels[j][i]);
 			}
 		}
-		
+
+
 		// Panels used to show win lines with an OverlayLayout manager		
-		JPanel winLinePanel = new JPanel();
-		winLinePanel.setLayout(new CardLayout());
-		//winLinePanel.setBackground(Color.RED);
-		winLinePanel.setOpaque(false);
 		JLabel[] winLineArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			winLineArray[i] = new JLabel();
-			// Work needs to be done here
-			winLineArray[i].setLocation(labels[1][0].getHeight(), labels[1][0].getWidth());
-			// So damn close
-			winLineArray[i].setIcon(new StretchIcon("line_" + String.valueOf(i)+ ".png"));
-			winLineArray[i].setVisible(true);
+			winLineArray[i].setIcon(new StretchIcon("winLines\\line_" + String.valueOf(i)+ ".png", false));
+			winLineArray[i].setOpaque(false);
+			holdingPane.add(winLineArray[i], String.valueOf(i));
 		}
-		
-		winLinePanel.add(winLineArray[0]);
-		
-		
-		holdingPanel.add(winLinePanel);
-		holdingPanel.add(cardPanel);
 
+		holdingPane.add(cardPanel, "11");		
+		card.show(holdingPane, "11");
 		
 		
 		
@@ -271,7 +260,8 @@ public class GUI {
 		//bottom_CENTER components
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount",SwingConstants.CENTER);
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
-			
+		lblWinOrLoseAmount.setFont(new Font("Serif", Font.BOLD, 30));
+
 		//bottom_LINESTART components
 		JPanel bottomBorder_LineStart = new JPanel();
 		SpringLayout bottom_LineStartSwing = new SpringLayout();
@@ -348,7 +338,7 @@ public class GUI {
 		//contentPane add components
 		contentPane.add(lineEnd_springLayout, BorderLayout.LINE_END);
 		contentPane.add(lineStart_springLayout, BorderLayout.LINE_START);
-		contentPane.add(holdingPanel, BorderLayout.CENTER);
+		contentPane.add(holdingPane, BorderLayout.CENTER);
 		contentPane.add(bottomBorderLayoutPanel, BorderLayout.PAGE_END);
 
 		return contentPane;
@@ -364,9 +354,7 @@ public class GUI {
 		JLabel[] winLineLabelArray;
 		double lineStake;
 
-		public Worker(JLabel[][] labels, JLabel lblWinorloseamount,
-				JLabel balance, JSpinner autoSpinner, int numOfWinLines,
-				double lineStake, JLabel[] winLineLabelArray) {
+		public Worker(JLabel[][] labels, JLabel lblWinorloseamount,	JLabel balance, JSpinner autoSpinner, int numOfWinLines, double lineStake, JLabel[] winLineLabelArray) {
 			this.labels = labels;
 			this.balance = balance;
 			this.lblWinorloseamount = lblWinorloseamount;
@@ -427,6 +415,7 @@ public class GUI {
 				}
 				for (int k = 0; k < winLineLabelArray.length; k++) {
 					winLineLabelArray[k].setVisible(false);
+
 				}
 			}
 

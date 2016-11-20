@@ -62,6 +62,6 @@ public enum Symbols {
 			imageLocation = "wild_small.jpg";
 			break;
 		}
-		return imageLocation;
+		return "symbols\\"+imageLocation;
 	}
 }

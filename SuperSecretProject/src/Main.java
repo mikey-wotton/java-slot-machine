@@ -32,7 +32,7 @@ public class Main {
 	 */
 	static public void main(String[] args) {
 		Main main = new Main("john", 1000.0);
-		main.testBillSpins();
+		main.testMillSpins();
 
 	}
 	public Main(String username, double balance){
@@ -52,12 +52,12 @@ public class Main {
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
 		}
 	
-	public void testBillSpins(){
+	public void testMillSpins(){
 		int spin = 0;
 		double k = 0;
 		double totalWinOrLoss = 0;
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
-		while(k < 1000000000){
+		while(k < 1000000){
 		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 		arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
@@ -93,7 +93,7 @@ public class Main {
 			return "Broke even! Try again!";
 		}
 		else{
-			return "You lost £"+amount*-1+"! Try again!";
+			return "No win this time! Try again!";
 		}
 	}
 	

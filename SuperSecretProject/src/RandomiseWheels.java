@@ -49,16 +49,16 @@ public class RandomiseWheels {
 	public Symbols[] generateFirstWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 22)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 35, 64 )){
+		else if (isBetween(i, 23, 64 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 79)) {
+		else if (isBetween(i, 65, 73)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 74, 89)) {
 				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 96)) {
@@ -80,16 +80,16 @@ public class RandomiseWheels {
 	public Symbols[] generateSecondWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 55)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 35, 64 )){
+		else if (isBetween(i, 56, 64 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 79)) {
+		else if (isBetween(i, 65, 84)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 85, 89)) {
 				wheel[i] = Symbols.KING;
 				}
 		else if (isBetween(i, 90, 94)) {
@@ -111,10 +111,10 @@ public class RandomiseWheels {
 	public Symbols[] generateThirdWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 49)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 35, 64 )){
+		else if (isBetween(i, 50, 64 )){
 				wheel[i] = Symbols.JACK;
 			}
 		else if (isBetween(i, 65, 79)) {
@@ -182,13 +182,13 @@ public class RandomiseWheels {
 		else if (isBetween(i, 65, 79)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 84)) {
+		else if (isBetween(i, 80, 89)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 85, 90)) {
+		else if (isBetween(i, 90, 96)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 91, 99)) {
+		else if (isBetween(i, 97, 99)) {
 				wheel[i] = Symbols.WILD;
 				}
 		}	
