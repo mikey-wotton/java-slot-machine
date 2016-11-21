@@ -25,8 +25,11 @@ public class Main {
 	CheckWheels checkWheels = new CheckWheels();
 	Symbols[][] arrayOfWheels;
 	double winOrLoseAmount;
+	double totalStake;
+	double totalWon;
 
 	static int num = 10;
+	static int stake = 1;
 	/**
 	 * @param args
 	 */
@@ -41,21 +44,33 @@ public class Main {
 		userDetails.setUsername(username);
 		userDetails.setBalance(balance);
 	}
-	public void spinOnce(int numberOfLines, double lineValue){
+	public void spinOnce(int numberOfLinesPlayed, double stakePerLine){
 			arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 			arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 			arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
-			winOrLoseAmount = checkWheels.checkWheels(arrayOfWheels, numberOfLines) * lineValue;
-			userDetails.updateBalance(winOrLoseAmount);
+			totalStake = numberOfLinesPlayed * stakePerLine;		
+			totalWon = ((checkWheels.checkWheels(arrayOfWheels, numberOfLinesPlayed) * stakePerLine));
+			double OverallTotalInOut = totalWon - totalStake;
+			
+			userDetails.updateBalance(OverallTotalInOut);
+			if(OverallTotalInOut > 0){
+				winOrLoseAmount = totalWon;
+			}
+			else if(OverallTotalInOut == 0){
+				winOrLoseAmount = 0;
+			}
+			else{
+				winOrLoseAmount = OverallTotalInOut;
+			}
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
 		}
 	
 	public void testMillSpins(){
 		int spin = 0;
 		double k = 0;
-		double totalWinOrLoss = 0;
+		double totalWonOrLost = 0;
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
 		while(k < 1000000){
 		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
@@ -63,14 +78,15 @@ public class Main {
 		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 		arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 		arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
-			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num));
-			totalWinOrLoss +=checkWheels.checkWheels(arrayOfWheels, num);
-			System.out.println("Spins:" + spin + " - WinOrLoss: " + ((num * 1000000000) / ((num * 1000000000) - totalWinOrLoss) )*100+"%");
+			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num) - (num * stake));
+			totalWonOrLost +=checkWheels.checkWheels(arrayOfWheels, num) - (num * stake);
+			System.out.println("Spins:" + spin + " - WinOrLoss: " + (((num * stake) * 1000000000) / (((num * stake) * 1000000000) - totalWonOrLost) )*100+"%");
 			k++;
 			spin++;
 		}
 		//Used for reporting the wins at the end of run
 		System.out.println("Win Lines: "+num);
+		System.out.println("Stake per line: "+stake);
 		System.out.println("User Balance: "+userDetails.getBalance());
 		System.out.println("Ten Matches (Modifier:"+Symbols.TEN.modifier()+"):"+checkWheels.getTwoTenMatches()+"    : "+checkWheels.getThreeTenMatches()+"   : "+checkWheels.getFourTenMatches()+"   : " +checkWheels.getFiveTenMatches());
 		System.out.println("Jack Matches (Modifier:"+Symbols.JACK.modifier()+"):"+checkWheels.getTwoJackMatches()+"   : "+checkWheels.getThreeJackMatches()+"  : "+checkWheels.getFourJackMatches()+"  : " +checkWheels.getFiveJackMatches());
@@ -80,19 +96,22 @@ public class Main {
 	}
 	
 	public String getWinOrLoseString(double amount){
-		if(amount > 100){
+		if(amount > (totalStake * 50)){
 			return "Huge win of £"+amount+"! Congratulations";
 		}
-		else if(amount > 50){
+		else if(amount > (totalStake * 20)){
+			return "Huge win of £"+amount+"! Congratulations";
+		}
+		else if(amount > (totalStake * 10)){
 			return "Big win of £"+amount+"! Well done!";
 		}
+		else if(amount > (totalStake * 5)){
+			return "Win of £"+amount+"! Well done!";
+		}
 		else if(amount > 0){
-			return "Win of £"+amount+"! Every penny helps!";
+			return "Small win of £"+amount+"! Every penny helps!";
 		}
-		else if(amount == 0){
-			return "Broke even! Try again!";
-		}
-		else{
+		else {
 			return "No win this time! Try again!";
 		}
 	}
@@ -103,6 +122,9 @@ public class Main {
 	
 	public double getWinOrLoseAmount(){
 		return winOrLoseAmount;
+	}
+	public double getTotalWon(){
+		return totalWon;
 	}
 		
 }

@@ -178,7 +178,6 @@ public class CheckWheels {
 		double modifier = 0;
 		switch (numberOfPayLines) {
 		case 1:
-			value = -1;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -188,7 +187,6 @@ public class CheckWheels {
 			}
 			break;
 		case 2:
-			value = -2;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -207,7 +205,6 @@ public class CheckWheels {
 			}
 			break;
 		case 3:
-			value = -3;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -235,7 +232,6 @@ public class CheckWheels {
 			}
 			break;
 		case 4:
-			value = -4;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -271,7 +267,6 @@ public class CheckWheels {
 			}
 			break;
 		case 5:
-			value = -5;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -315,7 +310,6 @@ public class CheckWheels {
 			}
 			break;
 		case 6:
-			value = -6;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -367,7 +361,6 @@ public class CheckWheels {
 			}
 			break;
 		case 7:
-			value = -7;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -427,7 +420,6 @@ public class CheckWheels {
 			}
 			break;
 		case 8:
-			value = -8;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -495,7 +487,6 @@ public class CheckWheels {
 			}
 			break;
 		case 9:
-			value = -9;
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {
 				modifier = getModifier(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
@@ -572,7 +563,6 @@ public class CheckWheels {
 
 			break;
 		case 10:
-			value = -10;
 			// Straight line
 			numberOfMatches = numberOfMatchesOnLine(wheels[0][1], wheels[1][1],	wheels[2][1], wheels[3][1], wheels[4][1]);
 			if (numberOfMatches != 0) {

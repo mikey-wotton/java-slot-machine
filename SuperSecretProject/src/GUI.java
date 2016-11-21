@@ -1,22 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
-import javax.swing.OverlayLayout;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingWorker;
@@ -374,7 +367,6 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						System.out.println(labels[i][j].getBounds());
 						labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
 						
 						try {
@@ -403,7 +395,7 @@ public class GUI {
 					}
 				}
 				balance.setText(String.valueOf("Balance: £"	+ main.userDetails.getBalance()));
-				lblWinorloseamount.setText(main.getWinOrLoseString(main.getWinOrLoseAmount()));
+				lblWinorloseamount.setText(main.getWinOrLoseString(main.getTotalWon()));
 				spins--;
 				if (spins != 0) {
 					autoSpinner.setValue(spins);

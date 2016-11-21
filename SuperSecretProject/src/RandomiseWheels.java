@@ -49,22 +49,22 @@ public class RandomiseWheels {
 	public Symbols[] generateFirstWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 22)) {
+			 if (isBetween(i, 0, 15)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 23, 64 )){
+		else if (isBetween(i, 16, 30 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 73)) {
+		else if (isBetween(i, 31, 39)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 74, 89)) {
+		else if (isBetween(i, 40, 60)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 96)) {
+		else if (isBetween(i, 61, 89)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 97, 99)) {
+		else if (isBetween(i, 90, 99)) {
 				wheel[i] = Symbols.WILD;
 				}	
 		}	
@@ -80,24 +80,24 @@ public class RandomiseWheels {
 	public Symbols[] generateSecondWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 55)) {
+			 if (isBetween(i, 0, 24)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 56, 64 )){
+		else if (isBetween(i, 25, 49 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 84)) {
+		else if (isBetween(i, 50, 69)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 85, 89)) {
+		else if (isBetween(i, 70, 79)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 94)) {
+		else if (isBetween(i, 80, 94)) {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
 				wheel[i] = Symbols.WILD;
-				}		
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
@@ -111,24 +111,24 @@ public class RandomiseWheels {
 	public Symbols[] generateThirdWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 49)) {
+			 if (isBetween(i, 0, 18)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 50, 64 )){
+		else if (isBetween(i, 19, 34 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 79)) {
+		else if (isBetween(i, 35, 50)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 85)) {
+		else if (isBetween(i, 51, 66)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 86, 91)) {
+		else if (isBetween(i, 67, 82)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 92, 99)) {
+		else if (isBetween(i, 83, 99)) {
 				wheel[i] = Symbols.WILD;
-				}
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
@@ -142,24 +142,24 @@ public class RandomiseWheels {
 	public Symbols[] generateFourthWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 18)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 35, 64 )){
+		else if (isBetween(i, 19, 34 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 79)) {
+		else if (isBetween(i, 35, 50)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 51, 66)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 94)) {
+		else if (isBetween(i, 67, 94)) {
 				wheel[i] = Symbols.ACE;
 				}	
 		else if (isBetween(i, 95, 99)) {
 				wheel[i] = Symbols.WILD;
-				}
+				}	
 		}	
 		shuffleArray(wheel);
 		return wheel;
@@ -173,25 +173,25 @@ public class RandomiseWheels {
 	public Symbols[] generateFifthWheel(){
 		Symbols[] wheel = new Symbols[100];
 		for(int i = 0; i < wheel.length; i++){
-			 if (isBetween(i, 0, 34)) {
+			 if (isBetween(i, 0, 18)) {
 				wheel[i] = Symbols.TEN;
 			}
-		else if (isBetween(i, 35, 64 )){
+		else if (isBetween(i, 19, 34 )){
 				wheel[i] = Symbols.JACK;
 			}
-		else if (isBetween(i, 65, 79)) {
+		else if (isBetween(i, 35, 50)) {
 				wheel[i] = Symbols.QUEEN;
 				}
-		else if (isBetween(i, 80, 89)) {
+		else if (isBetween(i, 51, 66)) {
 				wheel[i] = Symbols.KING;
 				}
-		else if (isBetween(i, 90, 96)) {
+		else if (isBetween(i, 67, 82)) {
 				wheel[i] = Symbols.ACE;
 				}	
-		else if (isBetween(i, 97, 99)) {
+		else if (isBetween(i, 83, 99)) {
 				wheel[i] = Symbols.WILD;
-				}
-		}	
+				}	
+		}		
 		shuffleArray(wheel);
 		return wheel;
 	}
