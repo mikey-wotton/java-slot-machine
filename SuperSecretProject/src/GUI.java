@@ -76,6 +76,7 @@ public class GUI {
 				Dimension min = frame.getMinimumSize();
 				if (size.getWidth() < min.getWidth()) {
 					frame.setSize((int) min.getWidth(), (int) size.getHeight());
+					
 				}
 				if (size.getHeight() < min.getHeight()) {
 					frame.setSize((int) size.getWidth(), (int) min.getHeight());
@@ -83,7 +84,7 @@ public class GUI {
 			}
 		});
 		// ----------------------------------------
-
+	
 		JPanel mainScreen = new JPanel();
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new BorderLayout());
@@ -92,30 +93,27 @@ public class GUI {
 		centerPanel.setBackground(bgColour);
 		centerPanel.setLayout(new FlowLayout());
 
-		JPanel bannerPanel = new JPanel();
-		bannerPanel.setLayout(new FlowLayout());
-		bannerPanel.setBackground(bgColour);
 
-		JLabel banner = new JLabel();
-		banner.setIcon(new ImageIcon("banner.png"));
+		JLabel banner = new JLabel("",SwingConstants.CENTER);
+		banner.setIcon(new ImageIcon("banner.png"));		
 		banner.setOpaque(false);
-		bannerPanel.add(banner);
-		mainScreen.add(bannerPanel, BorderLayout.PAGE_START);
+		mainScreen.add(banner, BorderLayout.PAGE_START);
 
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
-			// array[i].setVerticalAlignment(SwingConstants.Center);
 			array[i].setIcon(new ImageIcon(String.valueOf(i) + "_front.jpg"));
 			centerPanel.add(array[i], BorderLayout.CENTER);
 		}
 
 		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(bgColour);
-		buttonsPanel.setLayout(new BorderLayout());
-
-		JButton simPlay = new JButton("Simulated Play");
-		simPlay.setPreferredSize(new Dimension(250, 80));
+		buttonsPanel.setBackground(Color.RED);
+		SpringLayout springButtonsPanel = new SpringLayout();
+		buttonsPanel.setPreferredSize(new Dimension(200,80));
+		buttonsPanel.setLayout(springButtonsPanel);
+		buttonsPanel.setOpaque(true);
+		
+		JButton simPlay = new JButton("   Simulated Play   ");
 		simPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainScreen.setVisible(false);
@@ -125,16 +123,24 @@ public class GUI {
 
 			}
 		});
+		springButtonsPanel.putConstraint(SpringLayout.WEST, simPlay, 10, SpringLayout.WEST, buttonsPanel);
+		springButtonsPanel.putConstraint(SpringLayout.NORTH, simPlay, 10, SpringLayout.NORTH, buttonsPanel);
+		springButtonsPanel.putConstraint(SpringLayout.SOUTH, simPlay, -10, SpringLayout.SOUTH, buttonsPanel);
 		buttonsPanel.add(simPlay, BorderLayout.LINE_START);
 
-		JButton realPlay = new JButton("Real Play");
-		realPlay.setPreferredSize(new Dimension(250, 80));
+		
+		JButton realPlay = new JButton("        Real Play         ");
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Real Play");
 			}
 		});
+		springButtonsPanel.putConstraint(SpringLayout.EAST, realPlay, -10, SpringLayout.EAST, buttonsPanel);
+		springButtonsPanel.putConstraint(SpringLayout.NORTH, realPlay, 10, SpringLayout.NORTH, buttonsPanel);
+		springButtonsPanel.putConstraint(SpringLayout.SOUTH, realPlay, -10, SpringLayout.SOUTH, buttonsPanel);
 		buttonsPanel.add(realPlay, BorderLayout.LINE_END);
+		
+		
 		mainScreen.add(centerPanel, BorderLayout.CENTER);
 		mainScreen.add(buttonsPanel, BorderLayout.PAGE_END);
 		frame.getContentPane().add(mainScreen);
@@ -143,56 +149,47 @@ public class GUI {
 
 	public JPanel simPlay() {
 		JPanel contentPane = new JPanel();
-		JLabel[][] labels = new JLabel[5][5];
+		JLabel[][] lblWheelsArray = new JLabel[5][5];
 		contentPane.setMinimumSize(new Dimension(900, 700));
 		contentPane.setBackground(bgColour);
 		contentPane.setLayout(new BorderLayout());
-
+	
+		//Sets up the text banner
+		JLabel banner = new JLabel("",SwingConstants.CENTER);
+		banner.setIcon(new ImageIcon("banner.png"));
+		banner.setOpaque(false);
+		contentPane.add(banner, BorderLayout.PAGE_START);
 		
+		
+		//Used to hold the cardPanel and then the winLine Panel above it with a CardLayout
 		JPanel holdingPane = new JPanel();
 		CardLayout card = new CardLayout();
 		holdingPane.setLayout(card);
-		holdingPane.setOpaque(true);
-
+		holdingPane.setOpaque(false);
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setOpaque(false);
+		cardPanel.setOpaque(false);		
 		
-		JPanel bannerPanel = new JPanel();
-		bannerPanel.setLayout(new FlowLayout());
-		bannerPanel.setBackground(bgColour);
-
-		JLabel banner = new JLabel();
-		banner.setIcon(new ImageIcon("banner.png"));
-		banner.setOpaque(false);
-		bannerPanel.add(banner);
-		contentPane.add(bannerPanel, BorderLayout.PAGE_START);
-		
-		// Set those labels to face down image and place them inside the gridlayout
+		// Loop create and set the lblWheels icons
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
-				labels[j][i] = new JLabel();
-				labels[j][i].setIcon(new StretchIcon("facedown_small.jpg"));
-				labels[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				labels[j][i].setOpaque(false);
-				cardPanel.add(labels[j][i]);
+				lblWheelsArray[j][i] = new JLabel();
+				lblWheelsArray[j][i].setIcon(new StretchIcon("facedown_small.jpg"));
+				lblWheelsArray[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+				lblWheelsArray[j][i].setOpaque(false);
+				cardPanel.add(lblWheelsArray[j][i]);
 			}
 		}
-
-
-		// Panels used to show win lines with an OverlayLayout manager		
-		JLabel[] winLineArray = new JLabel[10];
+		// Loop create and set lblWinLines icons
+		JLabel[] lblWinLinesArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
-			winLineArray[i] = new JLabel();
-			winLineArray[i].setIcon(new StretchIcon("winLines\\line_" + String.valueOf(i)+ ".png", false));
-			winLineArray[i].setOpaque(false);
-			holdingPane.add(winLineArray[i], String.valueOf(i));
+			lblWinLinesArray[i] = new JLabel();
+			lblWinLinesArray[i].setIcon(new StretchIcon("winLines\\line_" + String.valueOf(i)+ ".png", false));
+			lblWinLinesArray[i].setOpaque(false);
+			holdingPane.add(lblWinLinesArray[i], String.valueOf(i));
 		}
-
 		holdingPane.add(cardPanel, "11");		
 		card.show(holdingPane, "11");
-		
-		
 		
 		//LINE_END COMPONENTS
 		JPanel lineEnd_springLayout = new JPanel();
@@ -277,7 +274,7 @@ public class GUI {
 				if (worker != null) {
 					worker.cancel(true);
 				}
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
+				worker = new Worker(lblWheelsArray, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), lblWinLinesArray);
 				worker.execute();
 			}
 		});
@@ -313,7 +310,7 @@ public class GUI {
 					worker.cancel(true);
 				}
 				autoSpinner.setValue(1);
-				worker = new Worker(labels, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), winLineArray);
+				worker = new Worker(lblWheelsArray, lblWinOrLoseAmount, lblBalance,	autoSpinner, (Integer) winLinesSpinner.getValue(), (double) winStakeSpinner.getValue(), lblWinLinesArray);
 				worker.execute();
 			}
 		});
