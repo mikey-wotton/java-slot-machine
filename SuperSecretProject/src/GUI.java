@@ -4,7 +4,11 @@ import java.awt.EventQueue;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
+
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -60,92 +64,112 @@ public class GUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 900, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Mikey's Not So Wild Slots");
-		frame.setBackground(bgColour);
-
-		// sets and handles the minimum size of the frame, disallowing users
-		// resizing application to tiny a small window.
-		frame.setMinimumSize(new Dimension(900, 700));
-		frame.addComponentListener(new ComponentAdapter() {
-			public void componentResized(ComponentEvent evt) {
-				Dimension size = frame.getSize();
-				Dimension min = frame.getMinimumSize();
-				if (size.getWidth() < min.getWidth()) {
-					frame.setSize((int) min.getWidth(), (int) size.getHeight());
-					
-				}
-				if (size.getHeight() < min.getHeight()) {
-					frame.setSize((int) size.getWidth(), (int) min.getHeight());
-				}
-			}
-		});
-		// ----------------------------------------
+	private JLabel getTop(){
+		JLabel banner = new JLabel();
+		banner.setIcon(new StretchIcon("banner.png"));		
+		banner.setOpaque(false);;
+		return banner;
+	}
 	
-		JPanel mainScreen = new JPanel();
-		mainScreen.setBackground(bgColour);
-		mainScreen.setLayout(new BorderLayout());
-
-		JPanel centerPanel = new JPanel();
-		centerPanel.setBackground(bgColour);
-		centerPanel.setLayout(new FlowLayout());
-
-
-		JLabel banner = new JLabel("",SwingConstants.CENTER);
-		banner.setIcon(new ImageIcon("banner.png"));		
-		banner.setOpaque(false);
-		mainScreen.add(banner, BorderLayout.PAGE_START);
-
+	private JPanel getMiddle(){
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout(1,5));
+		panel.setOpaque(false);
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
-			array[i].setIcon(new ImageIcon(String.valueOf(i) + "_front.jpg"));
-			centerPanel.add(array[i], BorderLayout.CENTER);
+			array[i].setIcon(new StretchIcon(String.valueOf(i) + "_front.jpg"));
+			panel.add(array[i]);
 		}
-
-		JPanel buttonsPanel = new JPanel();
-		buttonsPanel.setBackground(Color.RED);
-		SpringLayout springButtonsPanel = new SpringLayout();
-		buttonsPanel.setPreferredSize(new Dimension(200,80));
-		buttonsPanel.setLayout(springButtonsPanel);
-		buttonsPanel.setOpaque(true);
-		
-		JButton simPlay = new JButton("   Simulated Play   ");
+		return panel;
+	}
+	private JPanel generateBlankPanel(){
+		JPanel panel = new JPanel();
+		panel.setOpaque(false);
+		return panel;
+	}
+	private void getBottom(JPanel mainScreen){
+		GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.1;
+        c.weighty = 0.05;
+        c.insets = new Insets(5,5,5,5);
+		JButton simPlay = new JButton("Simulated Play");
 		simPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainScreen.setVisible(false);
 				JPanel simScreen = simPlay();
 				frame.getContentPane().add(simScreen);
 				simScreen.setVisible(true);
-
 			}
 		});
-		springButtonsPanel.putConstraint(SpringLayout.WEST, simPlay, 10, SpringLayout.WEST, buttonsPanel);
-		springButtonsPanel.putConstraint(SpringLayout.NORTH, simPlay, 10, SpringLayout.NORTH, buttonsPanel);
-		springButtonsPanel.putConstraint(SpringLayout.SOUTH, simPlay, -10, SpringLayout.SOUTH, buttonsPanel);
-		buttonsPanel.add(simPlay, BorderLayout.LINE_START);
-
-		
-		JButton realPlay = new JButton("        Real Play         ");
+		mainScreen.add(simPlay, c);
+		c.gridx = 4;
+		JButton realPlay = new JButton("Real Play");
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Real Play");
 			}
 		});
-		springButtonsPanel.putConstraint(SpringLayout.EAST, realPlay, -10, SpringLayout.EAST, buttonsPanel);
-		springButtonsPanel.putConstraint(SpringLayout.NORTH, realPlay, 10, SpringLayout.NORTH, buttonsPanel);
-		springButtonsPanel.putConstraint(SpringLayout.SOUTH, realPlay, -10, SpringLayout.SOUTH, buttonsPanel);
-		buttonsPanel.add(realPlay, BorderLayout.LINE_END);
+		mainScreen.add(realPlay, c);
 		
 		
-		mainScreen.add(centerPanel, BorderLayout.CENTER);
-		mainScreen.add(buttonsPanel, BorderLayout.PAGE_END);
+		//Blank filler panels to space the grid, possibly use in future
+		c.gridx = 1;
+		mainScreen.add(generateBlankPanel(), c);
+		c.gridx = 2;
+		mainScreen.add(generateBlankPanel(), c);
+		c.gridx = 3;
+		mainScreen.add(generateBlankPanel(), c);
+
+	}
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 900, 700);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Mikey's Not So Wild Slots");
+		frame.setBackground(bgColour);
+		frame.setMinimumSize(new Dimension(900, 700));
+		frame.addComponentListener(new ComponentAdapter() {
+			public void componentResized(ComponentEvent evt) {
+				Dimension size = frame.getSize();
+				Dimension min = frame.getMinimumSize();
+				if (size.getWidth() < min.getWidth()) {
+					frame.setSize((int) min.getWidth(), (int) size.getHeight());	
+				}
+				if (size.getHeight() < min.getHeight()) {
+					frame.setSize((int) size.getWidth(), (int) min.getHeight());
+				}
+			}
+		});
+		JPanel mainScreen = new JPanel();
+		mainScreen.setBackground(bgColour);
+		mainScreen.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 0.2;
+        c.gridwidth = 5;
+		mainScreen.add(getTop(), c);	
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 1;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 0.7;
+        c.gridwidth = 5;
+        c.insets = new Insets(5,5,5,5);
+        mainScreen.add(getMiddle(), c);
+        getBottom(mainScreen);
 		frame.getContentPane().add(mainScreen);
 
 	}
+	
+	
 
 	public JPanel simPlay() {
 		JPanel contentPane = new JPanel();
@@ -155,10 +179,7 @@ public class GUI {
 		contentPane.setLayout(new BorderLayout());
 	
 		//Sets up the text banner
-		JLabel banner = new JLabel("",SwingConstants.CENTER);
-		banner.setIcon(new ImageIcon("banner.png"));
-		banner.setOpaque(false);
-		contentPane.add(banner, BorderLayout.PAGE_START);
+		contentPane.add(getTop(), BorderLayout.PAGE_START);
 		
 		
 		//Used to hold the cardPanel and then the winLine Panel above it with a CardLayout

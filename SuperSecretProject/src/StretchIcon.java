@@ -1,5 +1,5 @@
 /**
- * @(#)StretchIcon.java	1.0 03/27/12
+  * @(#)StretchIcon.java	1.0 03/27/12
  */
 
 
@@ -309,25 +309,5 @@ public class StretchIcon extends ImageIcon {
     g.drawImage(image, x, y, w, h, io == null ? c : io);
   }
 
-  /**
-   * Overridden to return 0.  The size of this Icon is determined by
-   * the size of the component.
-   * 
-   * @return 0
-   */
-  @Override
-  public int getIconWidth() {
-    return 0;
-  }
 
-  /**
-   * Overridden to return 0.  The size of this Icon is determined by
-   * the size of the component.
-   *
-   * @return 0
-   */
-  @Override
-  public int getIconHeight() {
-    return 0;
-  }
 }
