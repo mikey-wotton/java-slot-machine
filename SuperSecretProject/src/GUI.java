@@ -74,7 +74,7 @@ public class GUI {
 	private JPanel getMiddle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1,5));
-		panel.setOpaque(false);
+		panel.setOpaque(true);
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
@@ -93,7 +93,7 @@ public class GUI {
         c.gridx = 0;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.1;
+        c.weightx = 0.2;
         c.weighty = 0.05;
         c.insets = new Insets(5,5,5,5);
 		JButton simPlay = new JButton("Simulated Play");
@@ -107,16 +107,15 @@ public class GUI {
 		});
 		mainScreen.add(simPlay, c);
 		c.gridx = 4;
-		JButton realPlay = new JButton("Real Play");
+		JButton realPlay = new JButton("   Real Play  ");
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Real Play");
 			}
 		});
 		mainScreen.add(realPlay, c);
-		
-		
 		//Blank filler panels to space the grid, possibly use in future
+        c.weightx = 0.2;
 		c.gridx = 1;
 		mainScreen.add(generateBlankPanel(), c);
 		c.gridx = 2;
@@ -125,25 +124,7 @@ public class GUI {
 		mainScreen.add(generateBlankPanel(), c);
 
 	}
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 900, 700);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setTitle("Mikey's Not So Wild Slots");
-		frame.setBackground(bgColour);
-		frame.setMinimumSize(new Dimension(900, 700));
-		frame.addComponentListener(new ComponentAdapter() {
-			public void componentResized(ComponentEvent evt) {
-				Dimension size = frame.getSize();
-				Dimension min = frame.getMinimumSize();
-				if (size.getWidth() < min.getWidth()) {
-					frame.setSize((int) min.getWidth(), (int) size.getHeight());	
-				}
-				if (size.getHeight() < min.getHeight()) {
-					frame.setSize((int) size.getWidth(), (int) min.getHeight());
-				}
-			}
-		});
+	private JPanel getMainScreen(){
 		JPanel mainScreen = new JPanel();
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new GridBagLayout());
@@ -152,46 +133,28 @@ public class GUI {
         c.gridy = 0;
         c.fill = java.awt.GridBagConstraints.BOTH;
         c.weightx = 1.0;
-        c.weighty = 0.2;
-        c.gridwidth = 5;
-		mainScreen.add(getTop(), c);	
-		c = new GridBagConstraints();
-		c.gridx = 0;
-		c.gridy = 1;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 0.7;
         c.gridwidth = 5;
         c.insets = new Insets(5,5,5,5);
+		mainScreen.add(getTop(), c);	
+		c.gridy = 1;
+		c.gridx = 1;
+        c.weighty = 0.7;
+        c.gridwidth = 3;
         mainScreen.add(getMiddle(), c);
         getBottom(mainScreen);
-		frame.getContentPane().add(mainScreen);
-
+		return mainScreen;
+	}
+	private void initialize() {
+		frame = new JFrame();
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Mikey's Not So Wild Slots");
+		frame.setBackground(bgColour);
+		frame.getContentPane().add(getMainScreen());
 	}
 	
-	
-
-	public JPanel simPlay() {
-		JPanel contentPane = new JPanel();
+	private JLabel[][] getLblWheelsArray(JPanel cardPanel){
 		JLabel[][] lblWheelsArray = new JLabel[5][5];
-		contentPane.setMinimumSize(new Dimension(900, 700));
-		contentPane.setBackground(bgColour);
-		contentPane.setLayout(new BorderLayout());
-	
-		//Sets up the text banner
-		contentPane.add(getTop(), BorderLayout.PAGE_START);
-		
-		
-		//Used to hold the cardPanel and then the winLine Panel above it with a CardLayout
-		JPanel holdingPane = new JPanel();
-		CardLayout card = new CardLayout();
-		holdingPane.setLayout(card);
-		holdingPane.setOpaque(false);
-		JPanel cardPanel = new JPanel();
-		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setOpaque(false);		
-		
-		// Loop create and set the lblWheels icons
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				lblWheelsArray[j][i] = new JLabel();
@@ -201,7 +164,10 @@ public class GUI {
 				cardPanel.add(lblWheelsArray[j][i]);
 			}
 		}
-		// Loop create and set lblWinLines icons
+		return lblWheelsArray;
+	}
+	
+	private JLabel[] getLblWinLinesArray(JPanel holdingPane){
 		JLabel[] lblWinLinesArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			lblWinLinesArray[i] = new JLabel();
@@ -209,6 +175,35 @@ public class GUI {
 			lblWinLinesArray[i].setOpaque(false);
 			holdingPane.add(lblWinLinesArray[i], String.valueOf(i));
 		}
+		return lblWinLinesArray;
+	}
+	
+
+	public JPanel simPlay() {
+		JPanel contentPane = new JPanel();
+		contentPane.setBackground(bgColour);
+		contentPane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 0;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 0.2;
+        c.gridwidth = 5;
+        c.insets = new Insets(5,5,5,5);
+		//Sets up the text banner
+		contentPane.add(getTop(), c);		
+		//Used to hold the cardPanel and then the winLine Panel above it with a CardLayout
+		JPanel holdingPane = new JPanel();
+		CardLayout card = new CardLayout();
+		holdingPane.setLayout(card);
+		holdingPane.setOpaque(false);
+		JPanel cardPanel = new JPanel();
+		cardPanel.setLayout(new GridLayout(5,5));
+		cardPanel.setOpaque(false);		
+		
+		JLabel[][] lblWheelsArray = getLblWheelsArray(cardPanel);
+		JLabel[] lblWinLinesArray = getLblWinLinesArray(holdingPane);
 		holdingPane.add(cardPanel, "11");		
 		card.show(holdingPane, "11");
 		
@@ -217,7 +212,6 @@ public class GUI {
 		SpringLayout endSpringLayout = new SpringLayout();
 		lineEnd_springLayout.setLayout(endSpringLayout);
 		lineEnd_springLayout.setBackground(bgColour);
-		lineEnd_springLayout.setPreferredSize(new Dimension(180,300));
 		
 		JLabel lblwinLines = new JLabel("No. of Win Lines: ");	
 		SpinnerNumberModel modelWinLinesSpinner = new SpinnerNumberModel(1, 1, 10, 1);
@@ -249,8 +243,6 @@ public class GUI {
 		SpringLayout startSpringLayout = new SpringLayout();
 		lineStart_springLayout.setBackground(bgColour);
 		lineStart_springLayout.setLayout(startSpringLayout);
-		lineStart_springLayout.setPreferredSize(new Dimension(180,300));
-
 		JLabel lblUserName = new JLabel("Username: "+ main.userDetails.getUsername());
 		startSpringLayout.putConstraint(SpringLayout.WEST, lblUserName, 10, SpringLayout.WEST, lineStart_springLayout);
 		startSpringLayout.putConstraint(SpringLayout.NORTH, lblUserName, 10, SpringLayout.NORTH, lineStart_springLayout);
@@ -264,10 +256,6 @@ public class GUI {
 
 		
 		//the Page_End of the boxLayout grid
-		JPanel bottomBorderLayoutPanel = new JPanel();
-		bottomBorderLayoutPanel.setLayout(new BorderLayout());
-		bottomBorderLayoutPanel.setBackground(bgColour);
-		
 		//bottom_CENTER components
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount",SwingConstants.CENTER);
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
@@ -278,7 +266,6 @@ public class GUI {
 		SpringLayout bottom_LineStartSwing = new SpringLayout();
 		bottomBorder_LineStart.setLayout(bottom_LineStartSwing);
 		bottomBorder_LineStart.setBackground(bgColour);
-		bottomBorder_LineStart.setPreferredSize(new Dimension(180,100));
 		
 		JLabel lblNumberOfAutoSpins = new JLabel("autoPlaySpins");
 		lblNumberOfAutoSpins.setText("No. of Auto-spins: ");
@@ -286,10 +273,8 @@ public class GUI {
 		SpinnerNumberModel model1 = new SpinnerNumberModel(1, 1, 100, 1);
 		JSpinner autoSpinner = new JSpinner(model1);
 		autoSpinner.setEditor(new JSpinner.DefaultEditor(autoSpinner));
-		autoSpinner.setPreferredSize(new Dimension(40,20));
 		
 		JButton autoSpin = new JButton("Auto-Play");
-		autoSpin.setPreferredSize(new Dimension(145,55));
 		autoSpin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (worker != null) {
@@ -322,9 +307,7 @@ public class GUI {
 		SpringLayout bottom_LineEndSwing = new SpringLayout();
 		bottomBorder_LineEnd.setLayout(bottom_LineEndSwing);
 		bottomBorder_LineEnd.setBackground(bgColour);
-		bottomBorder_LineEnd.setPreferredSize(new Dimension(180,100));
 		JButton spinOnce = new JButton("Spin Once");
-		spinOnce.setPreferredSize(new Dimension(145,55));
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (worker != null) {
@@ -335,23 +318,78 @@ public class GUI {
 				worker.execute();
 			}
 		});
-		bottom_LineEndSwing.putConstraint(SpringLayout.EAST, spinOnce, -10, SpringLayout.EAST, bottomBorder_LineEnd);
-		bottom_LineEndSwing.putConstraint(SpringLayout.SOUTH, spinOnce,  -10, SpringLayout.SOUTH, bottomBorder_LineEnd);
 		bottomBorder_LineEnd.add(spinOnce);
 		
 		
 		//bottomBorder adding components
-		bottomBorderLayoutPanel.add(bottomBorder_LineStart,BorderLayout.LINE_START);
-		bottomBorderLayoutPanel.add(lblWinOrLoseAmount, BorderLayout.CENTER);
-		bottomBorderLayoutPanel.add(bottomBorder_LineEnd,BorderLayout.LINE_END);
+
 
 		
 		//contentPane add components
-		contentPane.add(lineEnd_springLayout, BorderLayout.LINE_END);
-		contentPane.add(lineStart_springLayout, BorderLayout.LINE_START);
-		contentPane.add(holdingPane, BorderLayout.CENTER);
-		contentPane.add(bottomBorderLayoutPanel, BorderLayout.PAGE_END);
+		c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 1;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.1;
+        c.weighty = 0.6;
+        c.gridwidth = 1;
+        c.insets = new Insets(5,5,5,5);
+		contentPane.add(lineStart_springLayout, c);
+		c = new GridBagConstraints();
+        c.gridx = 1;
+        c.gridy = 1;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.8;
+        c.weighty = 0.6;
+        c.gridwidth = 3;
+        c.insets = new Insets(5,5,5,5);
+		contentPane.add(holdingPane, c);
+		c = new GridBagConstraints();
+        c.gridx = 4;
+        c.gridy = 1;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.1;
+        c.weighty = 0.6;
+        c.gridwidth = 1;
+        c.insets = new Insets(5,5,5,5);
+		contentPane.add(lineEnd_springLayout, c);
 
+
+		c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        c.weighty = 0.2;
+		contentPane.add(bottomBorder_LineStart, c);
+		c = new GridBagConstraints();
+        c.gridx = 1;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        c.weighty = 0.2;
+        contentPane.add(generateBlankPanel(), c);
+		c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        c.weighty = 0.2;
+        contentPane.add(lblWinOrLoseAmount, c);
+		c = new GridBagConstraints();
+        c.gridx = 3;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        c.weighty = 0.2;
+        contentPane.add(generateBlankPanel(), c);
+		c = new GridBagConstraints();
+        c.gridx = 4;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.2;
+        c.weighty = 0.2;
+        contentPane.add(bottomBorder_LineEnd, c);
 		return contentPane;
 	}
 
