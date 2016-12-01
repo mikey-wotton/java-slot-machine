@@ -184,15 +184,7 @@ public class GUI {
 		contentPane.setBackground(bgColour);
 		contentPane.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 0;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 0.2;
-        c.gridwidth = 5;
-        c.insets = new Insets(5,5,5,5);
-		//Sets up the text banner
-		contentPane.add(getTop(), c);		
+	
 		//Used to hold the cardPanel and then the winLine Panel above it with a CardLayout
 		JPanel holdingPane = new JPanel();
 		CardLayout card = new CardLayout();
@@ -208,51 +200,51 @@ public class GUI {
 		card.show(holdingPane, "11");
 		
 		//LINE_END COMPONENTS
-		JPanel lineEnd_springLayout = new JPanel();
-		SpringLayout endSpringLayout = new SpringLayout();
-		lineEnd_springLayout.setLayout(endSpringLayout);
-		lineEnd_springLayout.setBackground(bgColour);
+		JPanel upperRightPanel = new JPanel();
+		SpringLayout urSpring = new SpringLayout();
+		upperRightPanel.setLayout(urSpring);
+		upperRightPanel.setBackground(bgColour);
 		
 		JLabel lblwinLines = new JLabel("No. of Win Lines: ");	
 		SpinnerNumberModel modelWinLinesSpinner = new SpinnerNumberModel(1, 1, 10, 1);
 		JSpinner winLinesSpinner = new JSpinner(modelWinLinesSpinner);
 		winLinesSpinner.setEditor(new JSpinner.DefaultEditor(winLinesSpinner));		
-		endSpringLayout.putConstraint(SpringLayout.WEST, lblwinLines, 10, SpringLayout.WEST, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.NORTH, lblwinLines, 10, SpringLayout.NORTH, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.NORTH, winLinesSpinner, 10, SpringLayout.NORTH, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.EAST, winLinesSpinner, 0, SpringLayout.EAST, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.WEST, winLinesSpinner, 5, SpringLayout.EAST, lblwinLines);
+		urSpring.putConstraint(SpringLayout.EAST, lblwinLines, -50, SpringLayout.EAST, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.NORTH, lblwinLines, 10, SpringLayout.NORTH, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.NORTH, winLinesSpinner, 10, SpringLayout.NORTH, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.EAST, winLinesSpinner, -10, SpringLayout.EAST, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.WEST, winLinesSpinner, 5, SpringLayout.EAST, lblwinLines);
 		
 		JLabel lblstakeValue = new JLabel("Stake per line:  ");
 		SpinnerNumberModel modelStakeSpinner = new SpinnerNumberModel(1, 1, 10,	0.5);
 		JSpinner winStakeSpinner = new JSpinner(modelStakeSpinner);
 		winStakeSpinner.setEditor(new JSpinner.DefaultEditor(winStakeSpinner));		
-		endSpringLayout.putConstraint(SpringLayout.WEST, lblstakeValue, 20, SpringLayout.WEST, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.NORTH, lblstakeValue, 7, SpringLayout.SOUTH, lblwinLines);
-		endSpringLayout.putConstraint(SpringLayout.NORTH, winStakeSpinner, 5, SpringLayout.SOUTH, winLinesSpinner);
-		endSpringLayout.putConstraint(SpringLayout.EAST, winStakeSpinner, 0, SpringLayout.EAST, lineEnd_springLayout);
-		endSpringLayout.putConstraint(SpringLayout.WEST, winStakeSpinner, 5, SpringLayout.EAST, lblstakeValue);
+		urSpring.putConstraint(SpringLayout.EAST, lblstakeValue, -50, SpringLayout.EAST, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.NORTH, lblstakeValue, 10, SpringLayout.SOUTH, lblwinLines);
+		urSpring.putConstraint(SpringLayout.NORTH, winStakeSpinner, 5, SpringLayout.SOUTH, winLinesSpinner);
+		urSpring.putConstraint(SpringLayout.EAST, winStakeSpinner, -10, SpringLayout.EAST, upperRightPanel);
+		urSpring.putConstraint(SpringLayout.WEST, winStakeSpinner, 5, SpringLayout.EAST, lblstakeValue);
 		
-		lineEnd_springLayout.add(winLinesSpinner);
-		lineEnd_springLayout.add(lblwinLines);
-		lineEnd_springLayout.add(winStakeSpinner);
-		lineEnd_springLayout.add(lblstakeValue);
+		upperRightPanel.add(winLinesSpinner);
+		upperRightPanel.add(lblwinLines);
+		upperRightPanel.add(winStakeSpinner);
+		upperRightPanel.add(lblstakeValue);
 
 		//LINE_START COMPONENTS
-		JPanel lineStart_springLayout = new JPanel();
-		SpringLayout startSpringLayout = new SpringLayout();
-		lineStart_springLayout.setBackground(bgColour);
-		lineStart_springLayout.setLayout(startSpringLayout);
+		JPanel upperLeftPanel = new JPanel();
+		SpringLayout ulSpring = new SpringLayout();
+		upperLeftPanel.setBackground(bgColour);
+		upperLeftPanel.setLayout(ulSpring);
 		JLabel lblUserName = new JLabel("Username: "+ main.userDetails.getUsername());
-		startSpringLayout.putConstraint(SpringLayout.WEST, lblUserName, 10, SpringLayout.WEST, lineStart_springLayout);
-		startSpringLayout.putConstraint(SpringLayout.NORTH, lblUserName, 10, SpringLayout.NORTH, lineStart_springLayout);
+		ulSpring.putConstraint(SpringLayout.WEST, lblUserName, 10, SpringLayout.WEST, upperLeftPanel);
+		ulSpring.putConstraint(SpringLayout.NORTH, lblUserName, 10, SpringLayout.NORTH, upperLeftPanel);
 		
 		JLabel lblBalance = new JLabel("Balance: "+ String.valueOf(main.userDetails.getBalance()));
-		startSpringLayout.putConstraint(SpringLayout.WEST, lblBalance, 10, SpringLayout.WEST, lineStart_springLayout);
-		startSpringLayout.putConstraint(SpringLayout.NORTH, lblBalance, 5, SpringLayout.SOUTH, lblUserName);
+		ulSpring.putConstraint(SpringLayout.WEST, lblBalance, 10, SpringLayout.WEST, upperLeftPanel);
+		ulSpring.putConstraint(SpringLayout.NORTH, lblBalance, 5, SpringLayout.SOUTH, lblUserName);
 		
-		lineStart_springLayout.add(lblUserName);
-		lineStart_springLayout.add(lblBalance);
+		upperLeftPanel.add(lblUserName);
+		upperLeftPanel.add(lblBalance);
 
 		
 		//the Page_End of the boxLayout grid
@@ -262,10 +254,10 @@ public class GUI {
 		lblWinOrLoseAmount.setFont(new Font("Serif", Font.BOLD, 30));
 
 		//bottom_LINESTART components
-		JPanel bottomBorder_LineStart = new JPanel();
-		SpringLayout bottom_LineStartSwing = new SpringLayout();
-		bottomBorder_LineStart.setLayout(bottom_LineStartSwing);
-		bottomBorder_LineStart.setBackground(bgColour);
+		JPanel bottomLeftPanel = new JPanel();
+		SpringLayout blSwing = new SpringLayout();
+		bottomLeftPanel.setLayout(blSwing);
+		bottomLeftPanel.setBackground(bgColour);
 		
 		JLabel lblNumberOfAutoSpins = new JLabel("autoPlaySpins");
 		lblNumberOfAutoSpins.setText("No. of Auto-spins: ");
@@ -284,29 +276,32 @@ public class GUI {
 				worker.execute();
 			}
 		});
+		blSwing.putConstraint(SpringLayout.NORTH, autoSpin, -60, SpringLayout.SOUTH, bottomLeftPanel);
+		blSwing.putConstraint(SpringLayout.WEST, autoSpin, 10, SpringLayout.WEST, bottomLeftPanel);
+		blSwing.putConstraint(SpringLayout.SOUTH, autoSpin, -10, SpringLayout.SOUTH, bottomLeftPanel);
+		blSwing.putConstraint(SpringLayout.EAST, autoSpin, -10, SpringLayout.EAST, bottomLeftPanel);
 		
-		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, lblNumberOfAutoSpins, 10, SpringLayout.WEST, bottomBorder_LineStart);
-		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, lblNumberOfAutoSpins, 10, SpringLayout.NORTH, bottomBorder_LineStart);
+		blSwing.putConstraint(SpringLayout.WEST, lblNumberOfAutoSpins, 10, SpringLayout.WEST, bottomLeftPanel);
+		blSwing.putConstraint(SpringLayout.SOUTH, lblNumberOfAutoSpins, -10, SpringLayout.NORTH, autoSpin);
 		
-		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, autoSpinner, 0, SpringLayout.EAST, lblNumberOfAutoSpins);
-		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, autoSpinner, 10, SpringLayout.NORTH, bottomBorder_LineStart);
+		blSwing.putConstraint(SpringLayout.WEST, autoSpinner, 5, SpringLayout.EAST, lblNumberOfAutoSpins);
+		blSwing.putConstraint(SpringLayout.SOUTH, autoSpinner, -6, SpringLayout.NORTH, autoSpin);
 		
-		bottom_LineStartSwing.putConstraint(SpringLayout.WEST, autoSpin, 10, SpringLayout.WEST, bottomBorder_LineStart);
-		bottom_LineStartSwing.putConstraint(SpringLayout.NORTH, autoSpin, 10, SpringLayout.SOUTH, lblNumberOfAutoSpins);
+
 
 		
-		bottomBorder_LineStart.add(autoSpin);
-		bottomBorder_LineStart.add(lblNumberOfAutoSpins);
-		bottomBorder_LineStart.add(autoSpinner);
+		bottomLeftPanel.add(autoSpin);
+		bottomLeftPanel.add(lblNumberOfAutoSpins);
+		bottomLeftPanel.add(autoSpinner);
 		
 		
 
 		
 		//bottom_LINEEND components
-		JPanel bottomBorder_LineEnd = new JPanel();
-		SpringLayout bottom_LineEndSwing = new SpringLayout();
-		bottomBorder_LineEnd.setLayout(bottom_LineEndSwing);
-		bottomBorder_LineEnd.setBackground(bgColour);
+		JPanel bottomRightPanel = new JPanel();
+		SpringLayout brSwing = new SpringLayout();
+		bottomRightPanel.setLayout(brSwing);
+		bottomRightPanel.setBackground(bgColour);
 		JButton spinOnce = new JButton("Spin Once");
 		spinOnce.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -318,78 +313,75 @@ public class GUI {
 				worker.execute();
 			}
 		});
-		bottomBorder_LineEnd.add(spinOnce);
-		
-		
-		//bottomBorder adding components
+		brSwing.putConstraint(SpringLayout.NORTH, spinOnce, -60, SpringLayout.SOUTH, bottomRightPanel);
+		brSwing.putConstraint(SpringLayout.SOUTH, spinOnce, -10, SpringLayout.SOUTH, bottomRightPanel);
+		brSwing.putConstraint(SpringLayout.WEST, spinOnce, 10, SpringLayout.WEST, bottomRightPanel);
+		brSwing.putConstraint(SpringLayout.EAST, spinOnce, -10, SpringLayout.EAST, bottomRightPanel);
 
-
 		
+		bottomRightPanel.add(spinOnce);
+		
+		
+		//Sets up the text banner
+        c.gridx = 0;
+        c.gridy = 0;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 0.1;
+        c.gridwidth = 3;
+        c.insets = new Insets(5,5,5,5);
+		contentPane.add(getTop(), c);			
 		//contentPane add components
 		c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 1;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.1;
-        c.weighty = 0.6;
+        c.weightx = 0.5;
+        c.weighty = 0.2;
         c.gridwidth = 1;
         c.insets = new Insets(5,5,5,5);
-		contentPane.add(lineStart_springLayout, c);
+		contentPane.add(upperLeftPanel, c);
 		c = new GridBagConstraints();
-        c.gridx = 1;
+        c.gridx = 2;
         c.gridy = 1;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.8;
-        c.weighty = 0.6;
+        c.weightx = 0.5;
+        c.weighty = 0.2;
+        c.gridwidth = 1;
+        c.insets = new Insets(5,5,5,5);
+		contentPane.add(upperRightPanel, c);
+		c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 2;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 1.0;
+        c.weighty = 0.5;
         c.gridwidth = 3;
         c.insets = new Insets(5,5,5,5);
 		contentPane.add(holdingPane, c);
-		c = new GridBagConstraints();
-        c.gridx = 4;
-        c.gridy = 1;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.1;
-        c.weighty = 0.6;
-        c.gridwidth = 1;
-        c.insets = new Insets(5,5,5,5);
-		contentPane.add(lineEnd_springLayout, c);
 
 
 		c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
+        c.weightx = 0.3;
         c.weighty = 0.2;
-		contentPane.add(bottomBorder_LineStart, c);
+		contentPane.add(bottomLeftPanel, c);
 		c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
+        c.weightx = 0.4;
         c.weighty = 0.2;
-        contentPane.add(generateBlankPanel(), c);
+        contentPane.add(lblWinOrLoseAmount, c);
 		c = new GridBagConstraints();
         c.gridx = 2;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
+        c.weightx = 0.3;
         c.weighty = 0.2;
-        contentPane.add(lblWinOrLoseAmount, c);
-		c = new GridBagConstraints();
-        c.gridx = 3;
-        c.gridy = 3;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
-        c.weighty = 0.2;
-        contentPane.add(generateBlankPanel(), c);
-		c = new GridBagConstraints();
-        c.gridx = 4;
-        c.gridy = 3;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
-        c.weighty = 0.2;
-        contentPane.add(bottomBorder_LineEnd, c);
+        contentPane.add(bottomRightPanel, c);
 		return contentPane;
 	}
 
