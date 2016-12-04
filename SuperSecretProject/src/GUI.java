@@ -1,8 +1,5 @@
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,21 +17,20 @@ import javax.swing.SwingWorker;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.net.URL;
 
 import javax.swing.SwingConstants;
-import javax.swing.ImageIcon;
 
 public class GUI {
 	public Main main;
 	private JFrame frame;
 	private SwingWorker<Void, String> worker;
 	private Color bgColour;
+	private URL facedown;
 
 	/**
 	 * Launch the application.
@@ -58,6 +54,7 @@ public class GUI {
 	public GUI() {
 		main = new Main("Mr. Lister", 500.00);
 		bgColour = new Color(0, 153, 102);
+		facedown = Main.class.getResource("facedown_small.jpg");
 		initialize();		
 	}
 
@@ -66,7 +63,7 @@ public class GUI {
 	 */
 	private JLabel getTop(){
 		JLabel banner = new JLabel();
-		banner.setIcon(new StretchIcon("res\\banner.png"));		
+		banner.setIcon(new StretchIcon(Main.class.getResource("banner.png")));		
 		banner.setOpaque(false);;
 		return banner;
 	}
@@ -78,7 +75,7 @@ public class GUI {
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
-			array[i].setIcon(new StretchIcon("res\\"+String.valueOf(i) + "_front.jpg"));
+			array[i].setIcon(new StretchIcon(Main.class.getResource(String.valueOf(i) + "_front.jpg")));
 			panel.add(array[i]);
 		}
 		return panel;
@@ -168,7 +165,7 @@ public class GUI {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				lblWheelsArray[j][i] = new JLabel();
-				lblWheelsArray[j][i].setIcon(new StretchIcon("res\\facedown_small.jpg"));
+				lblWheelsArray[j][i].setIcon(new StretchIcon(facedown));
 				lblWheelsArray[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				lblWheelsArray[j][i].setOpaque(false);
 				cardPanel.add(lblWheelsArray[j][i]);
@@ -181,7 +178,7 @@ public class GUI {
 		JLabel[] lblWinLinesArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			lblWinLinesArray[i] = new JLabel();
-			lblWinLinesArray[i].setIcon(new StretchIcon("res\\winLines\\line_" + String.valueOf(i)+ ".png", false));
+			lblWinLinesArray[i].setIcon(new StretchIcon(Main.class.getResource("winLines\\line_" + String.valueOf(i)+ ".png"), false));
 			lblWinLinesArray[i].setOpaque(false);
 			holdingPane.add(lblWinLinesArray[i], String.valueOf(i));
 		}
@@ -423,7 +420,7 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new StretchIcon("res\\facedown_small.jpg"));
+						labels[i][j].setIcon(new StretchIcon(facedown));
 						
 						try {
 							Thread.sleep(20);
@@ -437,7 +434,7 @@ public class GUI {
 				int[] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].imageString()));
+						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()));
 						try {
 							Thread.sleep(50);
 						} catch (InterruptedException ex) {

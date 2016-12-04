@@ -1,3 +1,5 @@
+import java.net.URL;
+
 /**
  * 
  */
@@ -63,5 +65,30 @@ public enum Symbols {
 			break;
 		}
 		return "res\\symbols\\"+imageLocation;
+	}
+	public URL getURL(){
+		URL url = null;
+		switch(this)
+		{		
+		case TEN:
+			url  = Main.class.getResource("symbols\\ten_small.jpg");
+			break;
+		case JACK:
+			url = Main.class.getResource("symbols\\jack_small.jpg");
+			break;		
+		case QUEEN:
+			url = Main.class.getResource("symbols\\queen_small.jpg");
+			break;
+		case KING:
+			url = Main.class.getResource("symbols\\king_small.jpg");
+			break;
+		case ACE:
+			url = Main.class.getResource("symbols\\ace_small.jpg");
+			break;
+		case WILD:
+			url = Main.class.getResource("symbols\\wild_small.jpg");
+			break;
+		}
+		return url;
 	}
 }
