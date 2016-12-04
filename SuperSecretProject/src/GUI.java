@@ -66,7 +66,7 @@ public class GUI {
 	 */
 	private JLabel getTop(){
 		JLabel banner = new JLabel();
-		banner.setIcon(new StretchIcon("banner.png"));		
+		banner.setIcon(new StretchIcon("res\\banner.png"));		
 		banner.setOpaque(false);;
 		return banner;
 	}
@@ -74,11 +74,11 @@ public class GUI {
 	private JPanel getMiddle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1,5));
-		panel.setOpaque(true);
+		panel.setOpaque(false);
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
-			array[i].setIcon(new StretchIcon(String.valueOf(i) + "_front.jpg"));
+			array[i].setIcon(new StretchIcon("res\\"+String.valueOf(i) + "_front.jpg"));
 			panel.add(array[i]);
 		}
 		return panel;
@@ -168,7 +168,7 @@ public class GUI {
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
 				lblWheelsArray[j][i] = new JLabel();
-				lblWheelsArray[j][i].setIcon(new StretchIcon("facedown_small.jpg"));
+				lblWheelsArray[j][i].setIcon(new StretchIcon("res\\facedown_small.jpg"));
 				lblWheelsArray[j][i].setBorder(BorderFactory.createLineBorder(Color.BLACK));
 				lblWheelsArray[j][i].setOpaque(false);
 				cardPanel.add(lblWheelsArray[j][i]);
@@ -181,7 +181,7 @@ public class GUI {
 		JLabel[] lblWinLinesArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			lblWinLinesArray[i] = new JLabel();
-			lblWinLinesArray[i].setIcon(new StretchIcon("winLines\\line_" + String.valueOf(i)+ ".png", false));
+			lblWinLinesArray[i].setIcon(new StretchIcon("res\\winLines\\line_" + String.valueOf(i)+ ".png", false));
 			lblWinLinesArray[i].setOpaque(false);
 			holdingPane.add(lblWinLinesArray[i], String.valueOf(i));
 		}
@@ -423,7 +423,7 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new StretchIcon("facedown_small.jpg"));
+						labels[i][j].setIcon(new StretchIcon("res\\facedown_small.jpg"));
 						
 						try {
 							Thread.sleep(20);
