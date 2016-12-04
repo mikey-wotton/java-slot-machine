@@ -93,8 +93,8 @@ public class GUI {
         c.gridx = 0;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.2;
-        c.weighty = 0.05;
+        c.weighty = 0.04;
+        c.weightx = 0.3;
         c.insets = new Insets(5,5,5,5);
 		JButton simPlay = new JButton("Simulated Play");
 		simPlay.addActionListener(new ActionListener() {
@@ -106,7 +106,12 @@ public class GUI {
 			}
 		});
 		mainScreen.add(simPlay, c);
-		c.gridx = 4;
+		c = new GridBagConstraints();
+        c.gridx = 2;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.3;
+        c.insets = new Insets(5,5,5,5);
 		JButton realPlay = new JButton("   Real Play  ");
 		realPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -115,12 +120,12 @@ public class GUI {
 		});
 		mainScreen.add(realPlay, c);
 		//Blank filler panels to space the grid, possibly use in future
-        c.weightx = 0.2;
-		c.gridx = 1;
-		mainScreen.add(generateBlankPanel(), c);
-		c.gridx = 2;
-		mainScreen.add(generateBlankPanel(), c);
-		c.gridx = 3;
+		c = new GridBagConstraints();
+        c.gridx = 1;
+        c.gridy = 3;
+        c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.4;
+        c.insets = new Insets(5,5,5,5);
 		mainScreen.add(generateBlankPanel(), c);
 
 	}
@@ -129,17 +134,22 @@ public class GUI {
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+	    c.gridy = 0;
+	    c.fill = java.awt.GridBagConstraints.BOTH;
+	    c.weightx = 1.0;
+	    c.weighty = 0.1;
+	    c.gridwidth = 3;
+	    c.insets = new Insets(5,5,5,5);
+		mainScreen.add(getTop(), c);	
+		c = new GridBagConstraints();
         c.gridx = 0;
-        c.gridy = 0;
+        c.gridy = 2;
         c.fill = java.awt.GridBagConstraints.BOTH;
         c.weightx = 1.0;
-        c.gridwidth = 5;
-        c.insets = new Insets(5,5,5,5);
-		mainScreen.add(getTop(), c);	
-		c.gridy = 1;
-		c.gridx = 1;
-        c.weighty = 0.7;
+        c.weighty = 0.6;
         c.gridwidth = 3;
+        c.insets = new Insets(5,5,5,5);
         mainScreen.add(getMiddle(), c);
         getBottom(mainScreen);
 		return mainScreen;
@@ -285,6 +295,7 @@ public class GUI {
 		blSwing.putConstraint(SpringLayout.SOUTH, lblNumberOfAutoSpins, -10, SpringLayout.NORTH, autoSpin);
 		
 		blSwing.putConstraint(SpringLayout.WEST, autoSpinner, 5, SpringLayout.EAST, lblNumberOfAutoSpins);
+		blSwing.putConstraint(SpringLayout.EAST, autoSpinner, 45, SpringLayout.EAST, lblNumberOfAutoSpins);
 		blSwing.putConstraint(SpringLayout.SOUTH, autoSpinner, -6, SpringLayout.NORTH, autoSpin);
 		
 
@@ -359,13 +370,10 @@ public class GUI {
         c.gridwidth = 3;
         c.insets = new Insets(5,5,5,5);
 		contentPane.add(holdingPane, c);
-
-
 		c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.3;
         c.weighty = 0.2;
 		contentPane.add(bottomLeftPanel, c);
 		c = new GridBagConstraints();
