@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>line_1.png</name>
-			<type>1</type>
-			<location>C:/Users/mikey.wotton/Desktop/line_1.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
