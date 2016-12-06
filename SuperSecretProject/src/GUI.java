@@ -60,14 +60,7 @@ public class GUI {
 
 	/**
 	 * Initialize the contents of the frame.
-	 */
-	private JLabel getTop(){
-		JLabel banner = new JLabel();
-		banner.setIcon(new StretchIcon(GUI.class.getResource("banner.png")));		
-		banner.setOpaque(false);;
-		return banner;
-	}
-	
+	 */	
 	private JPanel getMiddle(){
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(1,5));
@@ -420,9 +413,9 @@ public class GUI {
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
 						if( (j == 0) || (j == 4) ){
-							labels[i][j].setIcon(new AlphaIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()), 0.3F));
+							labels[i][j].setIcon(new AlphaIcon(new StretchIcon(main.arrayOfWheels[i][j].imageString()), 0.3F));
 						}else {
-							labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()));
+							labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].imageString()));
 						}
 						try {
 							Thread.sleep(50);

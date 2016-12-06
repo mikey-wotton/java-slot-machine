@@ -46,22 +46,22 @@ public enum Symbols {
 		switch(this)
 		{		
 		case TEN:
-			imageLocation = "ten_small.jpg";
+			imageLocation = "black_ten.png";
 			break;
 		case JACK:
-			imageLocation = "jack_small.jpg";
+			imageLocation = "orange_jack.png";
 			break;		
 		case QUEEN:
-			imageLocation ="queen_small.jpg";
+			imageLocation ="lgrey_queen.png";
 			break;
 		case KING:
-			imageLocation ="king_small.jpg";
+			imageLocation ="grey_king.png";
 			break;
 		case ACE:
-			imageLocation = "ace_small.jpg";
+			imageLocation = "kl_ace.png";
 			break;
 		case WILD:
-			imageLocation = "wild_small.jpg";
+			imageLocation = "gold_wild.png";
 			break;
 		}
 		return "res\\symbols\\"+imageLocation;
