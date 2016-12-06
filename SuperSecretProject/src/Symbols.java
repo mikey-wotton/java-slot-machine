@@ -71,22 +71,22 @@ public enum Symbols {
 		switch(this)
 		{		
 		case TEN:
-			url  = Main.class.getResource("symbols\\ten_small.jpg");
+			url  = GUI.class.getResource("symbols\\black_ten.png");
 			break;
 		case JACK:
-			url = Main.class.getResource("symbols\\jack_small.jpg");
+			url = GUI.class.getResource("symbols\\orange_jack.png");
 			break;		
 		case QUEEN:
-			url = Main.class.getResource("symbols\\queen_small.jpg");
+			url = GUI.class.getResource("symbols\\lgrey_queen.png");
 			break;
 		case KING:
-			url = Main.class.getResource("symbols\\king_small.jpg");
+			url = GUI.class.getResource("symbols\\grey_king.png");
 			break;
 		case ACE:
-			url = Main.class.getResource("symbols\\ace_small.jpg");
+			url = GUI.class.getResource("symbols\\kl_ace.png");
 			break;
 		case WILD:
-			url = Main.class.getResource("symbols\\wild_small.jpg");
+			url = GUI.class.getResource("symbols\\gold_wild.png");
 			break;
 		}
 		return url;

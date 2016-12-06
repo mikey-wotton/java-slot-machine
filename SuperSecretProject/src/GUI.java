@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -54,7 +55,6 @@ public class GUI {
 	public GUI() {
 		main = new Main("Mr. Lister", 500.00);
 		bgColour = new Color(0, 153, 102);
-		facedown = Main.class.getResource("facedown_small.jpg");
 		initialize();		
 	}
 
@@ -63,7 +63,7 @@ public class GUI {
 	 */
 	private JLabel getTop(){
 		JLabel banner = new JLabel();
-		banner.setIcon(new StretchIcon(Main.class.getResource("banner.png")));		
+		banner.setIcon(new StretchIcon(GUI.class.getResource("banner.png")));		
 		banner.setOpaque(false);;
 		return banner;
 	}
@@ -75,7 +75,7 @@ public class GUI {
 		JLabel[] array = new JLabel[5];
 		for (int i = 0; i < 5; i++) {
 			array[i] = new JLabel();
-			array[i].setIcon(new StretchIcon(Main.class.getResource(String.valueOf(i) + "_front.jpg")));
+			array[i].setIcon(new StretchIcon(GUI.class.getResource(String.valueOf(i) + "_front.jpg")));
 			panel.add(array[i]);
 		}
 		return panel;
@@ -131,15 +131,6 @@ public class GUI {
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.gridx = 0;
-	    c.gridy = 0;
-	    c.fill = java.awt.GridBagConstraints.BOTH;
-	    c.weightx = 1.0;
-	    c.weighty = 0.1;
-	    c.gridwidth = 3;
-	    c.insets = new Insets(5,5,5,5);
-		mainScreen.add(getTop(), c);	
-		c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 2;
         c.fill = java.awt.GridBagConstraints.BOTH;
@@ -153,6 +144,7 @@ public class GUI {
 	}
 	private void initialize() {
 		frame = new JFrame();
+		facedown = GUI.class.getResource("facedown_small.jpg");
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
@@ -178,7 +170,7 @@ public class GUI {
 		JLabel[] lblWinLinesArray = new JLabel[10];
 		for (int i = 0; i < 10; i++) {
 			lblWinLinesArray[i] = new JLabel();
-			lblWinLinesArray[i].setIcon(new StretchIcon(Main.class.getResource("winLines\\line_" + String.valueOf(i)+ ".png"), false));
+			lblWinLinesArray[i].setIcon(new StretchIcon(GUI.class.getResource("/winLines/line_" + String.valueOf(i)+ ".png"), false));
 			lblWinLinesArray[i].setOpaque(false);
 			holdingPane.add(lblWinLinesArray[i], String.valueOf(i));
 		}
@@ -199,7 +191,7 @@ public class GUI {
 		holdingPane.setOpaque(false);
 		JPanel cardPanel = new JPanel();
 		cardPanel.setLayout(new GridLayout(5,5));
-		cardPanel.setOpaque(false);		
+		cardPanel.setOpaque(false);	
 		
 		JLabel[][] lblWheelsArray = getLblWheelsArray(cardPanel);
 		JLabel[] lblWinLinesArray = getLblWinLinesArray(holdingPane);
@@ -331,14 +323,7 @@ public class GUI {
 		
 		
 		//Sets up the text banner
-        c.gridx = 0;
-        c.gridy = 0;
-        c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 0.1;
-        c.gridwidth = 3;
-        c.insets = new Insets(5,5,5,5);
-		contentPane.add(getTop(), c);			
+		
 		//contentPane add components
 		c = new GridBagConstraints();
         c.gridx = 0;
@@ -363,7 +348,7 @@ public class GUI {
         c.gridy = 2;
         c.fill = java.awt.GridBagConstraints.BOTH;
         c.weightx = 1.0;
-        c.weighty = 0.5;
+        c.weighty = 0.05;
         c.gridwidth = 3;
         c.insets = new Insets(5,5,5,5);
 		contentPane.add(holdingPane, c);
@@ -434,7 +419,11 @@ public class GUI {
 				int[] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {
-						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()));
+						if( (j == 0) || (j == 4) ){
+							labels[i][j].setIcon(new AlphaIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()), 0.3F));
+						}else {
+							labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getURL()));
+						}
 						try {
 							Thread.sleep(50);
 						} catch (InterruptedException ex) {
