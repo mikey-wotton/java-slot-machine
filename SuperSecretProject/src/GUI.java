@@ -407,6 +407,7 @@ public class GUI {
 						}
 					}
 				}
+				boop();
 
 				main.spinOnce(numOfWinLines, lineStake);
 				int[] winLineArray = main.getWinLineArray();
@@ -447,6 +448,10 @@ public class GUI {
 			}
 
 			return null;
+		}
+		public void boop(){
+			JPanel bonusPanel = new JPanel();
+			frame.add(bonusPanel);
 		}
 
 	}

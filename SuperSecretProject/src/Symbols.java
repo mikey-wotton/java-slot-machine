@@ -14,7 +14,8 @@ public enum Symbols {
 	QUEEN,
 	KING,
 	ACE,
-	WILD;
+	WILD,
+	BONUS;
 	public double modifier()
 	{
 		double modifier = 0;
@@ -37,6 +38,9 @@ public enum Symbols {
 			break;
 		case WILD:
 			modifier = Symbols.ACE.modifier();
+			break;
+		case BONUS:
+			modifier = 0.0;
 			break;
 		}
 		return modifier;
@@ -63,6 +67,9 @@ public enum Symbols {
 		case WILD:
 			imageLocation = "gold_wild.png";
 			break;
+		case BONUS:
+			imageLocation = "bonus_symbol.png";
+			break;
 		}
 		return "res\\symbols\\"+imageLocation;
 	}
@@ -87,6 +94,9 @@ public enum Symbols {
 			break;
 		case WILD:
 			url = GUI.class.getResource("symbols\\gold_wild.png");
+			break;
+		case BONUS:
+			url = GUI.class.getResource("symbols\\bonus_symbol.png");
 			break;
 		}
 		return url;
