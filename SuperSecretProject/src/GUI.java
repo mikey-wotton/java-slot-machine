@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -23,6 +24,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import java.awt.Color;
+import java.io.File;
 import java.net.URL;
 
 import javax.swing.SwingConstants;
@@ -378,7 +380,7 @@ public class GUI {
 		int numOfWinLines;
 		JLabel[] winLineLabelArray;
 		double lineStake;
-		Clip clip;
+		File soundFile;
 		
 
 		public Worker(JLabel[][] labels, JLabel lblWinorloseamount,	JLabel balance, JSpinner autoSpinner, int numOfWinLines, double lineStake, JLabel[] winLineLabelArray) {
@@ -394,7 +396,7 @@ public class GUI {
 			}
 			this.autoSpinner = autoSpinner;
 			this.winLineLabelArray = winLineLabelArray;
-			clip = 
+			soundFile = new File("sounds\\Flipped.wav");
 		}
 
 		@Override
@@ -411,7 +413,7 @@ public class GUI {
 						}
 					}
 				}
-				boop();
+				//boop();
 
 				main.spinOnce(numOfWinLines, lineStake);
 				int[] winLineArray = main.getWinLineArray();
@@ -423,7 +425,10 @@ public class GUI {
 							labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].imageString()));
 						}
 						try {
-							Thread.sleep(50);
+							Clip clip = AudioSystem.getClip();
+							clip.open(AudioSystem.getAudioInputStream(soundFile));
+							clip.start();
+							Thread.sleep(clip.getMicrosecondLength()/1000);
 						} catch (InterruptedException ex) {
 							Thread.currentThread().interrupt();
 						}
@@ -456,7 +461,6 @@ public class GUI {
 		public double boop(){
 			JPanel bonusFrame = new JPanel();
 			bonusFrame.setLayout(null);
-			frame.
 			
 			return 0.0;
 		}
