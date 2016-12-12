@@ -450,8 +450,7 @@ public class GUI {
 			return null;
 		}
 		public void boop(){
-			JPanel bonusPanel = new JPanel();
-			frame.add(bonusPanel);
+
 		}
 
 	}
