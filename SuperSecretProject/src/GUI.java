@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -377,6 +378,8 @@ public class GUI {
 		int numOfWinLines;
 		JLabel[] winLineLabelArray;
 		double lineStake;
+		Clip clip;
+		
 
 		public Worker(JLabel[][] labels, JLabel lblWinorloseamount,	JLabel balance, JSpinner autoSpinner, int numOfWinLines, double lineStake, JLabel[] winLineLabelArray) {
 			this.labels = labels;
@@ -391,6 +394,7 @@ public class GUI {
 			}
 			this.autoSpinner = autoSpinner;
 			this.winLineLabelArray = winLineLabelArray;
+			clip = 
 		}
 
 		@Override
@@ -449,8 +453,12 @@ public class GUI {
 
 			return null;
 		}
-		public void boop(){
-
+		public double boop(){
+			JPanel bonusFrame = new JPanel();
+			bonusFrame.setLayout(null);
+			frame.
+			
+			return 0.0;
 		}
 
 	}
