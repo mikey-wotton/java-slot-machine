@@ -35,6 +35,7 @@ public class GUI {
 	private SwingWorker<Void, String> worker;
 	private Color bgColour;
 	private URL facedown;
+	private File themeSong;
 
 	/**
 	 * Launch the application.
@@ -57,6 +58,7 @@ public class GUI {
 	 */
 	public GUI() {
 		main = new Main("Mr. Lister", 500.00);
+		//themeSong = new File()
 		bgColour = new Color(0, 153, 102);
 		initialize();		
 	}
