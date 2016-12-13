@@ -24,6 +24,7 @@ public class Main {
 	RandomiseWheels randomiseWheels = new RandomiseWheels();
 	CheckWheels checkWheels = new CheckWheels();
 	Symbols[][] arrayOfWheels;
+	int[] bonusFlagArray;
 	double winOrLoseAmount;
 	double totalStake;
 	double totalWon;
@@ -39,6 +40,7 @@ public class Main {
 
 	}
 	public Main(String username, double balance){
+		bonusFlagArray = new int[10];
 		arrayOfWheels = new Symbols[5][5];
 		userDetails = new AccountDetails("",0);
 		userDetails.setUsername(username);
@@ -50,8 +52,12 @@ public class Main {
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 			arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
+			
+			
+			
 			totalStake = numberOfLinesPlayed * stakePerLine;		
 			totalWon = ((checkWheels.checkWheels(arrayOfWheels, numberOfLinesPlayed) * stakePerLine));
+			bonusFlagArray[0] = checkWheels.checkBonus(arrayOfWheels);
 			double OverallTotalInOut = totalWon - totalStake;
 			
 			userDetails.updateBalance(OverallTotalInOut);
@@ -66,6 +72,10 @@ public class Main {
 			}
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
 		}
+	
+	
+	
+	
 	
 	public void testMillSpins(){
 		int spin = 0;

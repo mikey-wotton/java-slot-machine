@@ -147,6 +147,7 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
 		frame.setBackground(bgColour);
+		frame.setMinimumSize(new Dimension(800,825));
 		frame.getContentPane().add(getMainScreen());
 	}
 	
@@ -248,7 +249,8 @@ public class GUI {
 		//bottom_CENTER components
 		JLabel lblWinOrLoseAmount = new JLabel("winOrLoseAmount",SwingConstants.CENTER);
 		lblWinOrLoseAmount.setText("Welcome, good luck!");
-		lblWinOrLoseAmount.setFont(new Font("Serif", Font.BOLD, 30));
+		lblWinOrLoseAmount.setFont(new Font("Serif", Font.BOLD, 25));
+		lblWinOrLoseAmount.setPreferredSize(new Dimension(350,50));
 
 		//bottom_LINESTART components
 		JPanel bottomLeftPanel = new JPanel();
@@ -354,13 +356,14 @@ public class GUI {
         c.gridx = 0;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
+        c.weightx = 0.3;
         c.weighty = 0.2;
 		contentPane.add(bottomLeftPanel, c);
 		c = new GridBagConstraints();
         c.gridx = 1;
         c.gridy = 3;
         c.fill = java.awt.GridBagConstraints.BOTH;
-        c.weightx = 0.4;
+        c.weightx = 0.3;
         c.weighty = 0.2;
         contentPane.add(lblWinOrLoseAmount, c);
 		c = new GridBagConstraints();
@@ -418,6 +421,9 @@ public class GUI {
 				//boop();
 
 				main.spinOnce(numOfWinLines, lineStake);
+				if(main.bonusFlagArray[0] == 1){
+					boop();
+				};
 				int[] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
 					for (int j = 0; j < main.arrayOfWheels.length; j++) {

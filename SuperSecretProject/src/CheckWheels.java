@@ -650,7 +650,6 @@ public class CheckWheels {
 				value = value + (numberOfMatches * modifier);
 				winLineArray[9] = 1;
 			}			
-			checkBonus(wheels);
 			break;
 
 		}
@@ -715,18 +714,16 @@ public class CheckWheels {
 		return 0;
 	}
 	
-	public void checkBonus(Symbols[][] wheelsArray){
-		//int flag = 0;
+	public int checkBonus(Symbols[][] wheelsArray){
+		int flag = 0;
 		if((wheelsArray[1][1] == Symbols.BONUS) || (wheelsArray[1][2] == Symbols.BONUS) || (wheelsArray[1][3] == Symbols.BONUS)){
 			if((wheelsArray[2][1] == Symbols.BONUS) || (wheelsArray[2][2] == Symbols.BONUS) || (wheelsArray[2][3] == Symbols.BONUS)){
 				if((wheelsArray[3][1] == Symbols.BONUS) || (wheelsArray[3][2] == Symbols.BONUS) || (wheelsArray[3][3] == Symbols.BONUS)){
-					System.out.println("BONUS BONUS BONUS!");
-					//flag = 1;
-					//return flag;
+					flag = 1;
 				}
 			}
 		}
-		//return flag;
+		return flag;
 	}
 
 	public double getModifier(Symbols i, Symbols j, Symbols k, Symbols l, Symbols m) {
