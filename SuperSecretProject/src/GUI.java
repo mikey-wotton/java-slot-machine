@@ -11,15 +11,20 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
+import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingWorker;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 
@@ -32,10 +37,13 @@ import javax.swing.SwingConstants;
 public class GUI {
 	public Main main;
 	private JFrame frame;
+	private JMenuBar menuBar;
+	private JMenu menu, submenu;
+	private JMenuItem menuItem;
+	
 	private SwingWorker<Void, String> worker;
 	private Color bgColour;
 	private URL facedown;
-	private File themeSong;
 
 	/**
 	 * Launch the application.
@@ -57,8 +65,8 @@ public class GUI {
 	 * Create the application.
 	 */
 	public GUI() {
+		menuBar = new JMenuBar();
 		main = new Main("Mr. Lister", 500.00);
-		//themeSong = new File()
 		bgColour = new Color(0, 153, 102);
 		initialize();		
 	}
@@ -125,6 +133,42 @@ public class GUI {
 
 	}
 	private JPanel getMainScreen(){
+		menu = new JMenu("A Menu");
+		menu.setMnemonic(KeyEvent.VK_A);
+		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
+		//a group of JMenuItems
+		menuItem = new JMenuItem("A text-only menu item", KeyEvent.VK_T);
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
+		menu.add(menuItem);
+
+		//a submenu
+		menu.addSeparator();
+		submenu = new JMenu("Volume Options");
+		submenu.setMnemonic(KeyEvent.VK_S);
+		
+		menuItem = new JMenuItem("100% Volume");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		menuItem = new JMenuItem("80% Volume");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		menuItem = new JMenuItem("60% Volume");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		menuItem = new JMenuItem("40% Volume");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		menuItem = new JMenuItem("20% Volume");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		menuItem = new JMenuItem("Muted");
+		submenu.add(menuItem);
+		menu.add(submenu);
+		
+		menuBar.add(menu);
+		frame.setJMenuBar(menuBar);
+
 		JPanel mainScreen = new JPanel();
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new GridBagLayout());
