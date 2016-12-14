@@ -17,6 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
+import javax.swing.JToggleButton;
 import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
@@ -40,6 +41,7 @@ public class GUI {
 	private JMenuBar menuBar;
 	private JMenu menu, submenu;
 	private JMenuItem menuItem;
+	private CardLayout cl1;
 	
 	private SwingWorker<Void, String> worker;
 	private Color bgColour;
@@ -91,6 +93,16 @@ public class GUI {
 		panel.setOpaque(false);
 		return panel;
 	}
+	private JLabel generateBlankJLabel(){
+		JLabel label = new JLabel();
+		label.setOpaque(false);
+		return label;
+	}
+	private JToggleButton generateBlankJToggleButton(){
+		JToggleButton button = new JToggleButton();
+		button.setOpaque(false);
+		return button;
+	}
 	private void getBottom(JPanel mainScreen){
 		GridBagConstraints c = new GridBagConstraints();
         c.gridx = 0;
@@ -102,10 +114,9 @@ public class GUI {
 		JButton simPlay = new JButton("Simulated Play");
 		simPlay.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainScreen.setVisible(false);
 				JPanel simScreen = simPlay();
-				frame.getContentPane().add(simScreen);
-				simScreen.setVisible(true);
+				frame.add(simScreen, "1");
+				cl1.show(frame.getContentPane(),"1");
 			}
 		});
 		mainScreen.add(simPlay, c);
@@ -192,7 +203,9 @@ public class GUI {
 		frame.setTitle("Mikey's Not So Wild Slots");
 		frame.setBackground(bgColour);
 		frame.setMinimumSize(new Dimension(800,825));
-		frame.getContentPane().add(getMainScreen());
+		cl1 = new CardLayout();
+		frame.getContentPane().setLayout(cl1);
+		frame.getContentPane().add(getMainScreen(), "0");
 	}
 	
 	private JLabel[][] getLblWheelsArray(JPanel cardPanel){
@@ -466,7 +479,7 @@ public class GUI {
 
 				main.spinOnce(numOfWinLines, lineStake);
 				if(main.bonusFlagArray[0] == 1){
-					boop();
+					boop(lineStake);
 				};
 				int[] winLineArray = main.getWinLineArray();
 				for (int i = 0; i < main.arrayOfWheels.length; i++) {
@@ -510,12 +523,29 @@ public class GUI {
 
 			return null;
 		}
-		public double boop(){
+		public void boop(double stakeValue){
 			JPanel bonusFrame = new JPanel();
-			bonusFrame.setLayout(null);
-			
-			return 0.0;
+			bonusFrame.setBackground(Color.YELLOW);
+			bonusFrame.setLayout(new GridLayout(4,4));
+			JToggleButton[][] panelArray = new JToggleButton[4][4];
+			for(int i = 0; i < 4; i++){
+				for(int j = 0; j < 4; j++){
+					panelArray[i][j] = createButton();
+					bonusFrame.add(panelArray[i][j]);
+				}				
+			}
+			frame.getContentPane().add(bonusFrame, "2");
+			cl1.show(frame.getContentPane(),"2");
+		}			
+		private JToggleButton createButton(){
+			JToggleButton button = new JToggleButton();
+			button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			button.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					 button.setEnabled(false);
+				}
+			});
+			return button;
 		}
-
 	}
 }

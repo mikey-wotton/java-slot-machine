@@ -77,6 +77,7 @@ public class Main {
 	
 	
 	
+	
 	public void testMillSpins(){
 		int spin = 0;
 		double k = 0;
@@ -132,6 +133,10 @@ public class Main {
 	
 	public double getWinOrLoseAmount(){
 		return winOrLoseAmount;
+	}
+	
+	public void addBonusWin(double bonusAmount){
+		totalWon+= bonusAmount;
 	}
 	public double getTotalWon(){
 		return totalWon;
