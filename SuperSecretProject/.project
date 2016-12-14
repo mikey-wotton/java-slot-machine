@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/res/symbols/bonus_symbol.png</name>
-			<type>1</type>
-			<location>C:/Users/mikey/git/hello-world/SuperSecretProject/res/symbols/bonus_symbol.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
