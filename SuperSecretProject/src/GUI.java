@@ -540,9 +540,11 @@ public class GUI {
 		private JToggleButton createButton(){
 			JToggleButton button = new JToggleButton();
 			button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+			button.setIcon(new AlphaIcon(new StretchIcon(Symbols.WILD.imageString()), 0.3F));
 			button.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					 button.setEnabled(false);
+					 System.out.println("Boop");
 				}
 			});
 			return button;
