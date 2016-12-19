@@ -740,9 +740,9 @@ public class CheckWheels {
 			}
 		}
 		if(temp != null){
-			return temp.modifier();
+			return temp.getModifier();
 		}
-		return i.modifier();
+		return i.getModifier();
 	}
 
 	public int getTwoTenMatches() {

@@ -16,7 +16,7 @@ public enum Symbols {
 	ACE,
 	WILD,
 	BONUS;
-	public double modifier()
+	public double getModifier()
 	{
 		double modifier = 0;
 		switch(this)
@@ -37,7 +37,7 @@ public enum Symbols {
 			modifier = 16.0;
 			break;
 		case WILD:
-			modifier = Symbols.ACE.modifier();
+			modifier = Symbols.ACE.getModifier();
 			break;
 		case BONUS:
 			modifier = 0.0;
@@ -45,7 +45,36 @@ public enum Symbols {
 		}
 		return modifier;
 	}
-	public String imageString(){
+	public double getBonus()
+	{
+		double bonus = 0;
+		switch(this)
+		{		
+		case TEN:
+			bonus = 10.0;
+			break;
+		case JACK:
+			bonus = 20.0;
+			break;		
+		case QUEEN:
+			bonus = 40.0;
+			break;
+		case KING:
+			bonus = 80.0;
+			break;
+		case ACE:
+			bonus = 160.0;
+			break;
+		case WILD:
+			bonus = Symbols.ACE.getModifier();
+			break;
+		case BONUS:
+			bonus = 0.0;
+			break;
+		}
+		return bonus;
+	}
+	public String getImageString(){
 		String imageLocation = "";
 		switch(this)
 		{		
