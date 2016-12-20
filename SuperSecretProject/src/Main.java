@@ -60,18 +60,23 @@ public class Main {
 			bonusFlagArray[0] = checkWheels.checkBonus(arrayOfWheels);
 			double OverallTotalInOut = totalWon - totalStake;
 			
-			userDetails.updateBalance(OverallTotalInOut);
-			if(OverallTotalInOut > 0){
-				winOrLoseAmount = totalWon;
-			}
-			else if(OverallTotalInOut == 0){
-				winOrLoseAmount = 0;
-			}
-			else{
-				winOrLoseAmount = OverallTotalInOut;
-			}
+			updateUserDetailsBalance(OverallTotalInOut);
 			System.out.println(userDetails.getUsername() + ": "+userDetails.getBalance());
 		}
+	
+	public void updateUserDetailsBalance(double totalToUpdateBy){
+		userDetails.updateBalance(totalToUpdateBy);
+		if(totalToUpdateBy > 0){
+			winOrLoseAmount = totalWon;
+		}
+		else if(totalToUpdateBy == 0){
+			winOrLoseAmount = 0;
+		}
+		else{
+			winOrLoseAmount = totalToUpdateBy;
+		}
+		
+	}
 	
 	
 	
@@ -126,7 +131,7 @@ public class Main {
 			return "No win this time! Try again!";
 		}
 	}
-	
+		
 	public int[] getWinLineArray(){
 		return checkWheels.getWinLinesArray();
 	}
@@ -136,9 +141,7 @@ public class Main {
 	}
 	
 	public void addBonusWin(double bonusAmount){
-		System.out.println(totalWon);
 		totalWon = totalWon + bonusAmount;
-		System.out.println(totalWon);
 	}
 	public double getTotalWon(){
 		return totalWon;
