@@ -15,7 +15,8 @@ public enum Symbols {
 	KING,
 	ACE,
 	WILD,
-	BONUS;
+	BONUS,
+	BONUSTWO;
 	public double getModifier()
 	{
 		double modifier = 0;
@@ -40,6 +41,9 @@ public enum Symbols {
 			modifier = Symbols.ACE.getModifier();
 			break;
 		case BONUS:
+			modifier = 0.0;
+			break;
+		case BONUSTWO:
 			modifier = 0.0;
 			break;
 		}
@@ -71,10 +75,13 @@ public enum Symbols {
 		case BONUS:
 			bonus = 0.0;
 			break;
+		case BONUSTWO:
+			bonus = 0.0;
+			break;
 		}
 		return bonus;
 	}
-	public String getImageString(){
+	public String getLargeImageString(){
 		String imageLocation = "";
 		switch(this)
 		{		
@@ -99,8 +106,42 @@ public enum Symbols {
 		case BONUS:
 			imageLocation = "bonus_symbol.png";
 			break;
+		case BONUSTWO:
+			imageLocation = "bonus_symbol2.png";
+			break;
 		}
-		return "res\\symbols\\"+imageLocation;
+		return "res\\symbols\\large\\"+imageLocation;
+	}
+	public String getSmallImageString(){
+		String imageLocation = "";
+		switch(this)
+		{		
+		case TEN:
+			imageLocation = "black_ten.png";
+			break;
+		case JACK:
+			imageLocation = "orange_jack.png";
+			break;		
+		case QUEEN:
+			imageLocation ="lgrey_queen.png";
+			break;
+		case KING:
+			imageLocation ="grey_king.png";
+			break;
+		case ACE:
+			imageLocation = "kl_ace.png";
+			break;
+		case WILD:
+			imageLocation = "gold_wild.png";
+			break;
+		case BONUS:
+			imageLocation = "bonus_symbol.png";
+			break;
+		case BONUSTWO:
+			imageLocation = "bonus_symbol2.png";
+			break;
+		}
+		return "res\\symbols\\small\\"+imageLocation;
 	}
 	public URL getURL(){
 		URL url = null;
@@ -126,6 +167,9 @@ public enum Symbols {
 			break;
 		case BONUS:
 			url = GUI.class.getResource("symbols\\bonus_symbol.png");
+			break;
+		case BONUSTWO:
+			url = GUI.class.getResource("symbols\\bonus_symbol2.png");
 			break;
 		}
 		return url;

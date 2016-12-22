@@ -824,4 +824,9 @@ public class CheckWheels {
 	public int getFiveAceMatches() {
 		return fiveAceMatches;
 	}
+
+	public int getBonusAppeared() {
+		// TODO Auto-generated method stub
+		return bonusAppeared;
+	}
 }

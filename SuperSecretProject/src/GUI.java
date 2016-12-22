@@ -7,7 +7,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
-
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
@@ -21,24 +20,21 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
 import javax.swing.JToggleButton;
-import javax.swing.KeyStroke;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SpringLayout;
 import javax.swing.SwingWorker;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-
 import javax.swing.JLabel;
-
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
-
 import javax.swing.SwingConstants;
+import javax.swing.event.MenuEvent;
+import javax.swing.event.MenuListener;
 
 public class GUI {
 	public Main main;
@@ -49,6 +45,7 @@ public class GUI {
 	private CardLayout cl1;
 
 	private SwingWorker<Void, String> worker;
+	private SwingWorker<Void, String> helpWorker;
 	private Color bgColour;
 	private URL facedown;
 
@@ -84,13 +81,16 @@ public class GUI {
 	 */
 	private JPanel getMiddle() {
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(1, 5));
-		panel.setOpaque(false);
-		JLabel[] array = new JLabel[5];
-		for (int i = 0; i < 5; i++) {
+		// SpringLayout swing = new SpringLayout();
+		panel.setLayout(new GridLayout(2, 4));
+		panel.setBackground(bgColour);
+		int i = 0;
+		JLabel[] array = new JLabel[8];
+		for (Symbols s : Symbols.values()) {
 			array[i] = new JLabel();
-			array[i].setIcon(new StretchIcon(GUI.class.getResource(String.valueOf(i) + "_front.jpg")));
+			array[i].setIcon(new StretchIcon(s.getLargeImageString()));
 			panel.add(array[i]);
+			i++;
 		}
 		return panel;
 	}
@@ -103,7 +103,7 @@ public class GUI {
 
 	private void getBottom(JPanel mainScreen) {
 		GridBagConstraints c = new GridBagConstraints();
-		
+
 		JButton simPlay = new JButton("Simulated Play");
 		simPlay.addActionListener(new ActionListener() {
 			@Override
@@ -112,10 +112,9 @@ public class GUI {
 				frame.add(simScreen, "1");
 				cl1.show(frame.getContentPane(), "1");
 			}
-		});		
-		c = createGridBagConstraints(0, 3, java.awt.GridBagConstraints.BOTH, 0.3, 0.04, 1, 5, 5, 5, 5);
+		});
+		c = createGridBagConstraints(0, 1, java.awt.GridBagConstraints.BOTH, 0.3, 0.05, 1, 10, 10, 10, 10);
 		mainScreen.add(simPlay, c);
-
 
 		JButton realPlay = new JButton("   Real Play  ");
 		realPlay.addActionListener(new ActionListener() {
@@ -124,21 +123,20 @@ public class GUI {
 				System.out.println("Real Play");
 			}
 		});
-		c = createGridBagConstraints(2, 3, java.awt.GridBagConstraints.BOTH, 0.3, 0.0, 1, 5, 5, 5, 5);
+		c = createGridBagConstraints(2, 1, java.awt.GridBagConstraints.BOTH, 0.3, 0.05, 1, 10, 10, 10, 10);
 		mainScreen.add(realPlay, c);
-		
+
 		// Blank filler panels to space the grid, possibly use in future
-		c = createGridBagConstraints(1, 3, java.awt.GridBagConstraints.BOTH, 0.4, 0.0, 1, 5, 5, 5, 5);
+		c = createGridBagConstraints(1, 1, java.awt.GridBagConstraints.BOTH, 0.4, 0.05, 1, 10, 10, 10, 10);
 		mainScreen.add(generateBlankPanel(), c);
 	}
 
 	private JPanel getMainScreen() {
-		menu = new JMenu("A Menu");
+		menu = new JMenu("File");
 		menu.setMnemonic(KeyEvent.VK_A);
 		menu.getAccessibleContext().setAccessibleDescription("The only menu in this program that has menu items");
 		// a group of JMenuItems
-		menuItem = new JMenuItem("A text-only menu item", KeyEvent.VK_T);
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_1, ActionEvent.ALT_MASK));
+		menuItem = new JMenuItem("Screenshot (TBI)", KeyEvent.VK_T);
 		menuItem.getAccessibleContext().setAccessibleDescription("This doesn't really do anything");
 		menu.add(menuItem);
 
@@ -172,7 +170,7 @@ public class GUI {
 		JPanel mainScreen = new JPanel();
 		mainScreen.setBackground(bgColour);
 		mainScreen.setLayout(new GridBagLayout());
-		GridBagConstraints c = createGridBagConstraints(0, 2, java.awt.GridBagConstraints.BOTH, 1.0, 0.6, 3, 5, 5, 5, 5);
+		GridBagConstraints c = createGridBagConstraints(0, 0, java.awt.GridBagConstraints.BOTH, 0, 0.8, 3, 5, 5, 5, 5);
 		mainScreen.add(getMiddle(), c);
 		getBottom(mainScreen);
 		return mainScreen;
@@ -185,7 +183,7 @@ public class GUI {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Mikey's Not So Wild Slots");
 		frame.setBackground(bgColour);
-		frame.setMinimumSize(new Dimension(800, 825));
+		frame.setMinimumSize(new Dimension(800, 850));
 		cl1 = new CardLayout();
 		frame.getContentPane().setLayout(cl1);
 		frame.getContentPane().add(getMainScreen(), "0");
@@ -217,6 +215,7 @@ public class GUI {
 	}
 
 	public JPanel simPlay() {
+
 		JPanel contentPane = new JPanel();
 		contentPane.setBackground(bgColour);
 		contentPane.setLayout(new GridBagLayout());
@@ -295,7 +294,7 @@ public class GUI {
 		contentPane.add(upperLeftPanel, c);
 		c = createGridBagConstraints(2, 1, java.awt.GridBagConstraints.BOTH, 0.5, 0.2, 1, 5, 5, 5, 5);
 		contentPane.add(upperRightPanel, c);
-		c = createGridBagConstraints(0, 2, java.awt.GridBagConstraints.BOTH, 1.0, 0.05, 3, 5, 5, 5, 5);
+		c = createGridBagConstraints(0, 2, java.awt.GridBagConstraints.BOTH, 1.0, 0.1, 3, 5, 5, 5, 5);
 		contentPane.add(holdingPane, c);
 		c = createGridBagConstraints(0, 3, java.awt.GridBagConstraints.BOTH, 0.3, 0.2, 1, 5, 5, 5, 5);
 		contentPane.add(bottomLeftPanel, c);
@@ -303,9 +302,38 @@ public class GUI {
 		contentPane.add(lblWinOrLoseAmount, c);
 		c = createGridBagConstraints(2, 3, java.awt.GridBagConstraints.BOTH, 0.3, 0.2, 1, 5, 5, 5, 5);
 		contentPane.add(bottomRightPanel, c);
+
+		menu = new JMenu("Show Win Lines");
+		menu.getAccessibleContext().setAccessibleDescription("Displays currently playing win lines");
+		menu.addMenuListener(new MenuListener() {
+			@Override
+			public void menuSelected(MenuEvent e) {
+				if (helpWorker != null) {
+					helpWorker.cancel(true);
+				}
+				helpWorker = new helpWorker(lblWinLinesArray, (Integer) winLinesSpinner.getValue());
+				helpWorker.execute();
+			}
+
+			@Override
+			public void menuDeselected(MenuEvent e) {
+				if (helpWorker != null) {
+					helpWorker.cancel(true);
+				}
+			}
+
+			@Override
+			public void menuCanceled(MenuEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+		});
+		menuBar.add(menu);
+
 		return contentPane;
 	}
-	public GridBagConstraints createGridBagConstraints(int gridx, int gridy,int fill, double weightx, double weighty, int gridwidth, int inseti, int insetj, int insetk, int insetl){
+
+	public GridBagConstraints createGridBagConstraints(int gridx, int gridy, int fill, double weightx, double weighty, int gridwidth,
+			int inseti, int insetj, int insetk, int insetl) {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = gridx;
 		c.gridy = gridy;
@@ -316,6 +344,7 @@ public class GUI {
 		c.insets = new Insets(inseti, insetj, insetk, insetl);
 		return c;
 	}
+
 	public JPanel createBottomRightPanel(JButton spinOnce) {
 		JPanel bottomRightPanel = new JPanel();
 		SpringLayout brSwing = new SpringLayout();
@@ -348,7 +377,7 @@ public class GUI {
 
 		return upperLeftPanel;
 	}
-	
+
 	public JPanel createUpperRightPanel(JSpinner winLinesSpinner, JSpinner winStakeSpinner) {
 		JPanel upperRightPanel = new JPanel();
 		SpringLayout urSpring = new SpringLayout();
@@ -406,6 +435,38 @@ public class GUI {
 		return bottomLeftPanel;
 	}
 
+	class helpWorker extends SwingWorker<Void, String> {
+		private JLabel[] winLineLabelArray;
+		private int numOfWinLines;
+
+		public helpWorker(JLabel[] winLineLabelArray, int numOfWinLines) {
+			this.winLineLabelArray = winLineLabelArray;
+			this.numOfWinLines = numOfWinLines;
+		}
+
+		@Override
+		public Void doInBackground() {
+			helperShowWinLines(winLineLabelArray, numOfWinLines);
+			while (!isCancelled()) {
+				// does nothing
+			}
+			helperHideWinLines(winLineLabelArray);
+			return null;
+		}
+
+		private void helperShowWinLines(JLabel[] winLineLabelArray, int numOfWinLines) {
+			for (int k = 0; k < numOfWinLines; k++) {
+				winLineLabelArray[k].setVisible(true);
+			}
+		}
+
+		private void helperHideWinLines(JLabel[] winLineLabelArray) {
+			for (int k = 0; k < winLineLabelArray.length; k++) {
+				winLineLabelArray[k].setVisible(false);
+			}
+		}
+	}
+
 	class Worker extends SwingWorker<Void, String> {
 		private JLabel[][] labels;
 		private int spins;
@@ -441,51 +502,49 @@ public class GUI {
 			while (!isCancelled() && spins > 0) {
 				hideWheelsSymbols();
 				main.spinOnce(numOfWinLines, lineStake);
-				//setButtons(false);
+				// setButtons(false);
 				showWheelsSymbols();
 				showWinLines();
 				updateUILabels();
-				try {
-					Thread.sleep(1000);
-				} catch (InterruptedException ex) {
-					Thread.currentThread().interrupt();
-				}
+				stopFor(1000);
 				hideWinLines();
 				if (main.bonusFlagArray[0] == 1) {
 					worker.cancel(true);
 					createBonusPanel(lineStake * numOfWinLines);
 					updateUILabels();
 				}
-				//setButtons(true);
+				// setButtons(true);
 			}
 
 			return null;
 		}
-		private void setButtons(Boolean toBeSet){
-			for(int i = 0; i < jbuttonArray.length; i++){
+
+		private void hideWinLines() {
+			for (int k = 0; k < winLineLabelArray.length; k++) {
+				winLineLabelArray[k].setVisible(false);
+			}
+		}
+
+		private void setButtons(Boolean toBeSet) {
+			for (int i = 0; i < jbuttonArray.length; i++) {
 				jbuttonArray[i].setEnabled(toBeSet);
 			}
 		}
-		
-		private void updateUILabels(){
+
+		private void updateUILabels() {
 			balance.setText(String.valueOf("Balance: £" + main.userDetails.getBalance()));
 			lblWinorloseamount.setText(main.getWinOrLoseString(main.getTotalWon()));
 			spins--;
 			if (spins != 0) {
 				autoSpinner.setValue(spins);
-			}			
+			}
 		}
 
 		private void hideWheelsSymbols() {
 			for (int i = 0; i < main.arrayOfWheels.length; i++) {
 				for (int j = 0; j < main.arrayOfWheels.length; j++) {
 					labels[i][j].setIcon(new StretchIcon(facedown));
-
-					try {
-						Thread.sleep(20);
-					} catch (InterruptedException ex) {
-						Thread.currentThread().interrupt();
-					}
+					stopFor(20);
 				}
 			}
 		}
@@ -494,28 +553,21 @@ public class GUI {
 			for (int i = 0; i < main.arrayOfWheels.length; i++) {
 				for (int j = 0; j < main.arrayOfWheels.length; j++) {
 					if ((j == 0) || (j == 4)) {
-						labels[i][j].setIcon(new AlphaIcon(new StretchIcon(main.arrayOfWheels[i][j].getImageString()), 0.3F));
+						labels[i][j].setIcon(new AlphaIcon(new StretchIcon(main.arrayOfWheels[i][j].getSmallImageString()), 0.3F));
 					} else {
-						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getImageString()));
+						labels[i][j].setIcon(new StretchIcon(main.arrayOfWheels[i][j].getSmallImageString()));
 					}
 					Clip clip = AudioSystem.getClip();
 					clip.open(AudioSystem.getAudioInputStream(soundFile));
 					clip.start();
-					try {
-						Thread.sleep(clip.getMicrosecondLength() / 1000);
-					} catch (InterruptedException ex) {
-						Thread.currentThread().interrupt();
-					}
+					stopFor((int) (clip.getMicrosecondLength() / 1000));
 				}
 			}
 		}
+		
 
 		private void showWinLines() {
-			try {
-				Thread.sleep(2000); // 1000 milliseconds is one second.
-			} catch (InterruptedException ex) {
-				Thread.currentThread().interrupt();
-			}
+		
 			int[] winLineArray = main.getWinLineArray();
 
 			for (int k = 0; k < winLineLabelArray.length; k++) {
@@ -525,14 +577,8 @@ public class GUI {
 			}
 		}
 
-		private void hideWinLines() {
-			for (int k = 0; k < winLineLabelArray.length; k++) {
-				winLineLabelArray[k].setVisible(false);
-			}
-		}
-
 		public void createBonusPanel(double value) {
-			double amountPlayed = value;
+			double stakeValue = value;
 			JPanel mainPanel = new JPanel();
 			mainPanel.setBackground(bgColour);
 			mainPanel.setLayout(new GridBagLayout());
@@ -543,21 +589,19 @@ public class GUI {
 			prizeWonOnClick.setOpaque(false);
 			mainPanel.add(prizeWonOnClick, c);
 			c = createGridBagConstraints(1, 0, java.awt.GridBagConstraints.BOTH, 0.5, 0.2, 1, 5, 5, 5, 5);
-			JLabel totalPrize = new JLabel("Total Winnings so Far £"+amountPlayed * 10);
+			JLabel totalPrize = new JLabel("Total Winnings so Far £" + stakeValue * 10);
 			totalPrize.setFont(new Font("Serif", Font.BOLD, 25));
 			totalPrize.setOpaque(false);
 			mainPanel.add(totalPrize, c);
-			
-			
-			
-			//Creates Bonus Buttons
+
+			// Creates Bonus Buttons
 			JPanel buttonsPanel = new JPanel();
 			buttonsPanel.setOpaque(false);
 			buttonsPanel.setLayout(new GridLayout(4, 4));
 			JToggleButton[] panelArray = new JToggleButton[16];
-			main.addBonusWin(amountPlayed*10); 
+			main.addBonusWin(stakeValue * 10);
 			for (int i = 0; i < 16; i++) {
-				panelArray[i] = createToggleButton(i, totalPrize, prizeWonOnClick, amountPlayed);
+				panelArray[i] = createToggleButton(i, totalPrize, prizeWonOnClick, stakeValue);
 				panelArray[i].setOpaque(false);
 			}
 			Random rnd = new Random();
@@ -571,13 +615,20 @@ public class GUI {
 			for (int i = 0; i < 16; i++) {
 				buttonsPanel.add(panelArray[i]);
 			}
-			//end
+			// end
 			c = createGridBagConstraints(0, 1, java.awt.GridBagConstraints.BOTH, 1.0, 0.8, 3, 5, 5, 5, 5);
 			mainPanel.add(buttonsPanel, c);
-			
 
 			frame.getContentPane().add(mainPanel, "2");
 			cl1.show(frame.getContentPane(), "2");
+		}
+		
+		private void stopFor(int time){
+			try {
+				Thread.sleep(time); // 1000 milliseconds is one second.
+			} catch (InterruptedException ex) {
+				Thread.currentThread().interrupt();
+			}
 		}
 
 		private JToggleButton createToggleButton(int num, JLabel totalPrize, JLabel prizeWonOnClick, double stakeValue) {
@@ -589,8 +640,8 @@ public class GUI {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						button.setEnabled(false);
-						button.setIcon(new StretchIcon(Symbols.TEN.getImageString()));
-						cl1.show(frame.getContentPane(), "1");						
+						button.setIcon(new StretchIcon(Symbols.TEN.getSmallImageString()));
+						cl1.show(frame.getContentPane(), "1");
 						updateUILabels();
 					}
 				});
@@ -603,11 +654,11 @@ public class GUI {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						button.setEnabled(false);
-						button.setIcon(new StretchIcon(Symbols.JACK.getImageString()));
+						button.setIcon(new StretchIcon(Symbols.JACK.getSmallImageString()));
 						main.addBonusWin(Symbols.JACK.getBonus());
 						main.updateUserDetailsBalance(Symbols.JACK.getBonus());
-						prizeWonOnClick.setText("Jack found! You win £"+Symbols.JACK.getBonus() * stakeValue);
-						totalPrize.setText("Total win so far £"+main.getTotalWon() * stakeValue+"   ");
+						prizeWonOnClick.setText("Jack found! You win £" + Symbols.JACK.getBonus() * stakeValue);
+						totalPrize.setText("Total win so far £" + main.getTotalWon() * stakeValue + "   ");
 					}
 				});
 				return button;
@@ -619,11 +670,11 @@ public class GUI {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						button.setEnabled(false);
-						button.setIcon(new StretchIcon(Symbols.QUEEN.getImageString()));
+						button.setIcon(new StretchIcon(Symbols.QUEEN.getSmallImageString()));
 						main.addBonusWin(Symbols.QUEEN.getBonus());
 						main.updateUserDetailsBalance(Symbols.QUEEN.getBonus());
-						prizeWonOnClick.setText("Queen found! You win £"+Symbols.QUEEN.getBonus() * stakeValue);
-						totalPrize.setText("Total win so far £"+main.getTotalWon() * stakeValue+"   ");
+						prizeWonOnClick.setText("Queen found! You win £" + Symbols.QUEEN.getBonus() * stakeValue);
+						totalPrize.setText("Total win so far £" + main.getTotalWon() * stakeValue + "   ");
 					}
 				});
 				return button;
@@ -631,20 +682,20 @@ public class GUI {
 			} else {
 				JToggleButton button = new JToggleButton();
 				button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-				button.setIcon(new AlphaIcon(new StretchIcon(facedown), 0.7F));
+				button.setIcon(new StretchIcon(facedown));
 				button.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						button.setEnabled(false);
-						button.setIcon(new StretchIcon(Symbols.KING.getImageString()));
+						button.setIcon(new StretchIcon(Symbols.KING.getSmallImageString()));
 						main.addBonusWin(Symbols.KING.getBonus());
 						main.updateUserDetailsBalance(Symbols.KING.getBonus());
-						prizeWonOnClick.setText("King found! You win £"+Symbols.KING.getBonus() * stakeValue);
-						totalPrize.setText("Total win so far £"+main.getTotalWon() * stakeValue+"   ");
+						prizeWonOnClick.setText("King found! You win £" + Symbols.KING.getBonus() * stakeValue);
+						totalPrize.setText("Total win so far £" + main.getTotalWon() * stakeValue + "   ");
 					}
 				});
 				return button;
 			}
-		}		
+		}
 	}
 }

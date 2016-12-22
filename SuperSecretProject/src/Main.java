@@ -52,12 +52,10 @@ public class Main {
 			arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
 			arrayOfWheels[3] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFourthWheel());
 			arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
-			
-			
-			
 			totalStake = numberOfLinesPlayed * stakePerLine;		
 			totalWon = ((checkWheels.checkWheels(arrayOfWheels, numberOfLinesPlayed) * stakePerLine));
 			bonusFlagArray[0] = checkWheels.checkBonus(arrayOfWheels);
+			
 			double OverallTotalInOut = totalWon - totalStake;
 			
 			updateUserDetailsBalance(OverallTotalInOut);
@@ -88,7 +86,7 @@ public class Main {
 		double k = 0;
 		double totalWonOrLost = 0;
 		Symbols[][] arrayOfWheels = new Symbols[5][5];
-		while(k < 1000000){
+		while(k < 100000){
 		arrayOfWheels[0] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFirstWheel());
 		arrayOfWheels[1] = randomiseWheels.pickFiveWinners(randomiseWheels.generateSecondWheel());
 		arrayOfWheels[2] = randomiseWheels.pickFiveWinners(randomiseWheels.generateThirdWheel());
@@ -96,6 +94,10 @@ public class Main {
 		arrayOfWheels[4] = randomiseWheels.pickFiveWinners(randomiseWheels.generateFifthWheel());
 			userDetails.updateBalance(checkWheels.checkWheels(arrayOfWheels, num) - (num * stake));
 			totalWonOrLost +=checkWheels.checkWheels(arrayOfWheels, num) - (num * stake);
+			bonusFlagArray[0] = checkWheels.checkBonus(arrayOfWheels);
+			if(bonusFlagArray[0] == 1){
+				totalWonOrLost += 150;
+			}
 			System.out.println("Spins:" + spin + " - WinOrLoss: " + (((num * stake) * 1000000000) / (((num * stake) * 1000000000) - totalWonOrLost) )*100+"%");
 			k++;
 			spin++;
@@ -104,11 +106,13 @@ public class Main {
 		System.out.println("Win Lines: "+num);
 		System.out.println("Stake per line: "+stake);
 		System.out.println("User Balance: "+userDetails.getBalance());
-		System.out.println("Ten Matches (Modifier:"+Symbols.TEN.getModifier()+"):"+checkWheels.getTwoTenMatches()+"    : "+checkWheels.getThreeTenMatches()+"   : "+checkWheels.getFourTenMatches()+"   : " +checkWheels.getFiveTenMatches());
-		System.out.println("Jack Matches (Modifier:"+Symbols.JACK.getModifier()+"):"+checkWheels.getTwoJackMatches()+"   : "+checkWheels.getThreeJackMatches()+"  : "+checkWheels.getFourJackMatches()+"  : " +checkWheels.getFiveJackMatches());
-		System.out.println("Queen Matches (Modifier:"+Symbols.QUEEN.getModifier()+"):"+checkWheels.getTwoQueenMatches()+"  : "+checkWheels.getThreeQueenMatches()+" : "+checkWheels.getFourQueenMatches()+" : " +checkWheels.getFiveQueenMatches());
-		System.out.println("King Matches (Modifier:"+Symbols.KING.getModifier()+"):"+checkWheels.getTwoKingMatches()+"   : "+checkWheels.getThreeKingMatches()+"  : "+checkWheels.getFourKingMatches()+"  : " +checkWheels.getFiveKingMatches());
-		System.out.println("Ace Matches (Modifier:"+Symbols.ACE.getModifier()+"):"+checkWheels.getTwoAceMatches()+"    : "+checkWheels.getThreeAceMatches()+"   : "+checkWheels.getFourAceMatches()+"   : " +checkWheels.getFiveAceMatches());
+		System.out.println("Ten Matches (Modifier:"+Symbols.TEN.getModifier()+")");
+		System.out.println("Total Ten 3 Matches Pay Out: £"+ (Symbols.TEN.getModifier() * checkWheels.getThreeTenMatches()+ "  : Four Matches Payout: £"+Symbols.TEN.getModifier() * checkWheels.getFourTenMatches()+"   : Five Matches Payout: £" +Symbols.TEN.getModifier() * checkWheels.getFiveTenMatches()));
+		System.out.println("Total Jack 3 Matches Pay Out: £"+ (Symbols.JACK.getModifier() * checkWheels.getThreeJackMatches()+ "  : Four Matches Payout: £"+Symbols.JACK.getModifier() * checkWheels.getFourJackMatches()+"   : Five Matches Payout: £" +Symbols.JACK.getModifier() * checkWheels.getFiveJackMatches()));
+		System.out.println("Total Queen 3 Matches Pay Out: £"+ (Symbols.QUEEN.getModifier() * checkWheels.getThreeQueenMatches()+ "  : Four Matches Payout: £"+Symbols.QUEEN.getModifier() * checkWheels.getFourQueenMatches()+"   : Five Matches Payout: £" +Symbols.QUEEN.getModifier() * checkWheels.getFiveQueenMatches()));
+		System.out.println("Total King 3 Matches Pay Out: £"+ (Symbols.KING.getModifier() * checkWheels.getThreeKingMatches()+ "  : Four Matches Payout: £"+Symbols.KING.getModifier() * checkWheels.getFourKingMatches()+"   : Five Matches Payout: £" +Symbols.KING.getModifier() * checkWheels.getFiveKingMatches()));
+		System.out.println("Total Ace 3 Matches Pay Out: £"+ (Symbols.ACE.getModifier() * checkWheels.getThreeAceMatches()+ "  : Four Matches Payout: £"+Symbols.ACE.getModifier() * checkWheels.getFourAceMatches()+"   : Five Matches Payout: £" +Symbols.ACE.getModifier() * checkWheels.getFiveAceMatches()));
+		System.out.println("Total number of Bonuses Payout: £"+ 150 * checkWheels.getBonusAppeared());
 	}
 	
 	public String getWinOrLoseString(double amount){
