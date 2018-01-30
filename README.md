@@ -1,4 +1,11 @@
 # hello-world
-My first foray in Java programming with a self set goal. To create a win-line based slot machine, which had a range of symbols and payouts, and also included an playable UI with sound features. A sub goal of this project was to familiarise myself with Git and its uses so please keep that in mind when you notice my numerous git failings :)
+My first foray in Java programming with a self set goal. 
 
-You can see a clip of this project in action here: https://www.youtube.com/watch?v=810lRzIP_aM
+To create a win-line based slot machine with:
+	- A range of symbols and payouts,
+	- An interactive UI,
+	- Implementation of sounds.
+	
+The learning outcomes were familiarisation with Java Swing, Workers, and the use of Git itself.
+
+You can see a clip of this project in action here: https://www.youtube.com/watch?v=810lRzIP_a
