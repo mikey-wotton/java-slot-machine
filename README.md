@@ -8,4 +8,4 @@ To create a win-line based slot machine with:
 	
 The learning outcomes were familiarisation with Java Swing, Workers, and the use of Git itself.
 
-You can see a clip of this project in action here: https://www.youtube.com/watch?v=810lRzIP_a
+You can see a clip of this project in action here: https://www.youtube.com/watch?v=810lRzIP_aM
